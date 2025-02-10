@@ -1,0 +1,20 @@
+
+execute store result score @s aolu_tb_owner_UUID0 run data get entity @s Owner[0]
+execute store result score @s aolu_tb_owner_UUID1 run data get entity @s Owner[1]
+execute store result score @s aolu_tb_owner_UUID2 run data get entity @s Owner[2]
+execute store result score @s aolu_tb_owner_UUID3 run data get entity @s Owner[3]
+
+execute store result score @p aolu_tb_UUID0 run data get entity @p UUID[0]
+execute store result score @p aolu_tb_UUID1 run data get entity @p UUID[1]
+execute store result score @p aolu_tb_UUID2 run data get entity @p UUID[2]
+execute store result score @p aolu_tb_UUID3 run data get entity @p UUID[3]
+
+execute unless score @s aolu_tb_owner_UUID0 = @p aolu_tb_UUID0 unless score @s aolu_tb_owner_UUID1 = @p aolu_tb_UUID1 unless score @s aolu_tb_owner_UUID2 = @p aolu_tb_UUID2 unless score @s aolu_tb_owner_UUID3 = @p aolu_tb_UUID3 run data merge entity @s {pickup: 0b}
+execute if score @s aolu_tb_owner_UUID0 = @p aolu_tb_UUID0 if score @s aolu_tb_owner_UUID1 = @p aolu_tb_UUID1 if score @s aolu_tb_owner_UUID2 = @p aolu_tb_UUID2 if score @s aolu_tb_owner_UUID3 = @p aolu_tb_UUID3 run data merge entity @s {pickup: 1b}
+
+execute if entity @s[tag=!aolu_tb_vel] store result entity @s Motion[0] double 0.01 run data get entity @s Motion[0] 125
+execute if entity @s[tag=!aolu_tb_vel] store result entity @s Motion[1] double 0.01 run data get entity @s Motion[1] 125
+execute if entity @s[tag=!aolu_tb_vel] store result entity @s Motion[2] double 0.01 run data get entity @s Motion[2] 125
+tag @s add aolu_tb_vel
+
+execute if data entity @s[tag=!aolu_tb_landed] {inGround:1b} run function aolu_trident_buffs:trident/impact

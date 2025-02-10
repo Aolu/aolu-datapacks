@@ -226,7 +226,6 @@ scoreboard objectives add aolu_psp_grabatt dummy
 scoreboard objectives add aolu_psp_grabattdec dummy
 scoreboard objectives add aolu_psp_grabattdec2 dummy
 
-tellraw @a [{"color":"gold","text":"["},{"color":"white","text":"Player Stat Progression"},{"color":"gold","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
 
 function aolu_plr_stat_prog:on10sec
 
@@ -239,7 +238,9 @@ scoreboard players set aolu_psp_timer aolu_psp_ptimer1sec 20
 scoreboard objectives add aolu_psp_const dummy
 scoreboard players set 2 aolu_psp_const 2
 scoreboard players set 5 aolu_psp_const 5
+scoreboard players set 4 aolu_psp_const 4
 scoreboard players set -1 aolu_psp_const -1
 scoreboard players set 10 aolu_psp_const 10
 scoreboard players set 100 aolu_psp_const 100
 
+tellraw @a [{"color":"gold","text":"["},{"color":"white","text":"Player Stat Progression"},{"color":"gold","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]

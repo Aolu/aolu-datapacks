@@ -1,6 +1,6 @@
 #set max level
-scoreboard players add #arpg.max_lvl aolu_psp_const 0
-execute if score #arpg.max_lvl aolu_psp_const matches 0 run scoreboard players set #arpg.max_lvl aolu_psp_const 100
+scoreboard players add aolu_psp_max_lv aolu_psp_const 0
+execute if score aolu_psp_max_lv aolu_psp_const matches 0 run scoreboard players set aolu_psp_max_lv aolu_psp_const 100
 
 #Agility
 scoreboard objectives add aolu_psp_walk minecraft.custom:minecraft.walk_one_cm
@@ -56,6 +56,7 @@ scoreboard objectives add aolu_psp_fchorus minecraft.mined:minecraft.chorus_flow
 scoreboard objectives add aolu_psp_bamboo minecraft.mined:minecraft.bamboo
 scoreboard objectives add aolu_psp_beet minecraft.mined:minecraft.beetroots
 scoreboard objectives add aolu_psp_berry minecraft.mined:minecraft.sweet_berry_bush
+
 #Hoe Usage
 scoreboard objectives add aolu_psp_whoe minecraft.used:minecraft.wooden_hoe
 scoreboard objectives add aolu_psp_shoe minecraft.used:minecraft.stone_hoe
@@ -65,6 +66,11 @@ scoreboard objectives add aolu_psp_dhoe minecraft.used:minecraft.diamond_hoe
 scoreboard objectives add aolu_psp_nhoe minecraft.used:minecraft.netherite_hoe
 scoreboard objectives add aolu_psp_farmingxp dummy
 scoreboard objectives add aolu_psp_farminglv dummy
+
+#Farming timers
+
+scoreboard objectives add aolu_psp_regtimer dummy
+scoreboard objectives add aolu_psp_sattimer dummy
 
 #Fishing
 scoreboard objectives add aolu_psp_food food
@@ -136,8 +142,6 @@ scoreboard objectives add aolu_psp_swimlv dummy
 
 #Timers
 scoreboard objectives add aolu_psp_ptimer1sec minecraft.custom:minecraft.time_since_death
-scoreboard objectives add aolu_psp_regtimer minecraft.custom:minecraft.time_since_death
-scoreboard objectives add aolu_psp_sattimer minecraft.custom:minecraft.time_since_death
 
 
 
@@ -231,7 +235,7 @@ schedule function aolu_plr_stat_prog:globalsec 1s replace
 scoreboard players set aolu_psp_timer aolu_psp_ptimer1sec 20
 
 
-
+#constants
 scoreboard objectives add aolu_psp_const dummy
 scoreboard players set 2 aolu_psp_const 2
 scoreboard players set 5 aolu_psp_const 5

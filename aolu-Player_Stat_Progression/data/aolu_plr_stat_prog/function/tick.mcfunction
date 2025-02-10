@@ -1,5 +1,6 @@
 execute as @e[type=!#aolu_plr_stat_prog:rideable] at @s run function aolu_plr_stat_prog:tick_entity
 execute as @a at @s run function aolu_plr_stat_prog:tick_player
+execute as @e[type=marker,tag=aolu_psp_lvpart] at @s run function aolu_plr_stat_prog:leveluppart
 
 execute as @e[type=item,tag=!aolu_psp_unfishable] at @s run function aolu_plr_stat_prog:fishing/unfishable
 

@@ -1,5 +1,5 @@
 scoreboard players remove @s aolu_psp_xprefund 1
-execute if score @s aolu_psp_enchantlv < #arpg.max_lvl aolu_psp_const run function aolu_plr_stat_prog:titles/enchanting
+execute if score @s aolu_psp_enchantlv < aolu_psp_max_lv aolu_psp_const run function aolu_plr_stat_prog:titles/enchanting
 
 $xp add @s $(a)
 

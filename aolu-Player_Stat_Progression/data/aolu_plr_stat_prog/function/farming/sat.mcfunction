@@ -2,4 +2,9 @@
 
 effect give @s minecraft:saturation 1 0 true
 
-scoreboard players set @s aolu_psp_sattimer 0
+
+scoreboard players set aolu_psp_regen aolu_psp_sattimer 100
+scoreboard players operation aolu_psp_regen aolu_psp_sattimer += @s aolu_psp_farminglv
+
+scoreboard players set @s aolu_psp_sattimer 40000
+scoreboard players operation @s aolu_psp_sattimer /= aolu_psp_regen aolu_psp_sattimer

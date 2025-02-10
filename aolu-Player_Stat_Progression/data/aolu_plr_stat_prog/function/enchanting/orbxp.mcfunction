@@ -1,31 +1,31 @@
 
-scoreboard players add @p aolu_psp_regtimer 10
+scoreboard players remove @p aolu_psp_regtimer 10
 
-execute if score @p aolu_psp_farminglv matches 10.. run scoreboard players add @s aolu_psp_regtimer 1
-execute if score @p aolu_psp_farminglv matches 20.. run scoreboard players add @s aolu_psp_regtimer 1
-execute if score @p aolu_psp_farminglv matches 30.. run scoreboard players add @s aolu_psp_regtimer 1
-execute if score @p aolu_psp_farminglv matches 40.. run scoreboard players add @s aolu_psp_regtimer 1
-execute if score @p aolu_psp_farminglv matches 50.. run scoreboard players add @s aolu_psp_regtimer 1
-execute if score @p aolu_psp_farminglv matches 60.. run scoreboard players add @s aolu_psp_regtimer 1
-execute if score @p aolu_psp_farminglv matches 70.. run scoreboard players add @s aolu_psp_regtimer 1
-execute if score @p aolu_psp_farminglv matches 80.. run scoreboard players add @s aolu_psp_regtimer 1
-execute if score @p aolu_psp_farminglv matches 90.. run scoreboard players add @s aolu_psp_regtimer 1
-execute if score @p aolu_psp_farminglv matches 100.. run scoreboard players add @s aolu_psp_regtimer 1
+execute if score @p aolu_psp_farminglv matches 10.. run scoreboard players remove @s aolu_psp_regtimer 1
+execute if score @p aolu_psp_farminglv matches 20.. run scoreboard players remove @s aolu_psp_regtimer 1
+execute if score @p aolu_psp_farminglv matches 30.. run scoreboard players remove @s aolu_psp_regtimer 1
+execute if score @p aolu_psp_farminglv matches 40.. run scoreboard players remove @s aolu_psp_regtimer 1
+execute if score @p aolu_psp_farminglv matches 50.. run scoreboard players remove @s aolu_psp_regtimer 1
+execute if score @p aolu_psp_farminglv matches 60.. run scoreboard players remove @s aolu_psp_regtimer 1
+execute if score @p aolu_psp_farminglv matches 70.. run scoreboard players remove @s aolu_psp_regtimer 1
+execute if score @p aolu_psp_farminglv matches 80.. run scoreboard players remove @s aolu_psp_regtimer 1
+execute if score @p aolu_psp_farminglv matches 90.. run scoreboard players remove @s aolu_psp_regtimer 1
+execute if score @p aolu_psp_farminglv matches 100.. run scoreboard players remove @s aolu_psp_regtimer 1
 
 
 
-scoreboard players add @p aolu_psp_sattimer 20
+scoreboard players remove @p aolu_psp_sattimer 20
 
-execute if score @p aolu_psp_farminglv matches 10.. run scoreboard players add @s aolu_psp_sattimer 2
-execute if score @p aolu_psp_farminglv matches 20.. run scoreboard players add @s aolu_psp_sattimer 2
-execute if score @p aolu_psp_farminglv matches 30.. run scoreboard players add @s aolu_psp_sattimer 2
-execute if score @p aolu_psp_farminglv matches 40.. run scoreboard players add @s aolu_psp_sattimer 2
-execute if score @p aolu_psp_farminglv matches 50.. run scoreboard players add @s aolu_psp_sattimer 2
-execute if score @p aolu_psp_farminglv matches 60.. run scoreboard players add @s aolu_psp_sattimer 2
-execute if score @p aolu_psp_farminglv matches 70.. run scoreboard players add @s aolu_psp_sattimer 2
-execute if score @p aolu_psp_farminglv matches 80.. run scoreboard players add @s aolu_psp_sattimer 2
-execute if score @p aolu_psp_farminglv matches 90.. run scoreboard players add @s aolu_psp_sattimer 2
-execute if score @p aolu_psp_farminglv matches 100.. run scoreboard players add @s aolu_psp_sattimer 2
+execute if score @p aolu_psp_farminglv matches 10.. run scoreboard players remove @s aolu_psp_sattimer 2
+execute if score @p aolu_psp_farminglv matches 20.. run scoreboard players remove @s aolu_psp_sattimer 2
+execute if score @p aolu_psp_farminglv matches 30.. run scoreboard players remove @s aolu_psp_sattimer 2
+execute if score @p aolu_psp_farminglv matches 40.. run scoreboard players remove @s aolu_psp_sattimer 2
+execute if score @p aolu_psp_farminglv matches 50.. run scoreboard players remove @s aolu_psp_sattimer 2
+execute if score @p aolu_psp_farminglv matches 60.. run scoreboard players remove @s aolu_psp_sattimer 2
+execute if score @p aolu_psp_farminglv matches 70.. run scoreboard players remove @s aolu_psp_sattimer 2
+execute if score @p aolu_psp_farminglv matches 80.. run scoreboard players remove @s aolu_psp_sattimer 2
+execute if score @p aolu_psp_farminglv matches 90.. run scoreboard players remove @s aolu_psp_sattimer 2
+execute if score @p aolu_psp_farminglv matches 100.. run scoreboard players remove @s aolu_psp_sattimer 2
 
 
 scoreboard players set @s aolu_psp_enchantxp 0

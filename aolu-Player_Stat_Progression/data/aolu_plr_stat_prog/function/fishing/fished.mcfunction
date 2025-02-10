@@ -17,6 +17,6 @@ scoreboard players operation @s aolu_psp_fishingxp += @s aolu_psp_luck
 
 
 function aolu_plr_stat_prog:fishing/levels
-execute if score @s aolu_psp_fishinglv < #arpg.max_lvl aolu_psp_const run function aolu_plr_stat_prog:titles/fishing
+execute if score @s aolu_psp_fishinglv < aolu_psp_max_lv aolu_psp_const run function aolu_plr_stat_prog:titles/fishing
 
 advancement revoke @s only aolu_plr_stat_prog:fishing/fished

@@ -1,0 +1,1 @@
+title @s actionbar [{"text":"Agility: ","color": "green"},{"score":{"name":"@s","objective":"aolu_psp_agilityxp"},"color":"light_purple"},{"text":" ┃ ","color": "white"},{"score":{"name":"#xpmax","objective":"aolu_psp_const"},"color":"dark_purple"}]

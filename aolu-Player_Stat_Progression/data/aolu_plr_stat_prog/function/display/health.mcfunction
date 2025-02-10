@@ -1,0 +1,2 @@
+scoreboard objectives setdisplay below_name aolu_psp_healthlv
+schedule function aolu_plr_stat_prog:display/horse 30t replace

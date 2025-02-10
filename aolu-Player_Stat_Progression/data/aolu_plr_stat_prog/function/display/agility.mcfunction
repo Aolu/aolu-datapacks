@@ -1,0 +1,2 @@
+scoreboard objectives setdisplay below_name aolu_psp_agilitylv
+schedule function aolu_plr_stat_prog:display/archery 30t replace

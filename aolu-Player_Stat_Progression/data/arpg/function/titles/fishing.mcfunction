@@ -1,1 +1,0 @@
-title @s actionbar [{"text":"Fishing: ","color":"blue"},{"score":{"name":"@s","objective":"aolrpg.fishingxp"},"color":"light_purple"},{"text":" ┃ ","color": "white"},{"score":{"name":"#xpmax","objective":"aolrpg.const"},"color":"dark_purple"}]

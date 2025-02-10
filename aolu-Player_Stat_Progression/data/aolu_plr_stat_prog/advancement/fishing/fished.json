@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "fished": {
+      "trigger": "minecraft:fishing_rod_hooked",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:inverted",
+            "term": {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "nbt": "{Tags:[\"aolu_psp_unfishable\"]}"
+              }
+            }
+          }
+        ],
+        "item": {}
+      }
+    }
+  },
+  "rewards": {
+    "function": "aolu_plr_stat_prog:fishing/fished"
+  }
+}

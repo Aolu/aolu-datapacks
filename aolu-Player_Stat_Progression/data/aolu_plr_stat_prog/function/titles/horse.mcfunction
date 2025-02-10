@@ -1,0 +1,1 @@
+title @s actionbar [{"text":"Equestrianism: ","color":"#AD4910"},{"score":{"name":"@s","objective":"aolu_psp_horsexp"},"color":"light_purple"},{"text":" ┃ ","color": "white"},{"score":{"name":"#xpmax","objective":"aolu_psp_const"},"color":"dark_purple"}]

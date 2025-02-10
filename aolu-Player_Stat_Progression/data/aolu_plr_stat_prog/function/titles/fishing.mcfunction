@@ -1,0 +1,1 @@
+title @s actionbar [{"text":"Fishing: ","color":"blue"},{"score":{"name":"@s","objective":"aolu_psp_fishingxp"},"color":"light_purple"},{"text":" ┃ ","color": "white"},{"score":{"name":"#xpmax","objective":"aolu_psp_const"},"color":"dark_purple"}]

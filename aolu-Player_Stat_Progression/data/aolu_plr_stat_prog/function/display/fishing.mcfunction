@@ -1,0 +1,2 @@
+scoreboard objectives setdisplay below_name aolu_psp_fishinglv
+schedule function aolu_plr_stat_prog:display/health 30t replace

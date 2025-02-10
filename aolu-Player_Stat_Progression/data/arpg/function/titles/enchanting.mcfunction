@@ -1,1 +1,0 @@
-title @s actionbar [{"text":"Enchanting: ","color": "dark_aqua"},{"score":{"name":"@s","objective":"aolrpg.enchantxp"},"color":"light_purple"},{"text":" ┃ ","color": "white"},{"score":{"name":"#xpmax","objective":"aolrpg.const"},"color":"dark_purple"}]

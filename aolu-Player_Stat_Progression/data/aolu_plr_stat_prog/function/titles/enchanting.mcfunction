@@ -1,0 +1,1 @@
+title @s actionbar [{"text":"Enchanting: ","color": "dark_aqua"},{"score":{"name":"@s","objective":"aolu_psp_enchantxp"},"color":"light_purple"},{"text":" ┃ ","color": "white"},{"score":{"name":"#xpmax","objective":"aolu_psp_const"},"color":"dark_purple"}]

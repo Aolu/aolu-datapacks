@@ -1,6 +1,4 @@
 {
   "replace": false,
-  "values": [
-    "arpg:tick"
-  ]
+  "values": ["aolu_plr_stat_prog:tick"]
 }

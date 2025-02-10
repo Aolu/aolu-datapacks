@@ -1,0 +1,2 @@
+scoreboard objectives setdisplay below_name aolu_psp_combatlv
+schedule function aolu_plr_stat_prog:display/enchanting 30t replace

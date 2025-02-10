@@ -1,0 +1,2 @@
+scoreboard objectives setdisplay below_name aolu_psp_archerylv
+schedule function aolu_plr_stat_prog:display/combat 30t replace

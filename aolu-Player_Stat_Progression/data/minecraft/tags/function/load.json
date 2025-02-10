@@ -1,6 +1,4 @@
 {
   "replace": false,
-  "values": [
-    "arpg:load"
-  ]
+  "values": ["aolu_plr_stat_prog:load"]
 }

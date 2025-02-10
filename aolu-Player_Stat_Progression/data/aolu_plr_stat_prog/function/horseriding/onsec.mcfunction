@@ -1,0 +1,3 @@
+function aolu_plr_stat_prog:horseriding/levels
+function aolu_plr_stat_prog:horseriding/_get_stat_level
+function aolu_plr_stat_prog:horseriding/exp

@@ -1,1 +1,0 @@
-title @s actionbar [{"text":"Vitality: ","color":"dark_red"},{"score":{"name":"@s","objective":"aolrpg.healthxp"},"color":"light_purple"},{"text":" ┃ ","color": "white"},{"score":{"name":"#xpmax","objective":"aolrpg.const"},"color":"dark_purple"}]

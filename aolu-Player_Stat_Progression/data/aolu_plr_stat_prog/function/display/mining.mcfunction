@@ -1,0 +1,2 @@
+scoreboard objectives setdisplay below_name aolu_psp_mininglv
+schedule function aolu_plr_stat_prog:display/swimming 30t replace

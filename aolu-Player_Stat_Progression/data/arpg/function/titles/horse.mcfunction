@@ -1,1 +1,0 @@
-title @s actionbar [{"text":"Equestrianism: ","color":"#AD4910"},{"score":{"name":"@s","objective":"aolrpg.horsexp"},"color":"light_purple"},{"text":" ┃ ","color": "white"},{"score":{"name":"#xpmax","objective":"aolrpg.const"},"color":"dark_purple"}]

@@ -1,0 +1,1 @@
+title @s actionbar [{"text":"Vitality: ","color":"dark_red"},{"score":{"name":"@s","objective":"aolu_psp_healthxp"},"color":"light_purple"},{"text":" ┃ ","color": "white"},{"score":{"name":"#xpmax","objective":"aolu_psp_const"},"color":"dark_purple"}]

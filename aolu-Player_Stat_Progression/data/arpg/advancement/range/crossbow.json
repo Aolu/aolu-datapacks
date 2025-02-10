@@ -1,0 +1,11 @@
+{
+  "criteria": {
+    "shot_crossbow": {
+      "trigger": "minecraft:shot_crossbow"
+    }
+  },
+  "requirements": [["shot_crossbow"]],
+  "rewards": {
+    "function": "arpg:archery/fired_crossbow"
+  }
+}

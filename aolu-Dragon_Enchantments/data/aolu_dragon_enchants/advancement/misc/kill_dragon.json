@@ -1,0 +1,21 @@
+{
+  "criteria": {
+    "killdrag": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:ender_dragon"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "aolu_dragon_enchants:kill_dragon"
+  }
+}

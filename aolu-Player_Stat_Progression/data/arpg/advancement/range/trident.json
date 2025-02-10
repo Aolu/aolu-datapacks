@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "hit": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "type": {
+            "tags": [
+              {
+                "id": "minecraft:is_projectile",
+                "expected": true
+              }
+            ],
+            "direct_entity": {
+              "type": "minecraft:trident"
+            }
+          }
+        },
+        "entity": []
+      }
+    }
+  },
+  "rewards": {
+    "function": "arpg:archery/trident"
+  }
+}

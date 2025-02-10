@@ -1,0 +1,31 @@
+{
+  "anvil_cost": 1,
+  "description": "Dragon Claws",
+  "effects": {
+    "minecraft:damage": [
+      {
+        "effect": {
+          "type": "minecraft:add",
+          "value": {
+            "type": "minecraft:linear",
+            "base": 6.0,
+            "per_level_above_first": 0
+          }
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#minecraft:exclusive_set/damage",
+  "max_cost": {
+    "base": 21,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 0
+  },
+  "slots": ["mainhand"],
+  "supported_items": "#aolu_dragon_enchants:enchantable/all_weapons",
+  "weight": 1
+}

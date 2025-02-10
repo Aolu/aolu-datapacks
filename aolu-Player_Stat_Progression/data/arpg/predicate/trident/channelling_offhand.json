@@ -1,0 +1,19 @@
+{
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "equipment": {
+      "offhand": {
+        "items": "minecraft:trident",
+        "predicates": {
+          "minecraft:enchantments": [
+            {
+              "enchantments": "minecraft:channeling",
+              "levels": 1
+            }
+          ]
+        }
+      }
+    }
+  }
+}

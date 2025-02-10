@@ -1,0 +1,1 @@
+title @s actionbar [{"text":"Agility: ","color": "green"},{"score":{"name":"@s","objective":"aolrpg.agilityxp"},"color":"light_purple"},{"text":" ┃ ","color": "white"},{"score":{"name":"#xpmax","objective":"aolrpg.const"},"color":"dark_purple"}]

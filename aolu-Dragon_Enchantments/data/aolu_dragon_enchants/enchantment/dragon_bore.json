@@ -1,0 +1,31 @@
+{
+  "anvil_cost": 1,
+  "description": "Dragon Bore",
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "amount": {
+          "type": "minecraft:linear",
+          "base": 100.0,
+          "per_level_above_first": 0
+        },
+        "attribute": "minecraft:mining_efficiency",
+        "id": "minecraft:enchantment.efficiency",
+        "operation": "add_value"
+      }
+    ]
+  },
+  "exclusive_set": "#aolu_dragon_enchants:exclusive_set/mining",
+  "max_cost": {
+    "base": 51,
+    "per_level_above_first": 10
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 10
+  },
+  "slots": ["mainhand"],
+  "supported_items": "#minecraft:enchantable/mining",
+  "weight": 1
+}

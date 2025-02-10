@@ -1,0 +1,1 @@
+title @s actionbar [{"text":"Combat: ","color": "red"},{"score":{"name":"@s","objective":"aolrpg.combatxp"},"color":"light_purple"},{"text":" ┃ ","color": "white"},{"score":{"name":"#xpmax","objective":"aolrpg.const"},"color":"dark_purple"}]

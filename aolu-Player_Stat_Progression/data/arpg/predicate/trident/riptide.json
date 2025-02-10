@@ -1,0 +1,22 @@
+{
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "equipment": {
+      "mainhand": {
+        "items": "minecraft:trident",
+        "predicates": {
+          "minecraft:enchantments": [
+            {
+              "enchantments": "minecraft:riptide",
+              "levels": {
+                "min": 1,
+                "max": 255
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

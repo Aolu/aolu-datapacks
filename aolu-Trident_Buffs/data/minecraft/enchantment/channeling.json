@@ -49,6 +49,25 @@
         }
       }
     ],
+    "minecraft:damage_protection": [
+      {
+        "requirements": {
+          "condition": "minecraft:damage_source_properties",
+          "predicate": {
+            "tags": [
+              {
+                "id": "minecraft:is_lightning",
+                "expected": true
+              }
+            ]
+          }
+        },
+        "effect": {
+          "type": "minecraft:add",
+          "value": 10
+        }
+      }
+    ],
     "minecraft:post_attack": [
       {
         "affected": "victim",

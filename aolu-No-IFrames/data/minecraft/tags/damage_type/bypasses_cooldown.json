@@ -1,0 +1,12 @@
+{
+  "values": [
+    "minecraft:sonic_boom",
+    "#minecraft:is_projectile",
+    "#aolu_no_iframes:melee",
+    "#aolu_no_iframes:dot",
+    "#minecraft:is_explosion",
+    "minecraft:fall",
+    "out_of_world",
+    "freeze"
+  ]
+}

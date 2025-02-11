@@ -117,3 +117,4 @@ execute as @s[scores={aolu_psp_regtimer=..0}] at @s run function aolu_plr_stat_p
 scoreboard players set @s[scores={aolu_psp_food=20..}] aolu_psp_sattimer 10
 
 execute as @s[scores={aolu_psp_food=..9,aolu_psp_sattimer=..0}] at @s run function aolu_plr_stat_prog:farming/sat
+

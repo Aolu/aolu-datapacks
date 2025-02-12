@@ -12,4 +12,9 @@ scoreboard objectives add aolu_tb_UUID3 dummy
 scoreboard objectives add aolu_tb_static_timer dummy
 scoreboard objectives add aolu_tb_deaths deathCount
 
+scoreboard objectives add aolu_tb_turret_firerate dummy
+scoreboard objectives add aolu_tb_turret_lifetime dummy
+scoreboard objectives add aolu_tb_turret_shoot_delay dummy
+
+
 tellraw @a [{"color":"blue","text":"["},{"color":"white","text":"Trident Buffs"},{"color":"blue","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]

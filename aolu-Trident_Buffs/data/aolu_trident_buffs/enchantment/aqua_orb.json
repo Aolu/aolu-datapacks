@@ -1,0 +1,27 @@
+{
+  "anvil_cost": 8,
+  "description": "Aqua Orb",
+  "exclusive_set": "#aolu_trident_buffs:exclusive_set/aqua_orb",
+  "effects": {
+    "minecraft:hit_block": [
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "aolu_trident_buffs:aqua_orb/check_if_trident"
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 40,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 20,
+    "per_level_above_first": 0
+  },
+  "slots": ["mainhand"],
+  "supported_items": "#minecraft:enchantable/trident",
+  "weight": 2
+}

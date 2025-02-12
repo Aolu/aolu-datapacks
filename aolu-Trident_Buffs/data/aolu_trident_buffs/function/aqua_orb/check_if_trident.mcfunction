@@ -1,0 +1,1 @@
+execute if entity @s[tag=!aolu_tb_landed,type=trident] unless predicate aolu_trident_buffs:has_passenger run function aolu_trident_buffs:aqua_orb/spawn

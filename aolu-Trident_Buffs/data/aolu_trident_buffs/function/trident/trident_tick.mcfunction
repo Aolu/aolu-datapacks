@@ -26,5 +26,4 @@ function aolu_trident_buffs:static_status/tick
 execute if data entity @s[tag=!aolu_tb_struck] {inGround:0b} run tag @s add aolu_tb_struck
 execute if data entity @s[tag=!aolu_tb_struck] {inGround:0b} run scoreboard players set @s aolu_tb_static_timer 0
 
-execute if entity @s[tag=aolu_tb_orb_trident] unless predicate aolu_trident_buffs:has_passenger at @a[distance=0.5..] if score @n aolu_tb_UUID0 = @s aolu_tb_owner_UUID0 if score @n aolu_tb_UUID1 = @s aolu_tb_owner_UUID1 if score @n aolu_tb_UUID2 = @s aolu_tb_owner_UUID2 if score @n aolu_tb_UUID3 = @s aolu_tb_owner_UUID3 at @s run particle end_rod ~ ~ ~ 0 0 0 0 2
-execute if entity @s[tag=aolu_tb_orb_trident] at @s unless predicate aolu_trident_buffs:has_passenger as @a[distance=0.5..] if score @s aolu_tb_UUID0 = @n aolu_tb_owner_UUID0 if score @s aolu_tb_UUID1 = @n aolu_tb_owner_UUID1 if score @s aolu_tb_UUID2 = @n aolu_tb_owner_UUID2 if score @s aolu_tb_UUID3 = @n aolu_tb_owner_UUID3 facing entity @s feet run tp @n[type=trident] ^ ^ ^1
+execute if entity @s[tag=aolu_tb_orb_trident] at @s run function aolu_trident_buffs:trident/orb_trident

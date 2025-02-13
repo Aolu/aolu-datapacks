@@ -1,0 +1,1 @@
+execute if entity @s[tag=!aolu_tb_landed] run function aolu_trident_buffs:static_status/apply

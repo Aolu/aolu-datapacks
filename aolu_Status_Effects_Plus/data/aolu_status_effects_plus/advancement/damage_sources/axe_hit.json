@@ -1,4 +1,5 @@
 {
+  "parent": "aolu_status_effects_plus:damage_sources/all",
   "criteria": {
     "axe": {
       "trigger": "minecraft:player_hurt_entity",

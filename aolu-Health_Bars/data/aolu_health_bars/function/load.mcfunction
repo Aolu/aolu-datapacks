@@ -10,6 +10,7 @@ scoreboard objectives add aolu_hb_absorb_change dummy
 
 scoreboard objectives add aolu_hb_lifetime dummy
 
-
+scoreboard objectives add aolu_hb_i dummy
+scoreboard objectives add aolu_hb_d dummy
 
 tellraw @a [{"color":"red","text":"["},{"color":"white","text":"Health Bars"},{"color":"red","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]

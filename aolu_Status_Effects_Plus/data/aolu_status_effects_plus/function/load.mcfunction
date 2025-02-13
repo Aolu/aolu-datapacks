@@ -13,3 +13,4 @@ tellraw @a [{"color":"dark_green","text":"["},{"color":"white","text":"Status Ef
 scoreboard objectives add aolu_sep_onfire dummy
 
 scoreboard objectives add aolu_sep_deaths deathCount
+scoreboard objectives add aolu_sep_kills totalKillCount

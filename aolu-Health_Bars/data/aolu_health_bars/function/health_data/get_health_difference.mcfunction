@@ -9,8 +9,18 @@ scoreboard players set -1 aolu_hb_lifetime -1
 
 execute if entity @s[tag=!aolu_hb_heal] run scoreboard players operation @s aolu_hb_health_change *= -1 aolu_hb_lifetime
 
-execute store result storage aolu:hb h double 0.01 run random value 80..160
-execute store result storage aolu:hb v double 0.1 run scoreboard players get @s aolu_hb_health_change
+
+
+scoreboard players operation @s aolu_hb_d = @s aolu_hb_health_change
+scoreboard players set @s aolu_hb_i 0
+execute if score @s aolu_hb_d matches 10.. run function aolu_health_bars:health_data/get_decimal
+
+
+execute store result storage aolu:hb i int 1 run scoreboard players get @s aolu_hb_i
+execute store result storage aolu:hb d int 1 run scoreboard players get @s aolu_hb_d
+
+
+execute store result storage aolu:hb h double 0.01 run random value 40..160
 
 function aolu_health_bars:health_data/health_update with storage aolu:hb
 

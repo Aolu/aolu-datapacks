@@ -1,0 +1,4 @@
+execute if predicate aolu_trident_buffs:has_passenger if data entity @s {inGround:1b} run data merge entity @s {pickup: 0b}
+execute unless predicate aolu_trident_buffs:has_passenger if data entity @s {inGround:0b} run data merge entity @s {pickup: 1b}
+execute unless predicate aolu_trident_buffs:has_passenger at @a[distance=0.5..] if score @n aolu_tb_UUID0 = @s aolu_tb_owner_UUID0 if score @n aolu_tb_UUID1 = @s aolu_tb_owner_UUID1 if score @n aolu_tb_UUID2 = @s aolu_tb_owner_UUID2 if score @n aolu_tb_UUID3 = @s aolu_tb_owner_UUID3 at @s run particle end_rod ~ ~ ~ 0 0 0 0 2
+execute at @s unless predicate aolu_trident_buffs:has_passenger as @a[distance=0.5..] if score @s aolu_tb_UUID0 = @n aolu_tb_owner_UUID0 if score @s aolu_tb_UUID1 = @n aolu_tb_owner_UUID1 if score @s aolu_tb_UUID2 = @n aolu_tb_owner_UUID2 if score @s aolu_tb_UUID3 = @n aolu_tb_owner_UUID3 facing entity @s feet run tp @n[type=trident] ^ ^ ^.5

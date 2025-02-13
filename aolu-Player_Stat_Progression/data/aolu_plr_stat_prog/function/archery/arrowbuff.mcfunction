@@ -5,6 +5,4 @@ $execute store result entity @s Motion[2] double 0.0001 run data get entity @s M
 
 $execute store result entity @s damage double 0.0001 run data get entity @s damage $(d)
 
-$say $(v)
-
 tag @s add aolu_psp_arrowbuff

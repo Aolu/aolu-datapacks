@@ -1,0 +1,746 @@
+{
+  "parent": "arpg:damage/all",
+  "criteria": {
+    "bit0": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit0\"]}"
+          }
+        }
+      }
+    },
+    "bit1": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit1\"]}"
+          }
+        }
+      }
+    },
+    "bit2": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit2\"]}"
+          }
+        }
+      }
+    },
+    "bit3": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit3\"]}"
+          }
+        }
+      }
+    },
+    "bit4": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit4\"]}"
+          }
+        }
+      }
+    },
+    "bit5": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit5\"]}"
+          }
+        }
+      }
+    },
+    "bit6": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit6\"]}"
+          }
+        }
+      }
+    },
+    "bit7": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit7\"]}"
+          }
+        }
+      }
+    },
+    "bit8": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit8\"]}"
+          }
+        }
+      }
+    },
+    "bit9": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit9\"]}"
+          }
+        }
+      }
+    },
+    "bit10": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit10\"]}"
+          }
+        }
+      }
+    },
+    "bit11": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit11\"]}"
+          }
+        }
+      }
+    },
+    "bit12": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit12\"]}"
+          }
+        }
+      }
+    },
+    "bit13": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit13\"]}"
+          }
+        }
+      }
+    },
+    "bit14": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit14\"]}"
+          }
+        }
+      }
+    },
+    "bit15": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit15\"]}"
+          }
+        }
+      }
+    },
+    "bit16": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit16\"]}"
+          }
+        }
+      }
+    },
+    "bit17": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit17\"]}"
+          }
+        }
+      }
+    },
+    "bit18": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit18\"]}"
+          }
+        }
+      }
+    },
+    "bit19": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit19\"]}"
+          }
+        }
+      }
+    },
+    "bit20": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit20\"]}"
+          }
+        }
+      }
+    },
+    "bit21": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit21\"]}"
+          }
+        }
+      }
+    },
+    "bit22": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit22\"]}"
+          }
+        }
+      }
+    },
+    "bit23": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit23\"]}"
+          }
+        }
+      }
+    },
+    "bit24": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit24\"]}"
+          }
+        }
+      }
+    },
+    "bit25": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit25\"]}"
+          }
+        }
+      }
+    },
+    "bit26": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit26\"]}"
+          }
+        }
+      }
+    },
+    "bit27": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit27\"]}"
+          }
+        }
+      }
+    },
+    "bit28": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit28\"]}"
+          }
+        }
+      }
+    },
+    "bit29": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit29\"]}"
+          }
+        }
+      }
+    },
+    "bit30": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit30\"]}"
+          }
+        }
+      }
+    },
+    "bit31": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.bit31\"]}"
+          }
+        }
+      }
+    },
+    "nbit0": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit0\"]}"
+          }
+        }
+      }
+    },
+    "nbit1": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit1\"]}"
+          }
+        }
+      }
+    },
+    "nbit2": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit2\"]}"
+          }
+        }
+      }
+    },
+    "nbit3": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit3\"]}"
+          }
+        }
+      }
+    },
+    "nbit4": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit4\"]}"
+          }
+        }
+      }
+    },
+    "nbit5": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit5\"]}"
+          }
+        }
+      }
+    },
+    "nbit6": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit6\"]}"
+          }
+        }
+      }
+    },
+    "nbit7": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit7\"]}"
+          }
+        }
+      }
+    },
+    "nbit8": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit8\"]}"
+          }
+        }
+      }
+    },
+    "nbit9": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit9\"]}"
+          }
+        }
+      }
+    },
+    "nbit10": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit10\"]}"
+          }
+        }
+      }
+    },
+    "nbit11": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit11\"]}"
+          }
+        }
+      }
+    },
+    "nbit12": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit12\"]}"
+          }
+        }
+      }
+    },
+    "nbit13": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit13\"]}"
+          }
+        }
+      }
+    },
+    "nbit14": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit14\"]}"
+          }
+        }
+      }
+    },
+    "nbit15": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit15\"]}"
+          }
+        }
+      }
+    },
+    "nbit16": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit16\"]}"
+          }
+        }
+      }
+    },
+    "nbit17": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit17\"]}"
+          }
+        }
+      }
+    },
+    "nbit18": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit18\"]}"
+          }
+        }
+      }
+    },
+    "nbit19": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit19\"]}"
+          }
+        }
+      }
+    },
+    "nbit20": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit20\"]}"
+          }
+        }
+      }
+    },
+    "nbit21": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit21\"]}"
+          }
+        }
+      }
+    },
+    "nbit22": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit22\"]}"
+          }
+        }
+      }
+    },
+    "nbit23": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit23\"]}"
+          }
+        }
+      }
+    },
+    "nbit24": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit24\"]}"
+          }
+        }
+      }
+    },
+    "nbit25": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit25\"]}"
+          }
+        }
+      }
+    },
+    "nbit26": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit26\"]}"
+          }
+        }
+      }
+    },
+    "nbit27": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit27\"]}"
+          }
+        }
+      }
+    },
+    "nbit28": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit28\"]}"
+          }
+        }
+      }
+    },
+    "nbit29": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit29\"]}"
+          }
+        }
+      }
+    },
+    "nbit30": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit30\"]}"
+          }
+        }
+      }
+    },
+    "nbit31": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "nbt": "{Tags:[\"aolrpg.entityhit.nbit31\"]}"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    ["bit0", "nbit0"],
+    ["bit1", "nbit1"],
+    ["bit2", "nbit2"],
+    ["bit3", "nbit3"],
+    ["bit4", "nbit4"],
+    ["bit5", "nbit5"],
+    ["bit6", "nbit6"],
+    ["bit7", "nbit7"],
+    ["bit8", "nbit8"],
+    ["bit9", "nbit9"],
+    ["bit10", "nbit10"],
+    ["bit11", "nbit11"],
+    ["bit12", "nbit12"],
+    ["bit13", "nbit13"],
+    ["bit14", "nbit14"],
+    ["bit15", "nbit15"],
+    ["bit16", "nbit16"],
+    ["bit17", "nbit17"],
+    ["bit18", "nbit18"],
+    ["bit19", "nbit19"],
+    ["bit20", "nbit20"],
+    ["bit21", "nbit21"],
+    ["bit22", "nbit22"],
+    ["bit23", "nbit23"],
+    ["bit24", "nbit24"],
+    ["bit25", "nbit25"],
+    ["bit26", "nbit26"],
+    ["bit27", "nbit27"],
+    ["bit28", "nbit28"],
+    ["bit29", "nbit29"],
+    ["bit30", "nbit30"],
+    ["bit31", "nbit31"]
+  ],
+  "rewards": {
+    "function": "arpg:onhit/reward2"
+  }
+}

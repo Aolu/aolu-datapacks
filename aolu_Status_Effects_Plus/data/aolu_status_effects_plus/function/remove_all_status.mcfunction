@@ -1,0 +1,3 @@
+function aolu_status_effects_plus:custom_status/bleed/remove
+function aolu_status_effects_plus:custom_status/armor_crunch/remove
+scoreboard players set @s aolu_sep_deaths 0

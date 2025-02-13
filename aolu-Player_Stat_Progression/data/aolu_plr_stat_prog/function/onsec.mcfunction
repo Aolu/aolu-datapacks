@@ -52,3 +52,4 @@ scoreboard players operation @s aolu_psp_ownerid = @s aolu_psp_entityid
 attribute @s attack_damage base set 1
 
 function aolu_plr_stat_prog:skills/on_sec_all
+

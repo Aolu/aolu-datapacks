@@ -13,3 +13,5 @@ $attribute @s minecraft:armor modifier add f-7755-5533-3311-0 $(d) add_value
 $attribute @s minecraft:fall_damage_multiplier modifier add f-7755-5533-3312-2 $(e) add_multiplied_total
 
 scoreboard players set @s aolu_psp_horsexp 40
+
+tag @s add aolu_psp_horse_buffed

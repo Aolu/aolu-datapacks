@@ -1,0 +1,26 @@
+{
+  "parent": "arpg:damage/all",
+  "criteria": {
+    "mod2": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "equipment": {
+                "mainhand": {
+                  "items": "c:spears"
+                }
+              }
+            }
+          }
+        ],
+        "damage": {
+          "blocked": false
+        }
+      }
+    }
+  }
+}

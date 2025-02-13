@@ -1,0 +1,18 @@
+{
+  "criteria": {
+    "bleeder": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "type": "minecraft:ender_dragon"
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "aolu_dragon_enchants:dragon_flame/apply_d_flame"
+  }
+}

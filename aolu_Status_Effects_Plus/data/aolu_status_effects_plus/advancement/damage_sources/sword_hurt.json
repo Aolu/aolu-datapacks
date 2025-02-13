@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "hurt": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "blocked": false,
+          "source_entity": {
+            "equipment": {
+              "mainhand": {
+                "items": "#minecraft:enchantable/sword"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

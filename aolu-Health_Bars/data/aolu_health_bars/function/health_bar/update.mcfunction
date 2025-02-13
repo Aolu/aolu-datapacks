@@ -6,6 +6,7 @@ execute at @s on vehicle store result score @n[type=text_display,tag=aolu_hb_bar
 execute at @s on vehicle store result score @n[type=text_display,tag=aolu_hb_bar] aolu_hb_health_current run data get entity @s Health
 scoreboard players add @s aolu_hb_health_current 1
 execute if score @s aolu_hb_health_current > @s aolu_hb_health_max run scoreboard players operation @s aolu_hb_health_current = @s aolu_hb_health_max
+execute if score @s aolu_hb_health_current matches ..0 run scoreboard players set @s aolu_hb_health_current 1
 
 
 

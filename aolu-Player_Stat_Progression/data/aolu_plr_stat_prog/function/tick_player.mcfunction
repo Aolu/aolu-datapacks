@@ -27,5 +27,5 @@ execute if score @s aolu_psp_usecrossbow matches 1.. run function aolu_plr_stat_
 #mining
 function aolu_plr_stat_prog:mining/scorecheck
 
-execute if score @s aolu_psp_stats matches 1.. run function aolu_plr_stat_prog:statsheet
+execute if score @s aolu_psp_stats matches 1.. run function aolu_plr_stat_prog:stat_sheet/get_stats
 execute if score @s aolu_psp_attributes matches 1.. run function aolu_plr_stat_prog:grab_attributes

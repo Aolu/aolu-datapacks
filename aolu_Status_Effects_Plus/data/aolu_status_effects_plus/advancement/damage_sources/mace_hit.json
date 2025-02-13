@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "axe": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "equipment": {
+                "mainhand": {
+                  "items": "#minecraft:enchantable/mace"
+                }
+              }
+            }
+          }
+        ],
+        "damage": {
+          "blocked": false
+        }
+      }
+    }
+  }
+}

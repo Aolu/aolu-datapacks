@@ -4,3 +4,5 @@ playsound minecraft:entity.ender_dragon.hurt master @a ~ ~ ~ 0.4 0
 playsound minecraft:entity.ender_dragon.growl master @a ~ ~ ~ 0.02 0
 #effect give @s glowing 7 0 true
 #team join aolu-de-df @s
+
+advancement revoke @s only aolu_dragon_enchants:misc/hurt_by_ender

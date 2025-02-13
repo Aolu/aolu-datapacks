@@ -27,7 +27,6 @@ scoreboard players add @s aolu_psp_swimlv 0
 scoreboard players add @s aolu_psp_enchantlv 0
 
 scoreboard players enable @s aolu_psp_stats
-scoreboard players enable @s aolu_psp_attributes
 
 
 

@@ -14,3 +14,5 @@ scoreboard objectives add aolu_sep_onfire dummy
 
 scoreboard objectives add aolu_sep_deaths deathCount
 scoreboard objectives add aolu_sep_kills totalKillCount
+
+schedule function aolu_status_effects_plus:second 1s replace

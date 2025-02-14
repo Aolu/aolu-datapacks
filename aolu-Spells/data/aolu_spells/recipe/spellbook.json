@@ -1,0 +1,33 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"pattern": [
+		" f ",
+		"ibi",
+		" g "
+	],
+	"key": {
+		"b": "minecraft:book",
+		"f": "minecraft:feather",
+		"g": "minecraft:glow_ink_sac",
+		"i": "minecraft:gold_ingot"
+	},
+	"result": {
+		"id": "minecraft:enchanted_book",
+		"components": {
+			"minecraft:custom_name": "\"Spellbook\"",
+			"minecraft:lore": [
+				"\"A Magical book which allows you to discover and attune Spells!\"",
+        "\"Right Click to use.\""
+			],
+			"minecraft:custom_data": "{aolu_s_spellbook:1}",
+			"minecraft:consumable": {
+				"consume_seconds": 9999,
+				"animation": "bundle",
+				"sound": "minecraft:block.enchantment_table.use"
+			}
+		},
+		"count": 1
+	},
+	"show_notification": true
+}

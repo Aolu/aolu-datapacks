@@ -1,0 +1,18 @@
+{
+  "criteria": {
+    "interact_l": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:enchanted_book",
+          "components": {
+            "minecraft:custom_data": "{aolu_s_spellbook:1}"
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "experience": 9999
+  }
+}

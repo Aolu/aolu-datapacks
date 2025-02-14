@@ -1,0 +1,11 @@
+{
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "equipment": {
+      "mainhand": {
+        "items": "#aolu_status_effects_plus:weapons_crunch"
+      }
+    }
+  }
+}

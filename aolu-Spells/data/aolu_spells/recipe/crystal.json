@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [" f ", "ibi", " f "],
+  "key": {
+    "b": "emerald",
+    "f": "minecraft:gold_nugget",
+    "i": "minecraft:gold_ingot"
+  },
+  "result": {
+    "id": "minecraft:emerald",
+    "components": {
+      "minecraft:custom_name": "\"Chanelling Crystal\"",
+      "minecraft:lore": [
+        "\"This Mystical Crystal allows you to channel your attuned spells!\"",
+        "\"Right Click to use.\""
+      ],
+      "minecraft:custom_data": "{aolu_s_crystal:1}",
+      "minecraft:consumable": {
+        "consume_seconds": 9999,
+        "animation": "spear",
+        "sound": "minecraft:block.enchantment_table.use"
+      },
+      "minecraft:enchantment_glint_override": true
+    },
+    "count": 1
+  },
+  "show_notification": true
+}

@@ -1,0 +1,18 @@
+{
+  "criteria": {
+    "interact_l": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:emerald",
+          "components": {
+            "minecraft:custom_data": "{aolu_s_crystal:1}"
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "experience": 9999
+  }
+}

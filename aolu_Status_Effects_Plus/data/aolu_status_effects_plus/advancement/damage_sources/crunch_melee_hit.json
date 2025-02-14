@@ -1,0 +1,26 @@
+{
+  "parent": "aolu_status_effects_plus:damage_sources/all",
+  "criteria": {
+    "axe": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "equipment": {
+                "mainhand": {
+                  "items": "#aolu_status_effects_plus:weapons_crunch"
+                }
+              }
+            }
+          }
+        ],
+        "damage": {
+          "blocked": false
+        }
+      }
+    }
+  }
+}

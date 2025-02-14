@@ -1,0 +1,15 @@
+{
+  "criteria": {
+    "interact_r": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:interaction"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "placeholder"
+  }
+}

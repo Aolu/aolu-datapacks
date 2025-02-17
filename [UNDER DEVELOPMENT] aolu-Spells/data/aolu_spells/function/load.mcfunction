@@ -32,3 +32,7 @@ scoreboard objectives add aolu_s_owner dummy
 
 team add aolu_s_summons
 team modify aolu_s_summons color aqua
+
+scoreboard objectives add aolu_s_max_summons dummy
+scoreboard objectives add aolu_s_rpg_bonus dummy
+scoreboard objectives add aolu_s_rpg_bonus_div dummy

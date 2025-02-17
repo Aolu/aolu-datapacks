@@ -1,9 +1,6 @@
 
 
 
-execute at @s as @s on target if score @s aolu_s_owner = @n aolu_s_owner run effect give @n weakness 1 100
-execute at @s as @s on target unless score @s aolu_s_owner = @n aolu_s_owner run effect clear @n weakness
-
 
 execute at @s on target if score @s[distance=..5] aolu_s_owner = @n aolu_s_owner run data remove entity @n[type=minecraft:warden] anger
 

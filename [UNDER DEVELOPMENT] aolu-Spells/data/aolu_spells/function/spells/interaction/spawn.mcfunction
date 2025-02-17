@@ -7,8 +7,8 @@ scoreboard players add @s aolu_s_spell_charge_time 1
 #SPELL BASE CHARGE TIMES
 #LEVEL 1
 scoreboard players set @s aolu_s_level_1_spell_ct 2000
-
 execute if score @s aolu_s_level_1_spell matches 1 run scoreboard players set @s aolu_s_level_1_spell_ct 2000
+execute if score @s aolu_s_level_1_spell matches 2 run scoreboard players set @s aolu_s_level_1_spell_ct 3500
 
 #LEVEL 2
 scoreboard players set @s aolu_s_level_2_spell_ct 4000

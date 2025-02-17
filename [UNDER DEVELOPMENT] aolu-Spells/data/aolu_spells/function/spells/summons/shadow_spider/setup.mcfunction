@@ -9,5 +9,4 @@ team join aolu_s_summons @s
 
 execute at @a if score @s aolu_s_owner = @p aolu_s_owner run function aolu_spells:spells/summons/shadow_spider/stats
 
-item replace entity @s weapon.mainhand with minecraft:wooden_sword
-attribute @s attack_damage modifier add aolu_s_atk -4 add_value
+item replace entity @s weapon.mainhand with wooden_sword[attribute_modifiers=[{id:"attack_damage",type:"attack_damage",amount:0,operation:"add_value"}]]

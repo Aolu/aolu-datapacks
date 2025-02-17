@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:amethyst_shard"
+    },
+    "title": "Arcana Rising",
+    "description": "See your learned Spells and how to unlock more",
+    "background": "minecraft:textures/block/light_blue_concrete_powder.png",
+    "show_toast": false,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "main": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

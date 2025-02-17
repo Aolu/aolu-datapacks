@@ -20,3 +20,5 @@ execute anchored eyes unless data entity @s {powered:1b} if score @s aolu_tb_tur
 
 
 execute if score @s aolu_tb_turret_shoot_delay matches 0 on vehicle run function aolu_trident_buffs:aqua_orb/shoot_event
+
+

@@ -13,6 +13,6 @@
     }
   },
   "rewards": {
-    "experience": 9999
+    "function": "aolu_spells:spells/set_mode"
   }
 }

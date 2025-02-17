@@ -17,4 +17,14 @@ scoreboard objectives add aolu_tb_turret_lifetime dummy
 scoreboard objectives add aolu_tb_turret_shoot_delay dummy
 
 
+scoreboard objectives add aolu_tp_xp1 dummy
+scoreboard objectives add aolu_tp_yp1 dummy
+scoreboard objectives add aolu_tp_zp1 dummy
+
+scoreboard objectives add aolu_tp_xp2 dummy
+scoreboard objectives add aolu_tp_yp2 dummy
+scoreboard objectives add aolu_tp_zp2 dummy
+
+
+
 tellraw @a [{"color":"blue","text":"["},{"color":"white","text":"Trident Buffs"},{"color":"blue","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]

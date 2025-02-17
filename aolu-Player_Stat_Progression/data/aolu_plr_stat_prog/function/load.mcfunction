@@ -172,23 +172,8 @@ scoreboard objectives add aolu_psp_throwlpotion minecraft.used:lingering_potion
 #spells
 scoreboard objectives add aolu_psp_ownerid dummy
 
-scoreboard objectives add aolu_psp_firexp dummy
-scoreboard objectives add aolu_psp_icexp dummy
-scoreboard objectives add aolu_psp_stormxp dummy
-scoreboard objectives add aolu_psp_darkxp dummy
 
-scoreboard objectives add aolu_psp_spellcharge dummy
-scoreboard objectives add aolu_psp_spelldelay minecraft.custom:play_time
-scoreboard objectives add aolu_psp_mana dummy
-scoreboard objectives add aolu_psp_attunement dummy
-scoreboard objectives add aolu_psp_manaregen minecraft.custom:play_time
-scoreboard objectives add aolu_psp_togglespell trigger
-scoreboard objectives add aolu_psp_magicdamage dummy
 
-scoreboard objectives add aolu_psp_ctr dummy
-scoreboard objectives add aolu_psp_ctb dummy
-
-scoreboard objectives add aolu_psp_ice_shield dummy
 
 # other
 scoreboard objectives modify aolu_psp_Proficiency displayname [{"text":"┃ ","color":"white","bold":true},{"text":"Proficiency","color":"yellow","bold":true}]

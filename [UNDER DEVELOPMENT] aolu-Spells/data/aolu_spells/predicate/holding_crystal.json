@@ -1,0 +1,14 @@
+{
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "equipment": {
+      "mainhand": {
+        "items": "minecraft:emerald",
+        "components": {
+          "minecraft:custom_data": "{aolu_s_crystal:1}"
+        }
+      }
+    }
+  }
+}

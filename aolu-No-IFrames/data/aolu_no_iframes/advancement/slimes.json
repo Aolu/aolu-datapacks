@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "trident": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "damage": {
+          "source_entity": {
+            "type": "#aolu_no_iframes:slimes"
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "aolu_no_iframes:hurt_by_slime"
+  }
+}

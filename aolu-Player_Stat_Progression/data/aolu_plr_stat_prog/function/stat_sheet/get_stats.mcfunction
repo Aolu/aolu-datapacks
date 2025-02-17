@@ -18,7 +18,7 @@ execute store result storage aolu_psp:stat_sheet_v hrs_sfd double 0.05 run score
 execute store result storage aolu_psp:stat_sheet_v hrs_arm double 0.2 run scoreboard players get @s aolu_psp_horselv
 
 function aolu_plr_stat_prog:stat_sheet/reg
-execute store result storage aolu_psp:stat_sheet_v farm_reg int 1 run scoreboard players get @s aolu_psp_farminglv
+execute store result storage aolu_psp:stat_sheet_v farm_reg int 1 run scoreboard players get @s aolu_psp_regtimer
 function aolu_plr_stat_prog:stat_sheet/sat
 execute store result storage aolu_psp:stat_sheet_v farm_sat int 1 run scoreboard players get @s aolu_psp_sattimer
 

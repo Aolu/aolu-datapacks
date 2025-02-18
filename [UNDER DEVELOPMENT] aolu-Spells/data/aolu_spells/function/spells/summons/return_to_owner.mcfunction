@@ -1,1 +1,0 @@
-execute as @s at @a[distance=20..] if score @p aolu_s_owner = @s aolu_s_owner run tp @s @p

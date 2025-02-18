@@ -4,18 +4,16 @@
   "pattern": [" e ", "ibi", " f "],
   "key": {
     "b": "minecraft:book",
-    "f": "minecraft:fire_charge",
-    "i": "minecraft:blaze_powder",
+    "f": "minecraft:spider_eye",
+    "i": "minecraft:echo_shard",
     "e": "emerald"
   },
   "result": {
     "id": "minecraft:enchanted_book",
     "components": {
-      "minecraft:custom_name": "\"Firebolt Spell\"",
-      "minecraft:lore": [
-        "\"Unlocks Level 1 Spell: Firebolt\""
-      ],
-      "minecraft:custom_data": "{aolu_s_firebolt:1}",
+      "minecraft:custom_name": "\"Shadow Spider Spell\"",
+      "minecraft:lore": ["\"Unlocks Level 1 Spell: Shadow Spider\""],
+      "minecraft:custom_data": "{aolu_s_shadow_spider:1}",
       "minecraft:consumable": {
         "consume_seconds": 9999,
         "animation": "none"

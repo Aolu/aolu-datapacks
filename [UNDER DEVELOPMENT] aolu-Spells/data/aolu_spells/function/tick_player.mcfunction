@@ -17,11 +17,10 @@ execute if score @s aolu_s_set_level_1_spell matches 1.. run function aolu_spell
 execute if score @s aolu_s_set_level_2_spell matches 1.. run function aolu_spells:spells/set_spell
 execute if score @s aolu_s_set_level_3_spell matches 1.. run function aolu_spells:spells/set_spell
 
-recipe give @s aolu_spells:crystal
-recipe give @s aolu_spells:spellbook
-recipe give @s aolu_spells:spells/firebolt
 
 scoreboard players add @s aolu_s_owner 0
 execute if score @s aolu_s_owner matches 0 run function aolu_spells:set_id
 
 attribute @s attack_damage modifier remove aolu_s_summon_atk
+
+function aolu_spells:learn_recipes

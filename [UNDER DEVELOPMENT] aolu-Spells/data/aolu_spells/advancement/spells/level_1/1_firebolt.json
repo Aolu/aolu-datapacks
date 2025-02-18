@@ -12,7 +12,7 @@
   },
   "parent": "aolu_spells:spells/_level_1_spells",
   "criteria": {
-    "learn_firebolt": {
+    "learn_spell": {
       "trigger": "minecraft:using_item",
       "conditions": {
         "item": {

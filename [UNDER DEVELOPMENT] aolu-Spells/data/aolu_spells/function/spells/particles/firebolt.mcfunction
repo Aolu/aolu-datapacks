@@ -1,6 +1,5 @@
 
 particle flame ~ ~ ~ 0.05 0.05 0.05 0.01 4
-particle lava ~ ~ ~ 0.05 0.05 0.05 0.01 4
 particle falling_lava ~ ~ ~ 0.5 0.5 0.5 0.05 1
 
 

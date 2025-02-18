@@ -1,0 +1,18 @@
+{
+  "criteria": {
+    "interact_l": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:amethyst_shard",
+          "components": {
+            "minecraft:custom_data": "{aolu_s_mana_shard:1}"
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "aolu_spells:spells/use_mana_shard/used"
+  }
+}

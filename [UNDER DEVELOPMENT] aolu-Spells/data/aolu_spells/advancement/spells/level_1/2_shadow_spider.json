@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:cave_spider_spawn_egg"
+    },
+    "title": "Shadow Spider",
+    "description": "Summon a Shadow Spider to fight for you\nBeing near it grants Poison Immunity\nObtained by: Crafting",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "aolu_spells:spells/_level_1_spells",
+  "criteria": {
+    "learn_spell": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:enchanted_book",
+          "components": {
+            "minecraft:custom_data": "{aolu_s_shadow_spider:1}"
+          }
+        }
+      }
+    }
+  }
+}

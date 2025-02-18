@@ -1,0 +1,1 @@
+tellraw @s {"bold":true,"color":"dark_purple","text":"Magic Power Max!"}

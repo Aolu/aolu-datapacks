@@ -44,6 +44,8 @@
     "potion",
     "experience_bottle",
     "llama_spit",
-    "bat"
+    "bat",
+    "allay",
+    "player"
   ]
 }

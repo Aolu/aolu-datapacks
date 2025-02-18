@@ -4,7 +4,7 @@
       "id": "minecraft:fire_charge"
     },
     "title": "Firebolt",
-    "description": "Shoot a Bolt of Fire that travels forwards\n3 Mana\nObtained by: Crafting",
+    "description": "Shoot a Bolt of Fire that travels forwards\nObtained by: Crafting",
     "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,

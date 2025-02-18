@@ -23,3 +23,5 @@ recipe give @s aolu_spells:spells/firebolt
 
 scoreboard players add @s aolu_s_owner 0
 execute if score @s aolu_s_owner matches 0 run function aolu_spells:set_id
+
+attribute @s attack_damage modifier remove aolu_s_summon_atk

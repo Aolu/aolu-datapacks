@@ -4,7 +4,7 @@
       "id": "minecraft:warden_spawn_egg"
     },
     "title": "Shadow Warden",
-    "description": "Summon a Shadow Warden to fight for you\n10 Mana\nObtained by: Defeating a Warden inside a Deep Dark biome",
+    "description": "Summon a Shadow Warden to guard you\nObtained by: Defeating a Warden inside a Deep Dark biome",
     "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,

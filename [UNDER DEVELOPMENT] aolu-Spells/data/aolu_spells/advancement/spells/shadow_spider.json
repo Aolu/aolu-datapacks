@@ -4,7 +4,7 @@
       "id": "minecraft:cave_spider_spawn_egg"
     },
     "title": "Shadow Spider",
-    "description": "Summon a Shadow Spider to fight for you\n4 Mana\nObtained by: TBD",
+    "description": "Summon a Shadow Spider to fight for you\nObtained by: TBD",
     "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,

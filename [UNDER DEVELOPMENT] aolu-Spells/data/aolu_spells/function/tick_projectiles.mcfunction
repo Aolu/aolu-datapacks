@@ -7,3 +7,4 @@ execute if entity @s[tag=aolu_s_warden] run function aolu_spells:spells/particle
 execute if entity @s[tag=aolu_s_warden_summon] run function aolu_spells:spells/particles/shadow_warden_summon
 
 execute if entity @s[tag=aolu_s_spider] run function aolu_spells:spells/particles/shadow_spider
+execute if entity @s[tag=aolu_s_airblast] run function aolu_spells:spells/particles/airblast

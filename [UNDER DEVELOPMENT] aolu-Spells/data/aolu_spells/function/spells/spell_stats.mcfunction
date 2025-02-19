@@ -1,7 +1,7 @@
 scoreboard players set #temp aolu_s_spell_charge_time_reduction 5
 
 #BONUS IF USING RPG PACK
-scoreboard players set #temp aolu_s_rpg_bonus_div 2
+scoreboard players set #temp aolu_s_rpg_bonus_div 4
 scoreboard players operation #temp aolu_s_rpg_bonus = @s aolu_psp_enchantlv
 scoreboard players operation #temp aolu_s_rpg_bonus /= #temp aolu_s_rpg_bonus_div
 

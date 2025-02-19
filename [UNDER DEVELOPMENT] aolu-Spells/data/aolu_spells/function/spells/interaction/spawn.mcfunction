@@ -7,17 +7,18 @@ scoreboard players add @s aolu_s_spell_charge_time 1
 #SPELL BASE CHARGE TIMES
 #LEVEL 1
 scoreboard players set @s aolu_s_level_1_spell_ct 2000
-execute if score @s aolu_s_level_1_spell matches 1 run scoreboard players set @s aolu_s_level_1_spell_ct 1800
-execute if score @s aolu_s_level_1_spell matches 2 run scoreboard players set @s aolu_s_level_1_spell_ct 3500
+#execute if score @s aolu_s_level_1_spell matches 1 run scoreboard players set @s aolu_s_level_1_spell_ct 2200
+#execute if score @s aolu_s_level_1_spell matches 2 run scoreboard players set @s aolu_s_level_1_spell_ct 3500
+#execute if score @s aolu_s_level_1_spell matches 3 run scoreboard players set @s aolu_s_level_1_spell_ct 1800
 
 #LEVEL 2
-scoreboard players set @s aolu_s_level_2_spell_ct 2000
-execute if score @s aolu_s_level_2_spell matches 1 run scoreboard players set @s aolu_s_level_2_spell_ct 2400
+scoreboard players set @s aolu_s_level_2_spell_ct 3500
+#execute if score @s aolu_s_level_2_spell matches 1 run scoreboard players set @s aolu_s_level_2_spell_ct 2400
 
 
 #LEVEL 3
-scoreboard players set @s aolu_s_level_2_spell_ct 4000
-execute if score @s aolu_s_level_3_spell matches 1 run scoreboard players set @s aolu_s_level_3_spell_ct 8000
+scoreboard players set @s aolu_s_level_3_spell_ct 5000
+#execute if score @s aolu_s_level_3_spell matches 1 run scoreboard players set @s aolu_s_level_3_spell_ct 8000
 
 
 

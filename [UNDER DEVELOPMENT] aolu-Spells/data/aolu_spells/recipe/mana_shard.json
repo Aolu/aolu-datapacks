@@ -12,7 +12,7 @@
     "components": {
       "minecraft:custom_name": "\"Mana Shard\"",
       "minecraft:lore": [
-        "\"Strengthen your Magical Powers\"",
+        "\"Increase your Magical Powers, improving your Spell Potency and increasing your Cast Speed\"",
         "\"Right Click to use.\""
       ],
       "minecraft:custom_data": "{aolu_s_mana_shard:1}",

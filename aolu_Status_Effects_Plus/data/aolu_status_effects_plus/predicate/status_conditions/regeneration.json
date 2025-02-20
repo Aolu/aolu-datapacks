@@ -3,7 +3,7 @@
   "entity": "this",
   "predicate": {
     "effects": {
-      "minecraft:absorption": {
+      "minecraft:regeneration": {
         "amplifier": {
           "min": 0,
           "max": 255

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [" e ", "ibi", " f "],
+  "key": {
+    "b": "minecraft:book",
+    "f": "minecraft:ghast_tear",
+    "i": "minecraft:glistering_melon_slice",
+    "e": "emerald"
+  },
+  "result": {
+    "id": "minecraft:enchanted_book",
+    "components": {
+      "minecraft:custom_name": "\"Restoration Spell\"",
+      "minecraft:lore": ["\"Unlocks Level 2 Spell: Restoration\""],
+      "minecraft:custom_data": "{aolu_s_restoration:1}",
+      "minecraft:consumable": {
+        "consume_seconds": 9999,
+        "animation": "none"
+      },
+      "minecraft:enchantment_glint_override": true
+    },
+    "count": 1
+  },
+  "show_notification": true
+}

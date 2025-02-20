@@ -1,7 +1,7 @@
 summon interaction ~ ~ ~ {width:1f,height:2f,response:1b,Tags:["aolu_s_int"]}
 scoreboard players add @s aolu_s_spell_level 0
 
-execute if score @s aolu_s_spell_level matches 0 if score @s aolu_s_spell_charge_time matches 0 run playsound minecraft:entity.evoker.prepare_summon master @a ~ ~ ~ 1 0.8
+execute if score @s aolu_s_spell_level matches 0 if score @s aolu_s_spell_charge_time matches 0 run playsound minecraft:entity.evoker.prepare_summon master @a ~ ~ ~ 0.2 0.8
 scoreboard players add @s aolu_s_spell_charge_time 1
 
 #SPELL BASE CHARGE TIMES

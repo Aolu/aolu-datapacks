@@ -1,5 +1,6 @@
 scoreboard players add @s aolu_s_lifetime 1
 scoreboard players add @s aolu_s_summon_lifetime 1
+execute if score @s aolu_s_summon_lifetime matches ..-1 run scoreboard players set @s aolu_s_summon_lifetime 0
 
 #SUMMON LIFETIMES
 execute if score @s[type=warden] aolu_s_summon_lifetime matches 400.. run kill @s

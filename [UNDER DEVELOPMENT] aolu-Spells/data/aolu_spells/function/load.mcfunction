@@ -24,6 +24,7 @@ scoreboard objectives add aolu_s_mana_steal custom:damage_dealt
 
 scoreboard objectives add aolu_s_lifetime dummy
 scoreboard objectives add aolu_s_summon_lifetime dummy
+scoreboard objectives add aolu_s_summon_extend totalKillCount
 
 scoreboard objectives add aolu_s_cast_mode dummy
 scoreboard objectives add aolu_s_toggle_cast trigger
@@ -37,3 +38,4 @@ team modify aolu_s_summons color aqua
 scoreboard objectives add aolu_s_max_summons dummy
 scoreboard objectives add aolu_s_rpg_bonus dummy
 scoreboard objectives add aolu_s_rpg_bonus_div dummy
+

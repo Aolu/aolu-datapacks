@@ -24,3 +24,7 @@ execute if score @s aolu_s_owner matches 0 run function aolu_spells:set_id
 attribute @s attack_damage modifier remove aolu_s_summon_atk
 
 function aolu_spells:learn_recipes
+
+execute if score @s aolu_s_summon_extend matches 1.. run function aolu_spells:spells/summons/extend_duration
+
+execute if predicate aolu_spells:sneaking if predicate aolu_spells:sprinting run advancement grant @s only aolu_spells:interaction/right_click

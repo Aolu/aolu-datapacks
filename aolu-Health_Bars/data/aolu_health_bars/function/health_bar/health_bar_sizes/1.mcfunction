@@ -1,1 +1,1 @@
-execute if score @s aolu_hb_health_current matches 1 run data merge entity @s {text:'[{"color":"dark_red","text":"|"},{"color":"red","text":""},{"color":"red","text":"▮"},{"color":"dark_gray","text":""},{"color":"dark_red","text":"|"}]'}
+execute if score @s aolu_hb_health_current matches 1 run data merge entity @s {text:[{"color":"dark_red","text":"|"},{"color":"red","text":""},{"color":"red","text":"▮"},{"color":"dark_gray","text":""},{"color":"dark_red","text":"|"}]}

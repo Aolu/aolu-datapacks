@@ -3,6 +3,7 @@
     "minecraft:magic",
     "minecraft:wither",
     "minecraft:on_fire",
-    "drown"
+    "drown",
+    "wind_charge"
   ]
 }

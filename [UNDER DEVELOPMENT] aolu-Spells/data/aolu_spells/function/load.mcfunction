@@ -39,3 +39,4 @@ scoreboard objectives add aolu_s_max_summons dummy
 scoreboard objectives add aolu_s_rpg_bonus dummy
 scoreboard objectives add aolu_s_rpg_bonus_div dummy
 
+scoreboard objectives add aolu_s_use_delay dummy

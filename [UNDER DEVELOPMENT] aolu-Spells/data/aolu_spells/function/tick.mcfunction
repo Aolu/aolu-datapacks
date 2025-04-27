@@ -6,3 +6,4 @@ execute as @e[tag=aolu_s_projectile] at @s run function aolu_spells:tick_project
 execute as @e[tag=aolu_s_summon] at @s run function aolu_spells:spells/summons/tick
 
 execute as @e at @s on owner run scoreboard players operation @n aolu_s_owner = @s aolu_s_owner
+

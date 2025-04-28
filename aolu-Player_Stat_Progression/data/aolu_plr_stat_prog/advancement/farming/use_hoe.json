@@ -1,0 +1,21 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:item_durability_changed",
+      "conditions": {
+        "player": {},
+        "delta": -1,
+        "durability": {
+          "min": 0,
+          "max": 9999
+        },
+        "item": {
+          "items": "#minecraft:hoes"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "aolu_plr_stat_prog:farming/add_score"
+  }
+}

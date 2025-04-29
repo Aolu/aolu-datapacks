@@ -1,6 +1,15 @@
 {
   "pack": {
-    "pack_format": 61,
-    "description": "Display Health bars and Damage indicators!"
+    "pack_format": 71,
+    "description": "Display Health bars and Damage indicators!",
+    "supported_formats": [61, 71]
+  },
+  "overlays": {
+    "entries": [
+      {
+        "formats": 61,
+        "directory": "1214"
+      }
+    ]
   }
 }

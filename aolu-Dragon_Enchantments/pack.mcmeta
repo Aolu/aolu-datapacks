@@ -1,6 +1,15 @@
 {
        "pack": {
-           "pack_format": 61,
-           "description": "Powerful enchants dropped by the Ender Dragon!"
-       }
-   }
+           "pack_format": 71,
+           "description": "Powerful enchants dropped by the Ender Dragon!",
+    "supported_formats": [57, 71]
+  },
+  "overlays": {
+    "entries": [
+      {
+        "formats": [57,61]
+        "directory": "1214"
+      }
+    ]
+  }
+}

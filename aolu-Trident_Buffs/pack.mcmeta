@@ -1,6 +1,15 @@
 {
        "pack": {
-           "pack_format": 61,
-           "description": "Improves Tridents in various ways!"
-       }
-   }
+           "pack_format": 71,
+           "description": "Improves Tridents in various ways!",
+    "supported_formats": [57, 71]
+  },
+  "overlays": {
+    "entries": [
+      {
+        "formats": [57,61]
+        "directory": "1214"
+      }
+    ]
+  }
+}

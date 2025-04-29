@@ -4,8 +4,12 @@ function aolu_spells:spells/spell_stats
 execute if score @s aolu_s_cast_mode matches 1.. if predicate aolu_spells:holding_weapon run item modify entity @s weapon.mainhand aolu_spells:make_consumable
 execute if score @s aolu_s_cast_mode matches 1.. if predicate aolu_spells:holding_weapon_offhand run item modify entity @s weapon.offhand aolu_spells:make_consumable
 
+execute if score @s aolu_s_cast_mode matches 1.. if predicate aolu_spells:sneaking if predicate aolu_spells:holding_weapon run item modify entity @s weapon.mainhand aolu_spells:remove_consumable
+execute if score @s aolu_s_cast_mode matches 1.. if predicate aolu_spells:sneaking if predicate aolu_spells:holding_weapon_offhand run item modify entity @s weapon.offhand aolu_spells:remove_consumable
+
 execute if score @s aolu_s_cast_mode matches ..-1 if predicate aolu_spells:holding_weapon run item modify entity @s weapon.mainhand aolu_spells:remove_consumable
 execute if score @s aolu_s_cast_mode matches ..-1 if predicate aolu_spells:holding_weapon_offhand run item modify entity @s weapon.offhand aolu_spells:remove_consumable
+
 
 #execute if score @s aolu_s_cast_mode matches 1.. if predicate aolu_spells:sneaking run function aolu_spells:spells/interaction/spawn
 #execute unless predicate aolu_spells:sneaking run function aolu_spells:not_sneaking

@@ -7,7 +7,7 @@
   "overlays": {
     "entries": [
       {
-        "formats": [57,61]
+        "formats": [57,61],
         "directory": "1214"
       }
     ]

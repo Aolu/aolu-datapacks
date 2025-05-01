@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "interact_l": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:stone_sword",
+          "components": {
+            "minecraft:custom_data": {
+              "amethyst_staff": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "aolu_staffs_n_tomes:spells/using_item/amethyst_staff"
+  }
+}

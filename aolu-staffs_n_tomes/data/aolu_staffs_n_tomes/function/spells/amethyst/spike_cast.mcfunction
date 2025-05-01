@@ -1,4 +1,4 @@
-data modify storage aolu_snt:spell_cooldown t set value 10000s
+data modify storage aolu_snt:spell_cooldown t set value 6000s
 function aolu_staffs_n_tomes:spells/set_cooldown with storage aolu_snt:spell_cooldown
 
 playsound minecraft:entity.evoker.cast_spell master @a ~ ~ ~ 1 1.5

@@ -12,7 +12,7 @@
     "components": {
       "minecraft:consumable": {
         "consume_seconds": 9999,
-        "animation": "spyglass",
+        "animation": "bow",
         "sound": "minecraft:block.amethyst_block.chime"
       },
       "minecraft:custom_data": {
@@ -38,18 +38,40 @@
         {
           "type": "minecraft:attack_speed",
           "id": "aolu_snt:magic_wep_spd",
-          "amount": -3.1,
+          "amount": -3,
+          "operation": "add_value",
+          "slot": "mainhand"
+        },
+        {
+          "type": "minecraft:attack_speed",
+          "id": "aolu_snt:magic_wep_spd_mult",
+          "amount": -0.25,
+          "operation": "add_multiplied_total",
+          "slot": "offhand"
+        },
+        {
+          "type": "minecraft:attack_damage",
+          "id": "aolu_snt:magic_wep_dam",
+          "amount": 6,
           "operation": "add_value",
           "slot": "mainhand"
         },
         {
           "type": "minecraft:attack_damage",
-          "id": "aolu_snt:magic_wep_dam",
-          "amount": 5.5,
-          "operation": "add_value",
+          "id": "aolu_snt:magic_wep_dam_mult",
+          "amount": -0.25,
+          "operation": "add_multiplied_total",
+          "slot": "offhand"
+        },
+        {
+          "type": "minecraft:entity_interaction_range",
+          "id": "aolu_snt:magic_wep_mel_range",
+          "amount": -1,
+          "operation": "add_multiplied_total",
           "slot": "mainhand"
         }
-      ]
+      ],
+      "minecraft:item_model": "aolu_snt:amethyst_staff"
     }
   }
 }

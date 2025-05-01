@@ -29,4 +29,4 @@ particle wax_off ^5 ^1 ^ 0.1 0.1 0.1 0 1
 tag @s add aolu_snt_grounded
 
 
-execute as @a[distance=.1..5.5] run scoreboard players set @s aolu_snt_amplified 100
+execute as @a[distance=.1..5.5] run scoreboard players set @s aolu_snt_amplified 160

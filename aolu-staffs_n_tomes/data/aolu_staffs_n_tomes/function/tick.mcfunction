@@ -5,3 +5,5 @@ execute positioned 0.0 0.0 0.0 as @e[distance=..10,type=area_effect_cloud] run d
 
 execute as @a at @s run function aolu_staffs_n_tomes:tick_player
 
+
+

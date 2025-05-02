@@ -6,4 +6,6 @@ execute if entity @s[tag=aolu_snt_shard] run function aolu_staffs_n_tomes:spells
 execute if entity @s[tag=aolu_snt_amp] run function aolu_staffs_n_tomes:spells/amethyst/amp_tick
 
 execute if entity @s[tag=aolu_snt_fireball] run function aolu_staffs_n_tomes:spells/fire/fireball_tick
+execute if entity @s[tag=aolu_snt_geyser] run function aolu_staffs_n_tomes:spells/fire/geysers_tick
+execute if entity @s[tag=aolu_snt_shield] run function aolu_staffs_n_tomes:spells/fire/flame_shield_tick
 

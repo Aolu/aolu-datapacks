@@ -3,37 +3,37 @@
   "category": "equipment",
   "pattern": [" ga", "dsg", "sd "],
   "key": {
-    "g": ["minecraft:gold_ingot"],
-    "a": ["minecraft:amethyst_shard"],
-    "s": ["minecraft:stick"],
-    "d": ["string"]
+    "g": ["minecraft:blackstone"],
+    "a": ["minecraft:magma_cream"],
+    "s": ["minecraft:blaze_rod"],
+    "d": ["nether_brick"]
   },
   "result": {
-    "id": "minecraft:stone_sword",
+    "id": "minecraft:iron_sword",
     "components": {
       "minecraft:consumable": {
         "consume_seconds": 9999,
-        "animation": "spyglass",
-        "sound": "minecraft:block.amethyst_block.chime"
+        "animation": "spyglass"
       },
       "minecraft:custom_data": {
-        "amethyst_staff": true
+        "blaze_staff": true
       },
-      "minecraft:item_name": "Amethyst Staff",
+      "minecraft:item_name": "Blaze Staff",
       "minecraft:lore": [
-        "A Simple magic staff which can cast spells",
+        "A Fierce, Fiery staff crafted from infernal materials",
         "",
         "Basic Spell¬",
-        "Fire off an Amethyst Shard which will pierce",
-        "through enemies and shatter upon hitting a block",
+        "Fire off a Small Fireball which explodes when",
+        "hitting a target, igniting all affected",
         "",
         "Crouch Spell¬",
-        "Raise a line Amethyst Buds from the ground in front of you,",
-        "damaging and slowing enemies as they appear",
+        "up to 5 nearby targets will have a Flame Geyser,",
+        "Erupt beneath them, rapidly burning and slowing them",
         "",
         "Sprint Spell¬",
-        "Release an Amplification Shard which will embed into the ground,",
-        "granting all players inside 25% Attack Damage and Attack Speed"
+        "Create a Flame Shield around yourself, burning nearby enemies",
+        "Gain Fire Immunity for yourself",
+        "If on Fire: Gain 20% Attack Damage, Attack Speed and Resistance I"
       ],
       "minecraft:attribute_modifiers": [
         {
@@ -53,7 +53,7 @@
         {
           "type": "minecraft:attack_damage",
           "id": "aolu_snt:magic_wep_dam",
-          "amount": 6,
+          "amount": 9,
           "operation": "add_value",
           "slot": "mainhand"
         },
@@ -72,7 +72,7 @@
           "slot": "mainhand"
         }
       ],
-      "minecraft:item_model": "aolu_snt:amethyst_staff"
+      "minecraft:item_model": "aolu_snt:blaze_staff"
     }
   }
 }

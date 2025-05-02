@@ -18,6 +18,7 @@ execute if score @s aolu_snt_spell_cooldown matches 1 run particle minecraft:tri
 function aolu_staffs_n_tomes:spells/set_charge_times
 
 recipe give @s aolu_staffs_n_tomes:weapons/amethyst_staff
+recipe give @s aolu_staffs_n_tomes:weapons/blaze_staff
 
 execute if score @s aolu_snt_amplified matches 1.. run function aolu_staffs_n_tomes:spells/amethyst/amplified_tick
 

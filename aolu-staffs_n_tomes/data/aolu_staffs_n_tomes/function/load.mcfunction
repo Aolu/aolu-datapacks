@@ -23,3 +23,6 @@ scoreboard objectives add aolu_snt_modulo dummy
 forceload add -1 -1 1 1
 
 tellraw @a [{"color":"#9862da","text":"["},{"color":"white","text":"Staffs'N'Tomes"},{"color":"#9862da","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
+
+team add aolu_snt_summon
+team modify aolu_snt_summon color aqua

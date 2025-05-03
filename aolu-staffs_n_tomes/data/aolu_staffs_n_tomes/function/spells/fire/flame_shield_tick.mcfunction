@@ -14,14 +14,14 @@ execute if score @s aolu_snt_cast_time matches 0.. run function aolu_staffs_n_to
 
 
 effect give @p fire_resistance 1
-execute if data entity @p {Fire:0s} run attribute @p attack_damage modifier remove aolu_snt:shield_atk
-execute if data entity @p {Fire:0s} run attribute @p attack_speed modifier remove aolu_snt:shield_spd
+execute as @p if data entity @s {Fire:0s} run attribute @s attack_damage modifier remove aolu_snt:shield_atk
+execute as @p if data entity @s {Fire:0s} run attribute @s attack_speed modifier remove aolu_snt:shield_spd
 
-execute unless data entity @p {Fire:0s} run effect give @p resistance 1
-execute unless data entity @p {Fire:0s} run attribute @p attack_damage modifier add aolu_snt:shield_atk 0.2 add_multiplied_total
-execute unless data entity @p {Fire:0s} run attribute @p attack_speed modifier add aolu_snt:shield_spd 0.2 add_multiplied_total
-execute unless data entity @p {Fire:0s} if score @p aolu_snt_spell_cooldown matches 6.. as @p run scoreboard players remove @s aolu_snt_spell_cooldown 3
+execute as @p unless data entity @s {Fire:0s} run effect give @s resistance 1
+execute as @p unless data entity @s {Fire:0s} run attribute @s attack_damage modifier add aolu_snt:shield_atk 0.2 add_multiplied_total
+execute as @p unless data entity @s {Fire:0s} run attribute @s attack_speed modifier add aolu_snt:shield_spd 0.2 add_multiplied_total
+execute as @p unless data entity @s {Fire:0s} if score @s aolu_snt_spell_cooldown matches 6.. run scoreboard players remove @s aolu_snt_spell_cooldown 3
 
-execute if score @s aolu_snt_lifetime matches 0.. run attribute @p attack_damage modifier remove aolu_snt:shield_atk
-execute if score @s aolu_snt_lifetime matches 0.. run attribute @p attack_speed modifier remove aolu_snt:shield_spd
+execute if score @s aolu_snt_lifetime matches 0.. run attribute @p[distance=..1] attack_damage modifier remove aolu_snt:shield_atk
+execute if score @s aolu_snt_lifetime matches 0.. run attribute @p[distance=..1] attack_speed modifier remove aolu_snt:shield_spd
 execute if score @s aolu_snt_lifetime matches 0.. run kill @s

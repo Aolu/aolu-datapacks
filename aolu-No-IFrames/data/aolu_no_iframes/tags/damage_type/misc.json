@@ -4,6 +4,7 @@
     "minecraft:wither",
     "minecraft:on_fire",
     "drown",
-    "wind_charge"
+    "wind_charge",
+    "dry_out"
   ]
 }

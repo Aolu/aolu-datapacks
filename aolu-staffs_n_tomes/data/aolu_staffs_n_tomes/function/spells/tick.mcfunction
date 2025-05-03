@@ -9,3 +9,4 @@ execute if entity @s[tag=aolu_snt_fireball] run function aolu_staffs_n_tomes:spe
 execute if entity @s[tag=aolu_snt_geyser] run function aolu_staffs_n_tomes:spells/fire/geysers_tick
 execute if entity @s[tag=aolu_snt_shield] run function aolu_staffs_n_tomes:spells/fire/flame_shield_tick
 
+execute if entity @s[tag=aolu_snt_dark_mass] run function aolu_staffs_n_tomes:spells/shadow/dark_mass_tick

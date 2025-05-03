@@ -1,7 +1,7 @@
 execute if data entity @s {OnGround:0b} run scoreboard players set @s aolu_snt_lifetime 0
 
-execute if data entity @s {OnGround:0b} run particle wax_off
-execute if data entity @s {OnGround:0b} run particle block{block_state:"minecraft:amethyst_cluster"} ~ ~ ~ .1 .1 .1 0.01 5
+#execute if data entity @s {OnGround:0b} run particle wax_off
+#execute if data entity @s {OnGround:0b} run particle block{block_state:"minecraft:amethyst_cluster"} ~ ~ ~ .1 .1 .1 0.01 5
 
 execute if score @s aolu_snt_lifetime matches 2 run particle wax_off ~ ~ ~ 1 1 1 1 100
 execute if score @s aolu_snt_lifetime matches 2 run particle block{block_state:"minecraft:amethyst_cluster"} ~ ~ ~ 1 1 1 0.01 200

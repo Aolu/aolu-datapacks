@@ -4,10 +4,10 @@
       "trigger": "minecraft:using_item",
       "conditions": {
         "item": {
-          "items": "minecraft:stone_sword",
+          "items": "minecraft:mace",
           "components": {
             "minecraft:custom_data": {
-              "amethyst_staff": true
+              "blaze_staff": true
             }
           }
         }
@@ -15,6 +15,6 @@
     }
   },
   "rewards": {
-    "function": "aolu_staffs_n_tomes:using_item/amethyst_staff/amethyst_staff"
+    "function": "aolu_staffs_n_tomes:using_item/blaze_staff/blaze_staff"
   }
 }

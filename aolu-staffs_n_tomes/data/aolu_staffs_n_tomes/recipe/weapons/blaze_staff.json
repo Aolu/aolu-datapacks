@@ -9,7 +9,7 @@
     "d": ["nether_brick"]
   },
   "result": {
-    "id": "minecraft:iron_sword",
+    "id": "minecraft:mace",
     "components": {
       "minecraft:consumable": {
         "consume_seconds": 9999,
@@ -27,13 +27,13 @@
         "hitting a target, igniting all affected",
         "",
         "Crouch Spell¬",
-        "up to 5 nearby targets will have a Flame Geyser,",
+        "up to 5 nearby targets will have a Flame Geyser",
         "Erupt beneath them, rapidly burning and slowing them",
         "",
         "Sprint Spell¬",
         "Create a Flame Shield around yourself, burning nearby enemies",
         "Gain Fire Immunity for yourself",
-        "If on Fire: Gain 20% Attack Damage, Attack Speed and Resistance I"
+        "If on Fire: Gain 20% Attack Damage and Attack Speed, 4x Spell Cooldown Speed and Resistance I"
       ],
       "minecraft:attribute_modifiers": [
         {
@@ -67,7 +67,7 @@
         {
           "type": "minecraft:entity_interaction_range",
           "id": "aolu_snt:magic_wep_mel_range",
-          "amount": -0.5,
+          "amount": -1,
           "operation": "add_multiplied_total",
           "slot": "mainhand"
         }

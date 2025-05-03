@@ -6,5 +6,12 @@ execute if score @s aolu_snt_spell_id matches 3 run function aolu_staffs_n_tomes
 execute if predicate aolu_staffs_n_tomes:holding_weapon/amethyst_staff run item modify entity @s weapon.mainhand aolu_staffs_n_tomes:bundle_anim
 execute if predicate aolu_staffs_n_tomes:holding_weapon/amethyst_staff_offhand run item modify entity @s weapon.offhand aolu_staffs_n_tomes:bundle_anim
 
+execute if score @s aolu_snt_spell_id matches 4 run function aolu_staffs_n_tomes:spells/fire/fireball_cast
+execute if score @s aolu_snt_spell_id matches 5 run function aolu_staffs_n_tomes:spells/fire/geysers_cast
+execute if score @s aolu_snt_spell_id matches 6 run function aolu_staffs_n_tomes:spells/fire/flame_shield_cast
+
+execute if predicate aolu_staffs_n_tomes:holding_weapon/blaze_staff run item modify entity @s weapon.mainhand aolu_staffs_n_tomes:bundle_anim
+execute if predicate aolu_staffs_n_tomes:holding_weapon/blaze_staff_offhand run item modify entity @s weapon.offhand aolu_staffs_n_tomes:bundle_anim
+
 execute if score @s aolu_snt_spell_id matches 0.. run scoreboard players set @s aolu_snt_spell_id 0
 scoreboard players set @s aolu_snt_cast_time 0

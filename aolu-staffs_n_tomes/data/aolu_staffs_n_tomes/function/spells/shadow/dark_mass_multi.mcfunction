@@ -1,0 +1,5 @@
+function aolu_staffs_n_tomes:spells/shadow/dark_mass_cast
+function aolu_staffs_n_tomes:spells/shadow/dark_mass_cast
+function aolu_staffs_n_tomes:spells/shadow/dark_mass_cast
+function aolu_staffs_n_tomes:spells/shadow/dark_mass_cast
+function aolu_staffs_n_tomes:spells/shadow/dark_mass_cast

@@ -15,3 +15,4 @@ attribute @n[type=husk,tag=aolu_snt_proj] fall_damage_multiplier modifier add ao
 execute store result score @n[tag=aolu_snt_proj] aolu_snt_lifetime run attribute @s attack_damage get -40
 
 function aolu_staffs_n_tomes:spells/cast/basic with storage aolu_snt:spell_velocity
+playsound minecraft:entity.warden.hurt master aolukuro ~ ~ ~ 1 0

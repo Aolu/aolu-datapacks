@@ -18,22 +18,22 @@
       "minecraft:custom_data": {
         "blaze_staff": true
       },
-      "minecraft:item_name": "Blaze Staff",
+      "minecraft:item_name": "\"Blaze Staff\"",
       "minecraft:lore": [
-        "A Fierce, Fiery staff crafted from infernal materials",
-        "",
-        "Basic Spell¬",
-        "Fire off a Small Fireball which explodes when",
-        "hitting a target, igniting all affected",
-        "",
-        "Crouch Spell¬",
-        "up to 5 nearby targets will have a Flame Geyser",
-        "Erupt beneath them, rapidly burning and slowing them",
-        "",
-        "Sprint Spell¬",
-        "Create a Flame Shield around yourself, burning nearby enemies",
-        "Gain Fire Immunity for yourself",
-        "If on Fire: Gain 20% Attack Damage and Attack Speed, 4x Spell Cooldown Speed and Resistance I"
+        "\"A Fierce, Fiery staff crafted from infernal materials\"",
+        "\"\"",
+        "\"Basic Spell¬\"",
+        "\"Fire off a Small Fireball which explodes when\"",
+        "\"hitting a target, igniting all affected\"",
+        "\"\"",
+        "\"Crouch Spell¬\"",
+        "\"up to 5 nearby targets will have a Flame Geyser\"",
+        "\"Erupt beneath them, rapidly burning and slowing them\"",
+        "\"\"",
+        "\"Sprint Spell¬\"",
+        "\"Create a Flame Shield around yourself, burning nearby enemies\"",
+        "\"Gain Fire Immunity for yourself\"",
+        "\"If on Fire: Gain 20% Attack Damage and Attack Speed, 4x Spell Cooldown Speed and Resistance I\""
       ],
       "minecraft:attribute_modifiers": [
         {

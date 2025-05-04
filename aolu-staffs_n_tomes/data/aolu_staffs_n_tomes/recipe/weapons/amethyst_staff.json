@@ -3,10 +3,10 @@
   "category": "equipment",
   "pattern": [" ga", "dsg", "sd "],
   "key": {
-    "g": ["minecraft:gold_ingot"],
-    "a": ["minecraft:amethyst_shard"],
-    "s": ["minecraft:stick"],
-    "d": ["string"]
+    "g": "minecraft:gold_ingot",
+    "a": "minecraft:amethyst_shard",
+    "s": "minecraft:stick",
+    "d": "string"
   },
   "result": {
     "id": "minecraft:stone_sword",
@@ -28,12 +28,12 @@
         "through enemies and shatter upon hitting a block",
         "",
         "Crouch Spell¬",
-        "Raise a line Amethyst Buds from the ground in front of you,",
-        "damaging and slowing enemies as they appear",
+        "Release an Amplification Shard which will embed into the ground,",
+        "granting all players inside 25% Attack Damage and Attack Speed",
         "",
         "Sprint Spell¬",
-        "Release an Amplification Shard which will embed into the ground,",
-        "granting all players inside 25% Attack Damage and Attack Speed"
+        "Raise a line Amethyst Buds from the ground in front of you,",
+        "damaging and slowing enemies as they appear"
       ],
       "minecraft:attribute_modifiers": [
         {

@@ -1,39 +1,42 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
-  "pattern": [" ga", "dsg", "sd "],
+  "pattern": [" d ", "sas", "ggg"],
   "key": {
-    "g": "minecraft:blackstone",
-    "a": "minecraft:magma_cream",
-    "s": "minecraft:blaze_rod",
-    "d": "nether_brick"
+    "g": "minecraft:echo_shard",
+    "a": "minecraft:book",
+    "s": "minecraft:iron_ingot",
+    "d": "sculk_catalyst"
   },
   "result": {
-    "id": "minecraft:mace",
+    "id": "minecraft:book",
     "components": {
       "minecraft:consumable": {
         "consume_seconds": 9999,
         "animation": "spyglass"
       },
       "minecraft:custom_data": {
-        "blaze_staff": true
+        "shadow_tome": true
       },
-      "minecraft:item_name": "Blaze Staff",
+      "minecraft:item_name": "\"Shadow Tome\"",
       "minecraft:lore": [
-        "A Fierce, Fiery staff crafted from infernal materials",
-        "",
-        "Basic Spell¬",
-        "Fire off a Small Fireball which explodes when",
-        "hitting a target, igniting all affected",
-        "",
-        "Crouch Spell¬",
-        "up to 5 nearby targets will have a Flame Geyser",
-        "Erupt beneath them, rapidly burning and slowing them",
-        "",
-        "Sprint Spell¬",
-        "Create a Flame Shield around yourself, burning nearby enemies",
-        "Gain Fire Immunity for yourself",
-        "If on Fire: Gain 20% Attack Damage and Attack Speed, 4x Spell Cooldown Speed and Resistance I"
+        "\"A long forgotten Tome, filled with hideous magics\"",
+        "\"\"",
+        "\"Basic Spell¬\"",
+        "\"Fire off a Small Mass of shadow, Weakening and\"",
+        "\"Withering the targets they hit\"",
+        "\"This spell can be held to cast it continuously at in increasing rate\"",
+        "\"After 10 consecutive casts, releasing will shoot out 5 Shadow Masses at once\"",
+        "\"\"",
+        "\"Crouch Spell¬\"",
+        "\"Launch out a Shadow Seed, which will turn into a Nest upon landing\"",
+        "\"The Nest releases Shadowspawn, which target enemies nearby\"",
+        "\"Mobs will target the Nest and attack it if close enough\"",
+        "\"You can only have one Nest active at a time\"",
+        "\"\"",
+        "\"Sprint Spell¬\"",
+        "\"Fire off a Sonic boom which can pass through blocks\"",
+        "\"The attack leaves hit targets temporarily disoriented\""
       ],
       "minecraft:attribute_modifiers": [
         {
@@ -53,7 +56,7 @@
         {
           "type": "minecraft:attack_damage",
           "id": "aolu_snt:magic_wep_dam",
-          "amount": 9,
+          "amount": 11,
           "operation": "add_value",
           "slot": "mainhand"
         },
@@ -72,7 +75,8 @@
           "slot": "mainhand"
         }
       ],
-      "minecraft:item_model": "aolu_snt:blaze_staff"
+      "minecraft:item_model": "aolu_snt:shadow_tome",
+      "minecraft:max_stack_size": 1
     }
   }
 }

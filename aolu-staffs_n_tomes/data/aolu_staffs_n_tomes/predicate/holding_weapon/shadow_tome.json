@@ -4,7 +4,7 @@
   "predicate": {
     "equipment": {
       "mainhand": {
-        "items": "minecraft:book",
+        "items": "minecraft:mace",
         "components": {
           "minecraft:custom_data": {
             "shadow_tome": true

@@ -1,0 +1,30 @@
+{
+  "anvil_cost": 1,
+  "description": "Swift Strike",
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "amount": {
+          "type": "minecraft:linear",
+          "base": 0.1,
+          "per_level_above_first": 0.1
+        },
+        "attribute": "minecraft:attack_speed",
+        "id": "minecraft:enchantment",
+        "operation": "add_value"
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 60,
+    "per_level_above_first": 8
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 20,
+    "per_level_above_first": 8
+  },
+  "slots": ["mainhand"],
+  "supported_items": "#aolu_staffs_n_tomes:enchantable/magic_weapons",
+  "weight": 2
+}

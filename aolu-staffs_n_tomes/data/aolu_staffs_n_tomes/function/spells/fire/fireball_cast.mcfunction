@@ -1,4 +1,4 @@
-data modify storage aolu_snt:spell_cooldown t set value 4000s
+data modify storage aolu_snt:spell_cooldown t set value 3000s
 function aolu_staffs_n_tomes:spells/set_cooldown with storage aolu_snt:spell_cooldown
 
 

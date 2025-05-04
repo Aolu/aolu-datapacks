@@ -9,7 +9,7 @@
     "d": "sculk_catalyst"
   },
   "result": {
-    "id": "minecraft:book",
+    "id": "minecraft:mace",
     "components": {
       "minecraft:consumable": {
         "consume_seconds": 9999,

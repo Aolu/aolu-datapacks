@@ -11,6 +11,7 @@ function aolu_staffs_n_tomes:spells/set_charge_times
 
 recipe give @s aolu_staffs_n_tomes:weapons/amethyst_staff
 recipe give @s aolu_staffs_n_tomes:weapons/blaze_staff
+recipe give @s aolu_staffs_n_tomes:weapons/shadow_tome
 
 execute if score @s aolu_snt_amplified matches 1.. run function aolu_staffs_n_tomes:spells/amethyst/amplified_tick
 
@@ -25,3 +26,4 @@ execute if score @s aolu_snt_cast_time matches 2 run playsound minecraft:block.b
 
 execute if score @s aolu_snt_cast_reset matches 2 run function aolu_staffs_n_tomes:using_item/stopped_using_item
 
+execute if score @s aolu_snt_swift_darkness matches 1.. run function aolu_staffs_n_tomes:spells/shadow/swift_darkness_tick

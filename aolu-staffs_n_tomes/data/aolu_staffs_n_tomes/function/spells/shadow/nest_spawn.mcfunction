@@ -1,9 +1,9 @@
 execute as @e[distance=0.1..8] unless score @s aolu_cr_pid = @n[tag=aolu_snt_nest] aolu_cr_pid run damage @s 0 out_of_world by @n[tag=aolu_snt_nest]
 
 playsound entity.warden.heartbeat master @a ~ ~ ~ 0.2 1
-playsound block.sculk.break master @a ~ ~ ~ 1.5 0.8
-playsound block.sculk.break master @a ~ ~ ~ 1.5 0.8
-playsound block.sculk.break master @a ~ ~ ~ 1.5 0.8
+playsound block.sculk_shrieker.break master @a ~ ~ ~ 1.5 0.8
+playsound block.sculk_shrieker.break master @a ~ ~ ~ 1.5 0.8
+playsound block.sculk_shrieker.break master @a ~ ~ ~ 1.5 0.8
 
 data modify storage aolu_snt:spell_velocity y set value 0.6d
 execute store result storage aolu_snt:spell_velocity x float 0.01 run random value -25..25

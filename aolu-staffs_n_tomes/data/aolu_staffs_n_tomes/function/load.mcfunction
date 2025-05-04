@@ -26,3 +26,5 @@ tellraw @a [{"color":"#9862da","text":"["},{"color":"white","text":"Staffs'N'Tom
 
 team add aolu_snt_summon
 team modify aolu_snt_summon color aqua
+
+scoreboard objectives add aolu_snt_swift_darkness dummy

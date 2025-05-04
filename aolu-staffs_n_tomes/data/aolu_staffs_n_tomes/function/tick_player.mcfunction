@@ -1,5 +1,5 @@
 execute store result score @s aolu_snt_cast_speed_mod run attribute @s attack_speed get 100
-execute if score @s aolu_snt_cast_speed_mod matches 200.. run scoreboard players set @s aolu_snt_cast_speed_mod 200
+execute if score @s aolu_snt_cast_speed_mod matches 300.. run scoreboard players set @s aolu_snt_cast_speed_mod 300
 execute if score @s aolu_snt_cast_speed_mod matches ..50 run scoreboard players set @s aolu_snt_cast_speed_mod 50
 #execute if score @s aolu_snt_melee_dam matches 1.. run function aolu_staffs_n_tomes:reduce_cooldown
 
@@ -27,3 +27,6 @@ execute if score @s aolu_snt_cast_time matches 2 run playsound minecraft:block.b
 execute if score @s aolu_snt_cast_reset matches 2 run function aolu_staffs_n_tomes:using_item/stopped_using_item
 
 execute if score @s aolu_snt_swift_darkness matches 1.. run function aolu_staffs_n_tomes:spells/shadow/swift_darkness_tick
+
+attribute @s attack_speed modifier remove aolu_snt:empty_offhand
+execute if predicate aolu_staffs_n_tomes:holding_weapon/empty_offhand run function aolu_staffs_n_tomes:empty_offhand

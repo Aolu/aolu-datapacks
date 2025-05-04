@@ -1,6 +1,6 @@
 
 particle lava ~ ~ ~ 0.2 1 0.2 1 1
-particle dripping_lava ~ ~ ~ 0.2 1.5 0.2 1 10
+particle dripping_lava ~ ~ ~ 0.2 1.5 0.2 1 1
 particle flame ~ ~ ~ 0 0 0 0.2 1
 
 

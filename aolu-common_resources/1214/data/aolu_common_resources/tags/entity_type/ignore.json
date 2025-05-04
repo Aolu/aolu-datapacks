@@ -39,6 +39,8 @@
     "minecraft:snowball",
     "minecraft:egg",
     "minecraft:text_display",
+    "minecraft:item_display",
+    "minecraft:block_display",
     "minecraft:interaction",
     "minecraft:lightning_bolt",
     "potion",

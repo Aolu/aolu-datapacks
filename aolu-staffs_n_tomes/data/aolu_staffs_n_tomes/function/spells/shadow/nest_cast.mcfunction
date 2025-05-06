@@ -11,6 +11,7 @@ execute positioned ~ ~1.5 ~ run summon husk ^ ^ ^1 {DeathLootTable:empty,Silent:
 attribute @n[type=husk,tag=aolu_snt_proj] movement_speed modifier add aolu_snt:freeze -1 add_multiplied_total
 attribute @n[type=husk,tag=aolu_snt_proj] attack_damage modifier add aolu_snt:freeze -1 add_multiplied_total
 attribute @n[type=husk,tag=aolu_snt_proj] fall_damage_multiplier modifier add aolu_snt:freeze -1 add_multiplied_total
+attribute @n[type=husk,tag=aolu_snt_proj] knockback_resistance modifier add aolu_snt:freeze 1 add_value
 
 execute store result score @n[tag=aolu_snt_proj] aolu_snt_lifetime run attribute @s attack_damage get -40
 

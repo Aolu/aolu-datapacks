@@ -1,3 +1,6 @@
 {
-  "values": ["aolu_staffs_n_tomes:swift_strike"]
+  "values": [
+    "aolu_staffs_n_tomes:swift_strike",
+    "aolu_staffs_n_tomes:brute_force"
+  ]
 }

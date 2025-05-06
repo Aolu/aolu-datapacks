@@ -23,3 +23,6 @@ execute if score @s aolu_snt_selected_spell matches 3 if score @s aolu_snt_cast_
 
 
 scoreboard players set @s aolu_snt_cast_reset 0
+
+execute if score @s aolu_snt_cast_time matches 2 run playsound minecraft:block.beacon.power_select master @a ~ ~ ~ .5 1.5
+execute if score @s aolu_snt_cast_time matches 2 run playsound minecraft:block.beacon.ambient master @a ~ ~ ~ .5 1.5

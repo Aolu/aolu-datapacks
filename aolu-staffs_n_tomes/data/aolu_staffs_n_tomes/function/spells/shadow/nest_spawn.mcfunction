@@ -14,6 +14,7 @@ effect give @n[type=endermite,tag=aolu_snt_proj] fire_resistance infinite
 effect give @n[type=endermite,tag=aolu_snt_proj] glowing infinite
 effect give @n[type=endermite,tag=aolu_snt_proj] wither infinite 2
 effect give @n[type=endermite,tag=aolu_snt_proj] speed infinite 1
+effect give @n[type=endermite,tag=aolu_snt_proj] absorption infinite
 
 attribute @n[type=endermite,tag=aolu_snt_proj] fall_damage_multiplier modifier add aolu_snt:summon -1 add_multiplied_total
 attribute @n[type=endermite,tag=aolu_snt_proj] step_height modifier add aolu_snt:summon 1 add_value

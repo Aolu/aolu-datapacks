@@ -13,12 +13,13 @@ scoreboard objectives add aolu_snt_spell_1_ct dummy
 scoreboard objectives add aolu_snt_spell_2_ct dummy
 scoreboard objectives add aolu_snt_spell_3_ct dummy
 
-scoreboard objectives add aolu_snt_amplified dummy
 
 scoreboard objectives add aolu_snt_melee_dam minecraft.custom:damage_dealt
 scoreboard players set #2 aolu_snt_melee_dam 2
 
 scoreboard objectives add aolu_snt_modulo dummy
+
+scoreboard objectives add aolu_snt_lucent_cast dummy
 
 forceload add -1 -1 1 1
 
@@ -27,4 +28,7 @@ tellraw @a [{"color":"#9862da","text":"["},{"color":"white","text":"Staffs'N'Tom
 team add aolu_snt_summon
 team modify aolu_snt_summon color aqua
 
+#custom status effect
 scoreboard objectives add aolu_snt_swift_darkness dummy
+scoreboard objectives add aolu_snt_amplified dummy
+scoreboard objectives add aolu_snt_cleansed dummy

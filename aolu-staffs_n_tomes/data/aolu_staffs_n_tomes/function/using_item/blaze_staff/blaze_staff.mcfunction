@@ -26,3 +26,7 @@ execute if score @s aolu_snt_selected_spell matches 3 if score @s aolu_snt_cast_
 
 
 scoreboard players set @s aolu_snt_cast_reset 0
+
+#execute if score @s aolu_snt_cast_time matches 2 run playsound entity.blaze.ambient master @a ~ ~ ~ .5 1.5
+execute if score @s aolu_snt_cast_time matches 2 run playsound minecraft:block.respawn_anchor.set_spawn master @a ~ ~ ~ 1 1.25
+execute if score @s aolu_snt_cast_time matches 2 run playsound minecraft:block.respawn_anchor.set_spawn master @a ~ ~ ~ 1 1.25

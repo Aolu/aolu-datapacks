@@ -2,7 +2,7 @@
 particle lava ~ ~ ~ 0.2 1 0.2 1 1
 particle dripping_lava ~ ~ ~ 0.2 1.5 0.2 1 1
 particle flame ~ ~ ~ 0 0 0 0.2 1
-
+particle minecraft:large_smoke ~ ~ ~ 0 0 0 0.01 1
 
 scoreboard players add @s aolu_snt_cast_time 1
 

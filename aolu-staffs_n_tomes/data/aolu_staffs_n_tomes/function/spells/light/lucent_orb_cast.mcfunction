@@ -7,9 +7,8 @@ execute store result storage aolu_snt:spell_velocity x float 0.01 run random val
 execute store result storage aolu_snt:spell_velocity y float 0.01 run random value 20..40
 execute store result storage aolu_snt:spell_velocity z float 0.01 run random value -25..25
 
-execute positioned ~ ~3 ~ run particle end_rod ~ ~ ~ 0 0 0 0.1 2
 
-execute positioned ~ ~3 ~ run summon vex ~ ~ ~ {DeathLootTable:empty,Silent:1b,Tags:["aolu_snt_spell","aolu_snt_lucent_orb","aolu_snt_proj"],active_effects:[{id:"minecraft:invisibility",amplifier:1,duration:-1,show_particles:0b}],attributes:[{id:"minecraft:scale",base:0.1}]}
+execute at @r[distance=..8] positioned ~ ~3 ~ run summon vex ~ ~ ~ {DeathLootTable:empty,Silent:1b,Tags:["aolu_snt_spell","aolu_snt_lucent_orb","aolu_snt_proj"],active_effects:[{id:"minecraft:invisibility",amplifier:1,duration:-1,show_particles:0b}],attributes:[{id:"minecraft:scale",base:0.1}]}
 attribute @n[tag=aolu_snt_proj] fall_damage_multiplier base set 0
 attribute @n[tag=aolu_snt_proj] attack_damage base set -100
 attribute @n[tag=aolu_snt_proj] follow_range base set 100

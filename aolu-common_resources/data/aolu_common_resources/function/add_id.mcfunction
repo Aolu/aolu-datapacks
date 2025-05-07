@@ -1,2 +1,2 @@
-scoreboard players add #aolu_cr_pid aolu_cr_pid 1
-scoreboard players operation @s aolu_cr_pid = #aolu_cr_pid aolu_cr_pid
+scoreboard players add #aolu_snt_pid aolu_snt_pid 1
+scoreboard players operation @s aolu_snt_pid = #aolu_snt_pid aolu_snt_pid

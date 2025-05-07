@@ -9,11 +9,6 @@ execute if score @s aolu_snt_spell_cooldown matches 1.. run function aolu_staffs
 
 function aolu_staffs_n_tomes:spells/set_charge_times
 
-#recipes
-recipe give @s aolu_staffs_n_tomes:weapons/amethyst_staff
-recipe give @s aolu_staffs_n_tomes:weapons/blaze_staff
-recipe give @s aolu_staffs_n_tomes:weapons/shadow_tome
-recipe give @s aolu_staffs_n_tomes:weapons/lucent_tome
 
 #buffs
 execute if score @s aolu_snt_amplified matches 1.. run function aolu_staffs_n_tomes:spells/amethyst/amplified_tick
@@ -42,3 +37,5 @@ attribute @s attack_damage modifier remove aolu_snt:shadow_tome
 execute if predicate aolu_staffs_n_tomes:holding_weapon/shadow_tome run function aolu_staffs_n_tomes:spells/shadow/light_level
 execute if predicate aolu_staffs_n_tomes:holding_weapon/shadow_tome_offhand run function aolu_staffs_n_tomes:spells/shadow/light_level
 
+scoreboard players add @s aolu_snt_pid 0
+execute if score @s aolu_snt_pid matches 0 run function aolu_common_resources:add_id

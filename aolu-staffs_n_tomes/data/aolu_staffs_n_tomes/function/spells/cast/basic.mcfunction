@@ -1,4 +1,4 @@
-scoreboard players operation @e[tag=aolu_snt_proj,limit=1] aolu_cr_pid = @s aolu_cr_pid
+scoreboard players operation @e[tag=aolu_snt_proj,limit=1] aolu_snt_pid = @s aolu_snt_pid
 data modify entity @e[tag=aolu_snt_proj,limit=1] Owner set from entity @s UUID
 
 

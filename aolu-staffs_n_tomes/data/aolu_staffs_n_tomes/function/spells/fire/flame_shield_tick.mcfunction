@@ -6,7 +6,7 @@
 #particle dripping_lava ^-3 ^1 ^ 0 0 0 0.02 2
 #particle dripping_lava ^3 ^1 ^ 0 0 0 0.02 2
 
-execute as @a if score @s aolu_cr_pid = @n[tag=aolu_snt_shield] aolu_cr_pid positioned as @s run tp @n[tag=aolu_snt_shield] ~ ~ ~
+execute as @a if score @s aolu_snt_pid = @n[tag=aolu_snt_shield] aolu_snt_pid positioned as @s run tp @n[tag=aolu_snt_shield] ~ ~ ~
 
 
 scoreboard players add @s aolu_snt_cast_time 1

@@ -1,6 +1,6 @@
 tag @s add aolu_snt_grounded
 
-execute as @e[distance=0.1..,tag=aolu_snt_nest] if score @s aolu_cr_pid = @n[tag=aolu_snt_nest] aolu_cr_pid run kill @s
+execute as @e[distance=0.1..,tag=aolu_snt_nest] if score @s aolu_snt_pid = @n[tag=aolu_snt_nest] aolu_snt_pid run kill @s
 
 playsound entity.warden.emerge master @a ~ ~ ~ 1 2
 

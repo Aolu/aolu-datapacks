@@ -32,3 +32,8 @@ team modify aolu_snt_summon color aqua
 scoreboard objectives add aolu_snt_swift_darkness dummy
 scoreboard objectives add aolu_snt_amplified dummy
 scoreboard objectives add aolu_snt_cleansed dummy
+
+scoreboard objectives remove aolu_snt_pid
+
+scoreboard objectives add aolu_snt_pid dummy
+scoreboard players set #temp aolu_snt_pid 0

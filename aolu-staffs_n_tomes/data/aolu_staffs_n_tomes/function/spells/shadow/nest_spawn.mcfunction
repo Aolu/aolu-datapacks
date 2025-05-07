@@ -1,6 +1,6 @@
 scoreboard players set @s aolu_snt_modulo 0
-execute as @e[distance=0.1..8,type=!#aolu_common_resources:ignore] as @n[tag=aolu_snt_nest] run function aolu_staffs_n_tomes:spells/shadow/nest_defense
-execute as @e[distance=0.1..8,type=!#aolu_common_resources:ignore] unless score @s aolu_cr_pid = @n[tag=aolu_snt_nest] aolu_cr_pid run damage @s 0 sonic_boom by @n[tag=aolu_snt_nest]
+execute as @e[distance=0.1..8,type=!#aolu_staffs_n_tomes:ignore] as @n[tag=aolu_snt_nest] run function aolu_staffs_n_tomes:spells/shadow/nest_defense
+execute as @e[distance=0.1..8,type=!#aolu_staffs_n_tomes:ignore] unless score @s aolu_snt_pid = @n[tag=aolu_snt_nest] aolu_snt_pid run damage @s 0 sonic_boom by @n[tag=aolu_snt_nest]
 
 
 
@@ -21,9 +21,9 @@ effect give @n[type=cave_spider,tag=aolu_snt_proj] speed infinite 1
 
 attribute @n[type=cave_spider,tag=aolu_snt_proj] fall_damage_multiplier modifier add aolu_snt:summon -1 add_multiplied_total
 attribute @n[type=cave_spider,tag=aolu_snt_proj] step_height modifier add aolu_snt:summon 1 add_value
-attribute @n[type=cave_spider,tag=aolu_snt_proj] max_health base set 12
+attribute @n[type=cave_spider,tag=aolu_snt_proj] max_health base set 8
 #attribute @n[type=cave_spider,tag=aolu_snt_proj] scale modifier add aolu_snt:summon 1 add_multiplied_total
 
-execute as @a if score @n[tag=aolu_snt_nest] aolu_cr_pid = @s aolu_cr_pid run execute store result storage aolu_snt:spell_damage n float 0.2 run attribute @s attack_damage get
+execute as @a if score @n[tag=aolu_snt_nest] aolu_snt_pid = @s aolu_snt_pid run execute store result storage aolu_snt:spell_damage n float 0.2 run attribute @s attack_damage get
 execute as @n[tag=aolu_snt_proj] run function aolu_staffs_n_tomes:spells/shadow/nest_spawn_damage with storage aolu_snt:spell_damage
 function aolu_staffs_n_tomes:spells/cast/basic with storage aolu_snt:spell_velocity

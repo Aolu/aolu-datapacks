@@ -3,7 +3,7 @@ function aolu_staffs_n_tomes:spells/set_cooldown with storage aolu_snt:spell_coo
 
 
 summon armor_stand ~ ~ ~ {Marker:1b,Silent:1b,Invulnerable:1b,Small:1b,Invisible:1b,NoBasePlate:1b,Tags:["aolu_snt_spell","aolu_snt_col","aolu_snt_proj"],DisabledSlots:4144959}
-scoreboard players operation @e[tag=aolu_snt_proj] aolu_cr_pid = @s aolu_cr_pid
+scoreboard players operation @e[tag=aolu_snt_proj] aolu_snt_pid = @s aolu_snt_pid
 
 execute store result score @e[tag=aolu_snt_proj] aolu_snt_lifetime run attribute @s attack_damage get -20
 

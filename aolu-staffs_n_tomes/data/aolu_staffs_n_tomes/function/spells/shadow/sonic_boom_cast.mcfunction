@@ -17,5 +17,5 @@ playsound minecraft:entity.warden.nearby_closest master @a ~ ~ ~ 1 2
 playsound minecraft:entity.warden.attack_impact master @a ~ ~ ~ 1 2
 
 summon marker ~ ~ ~ {Tags:["aolu_snt_spell","aolu_snt_sonic_boom_damage","aolu_snt_proj"]}
-scoreboard players operation @n[tag=aolu_snt_proj] aolu_cr_pid = @s aolu_cr_pid
+scoreboard players operation @n[tag=aolu_snt_proj] aolu_snt_pid = @s aolu_snt_pid
 tag @n[tag=aolu_snt_proj] remove aolu_snt_proj

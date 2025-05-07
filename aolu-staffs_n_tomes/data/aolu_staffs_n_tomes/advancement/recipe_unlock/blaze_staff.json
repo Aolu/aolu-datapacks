@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:magma_cream"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["aolu_staffs_n_tomes:weapons/blaze_staff"]
+  }
+}

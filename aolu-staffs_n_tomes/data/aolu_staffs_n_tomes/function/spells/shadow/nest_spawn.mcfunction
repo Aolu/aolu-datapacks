@@ -16,7 +16,7 @@ execute store result storage aolu_snt:spell_velocity z float 0.01 run random val
 execute positioned ~ ~0.5 ~ run summon cave_spider ^ ^ ^ {CustomName:"Nest Spawn",DeathLootTable:empty,Silent:1b,Tags:["aolu_snt_summon","aolu_snt_nest_spawn","aolu_snt_proj"],active_effects:[{id:"minecraft:invisibility",amplifier:1,duration:-1,show_particles:0b}]}
 effect give @n[type=cave_spider,tag=aolu_snt_proj] fire_resistance infinite
 effect give @n[type=cave_spider,tag=aolu_snt_proj] glowing infinite
-effect give @n[type=cave_spider,tag=aolu_snt_proj] wither infinite 2
+#effect give @n[type=cave_spider,tag=aolu_snt_proj] wither infinite 2
 effect give @n[type=cave_spider,tag=aolu_snt_proj] speed infinite 1
 
 attribute @n[type=cave_spider,tag=aolu_snt_proj] fall_damage_multiplier modifier add aolu_snt:summon -1 add_multiplied_total

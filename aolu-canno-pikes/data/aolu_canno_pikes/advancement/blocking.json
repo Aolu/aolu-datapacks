@@ -1,0 +1,15 @@
+{
+  "criteria": {
+    "interact_l": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:shield"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "aolu_canno_pikes:blocking/held"
+  }
+}

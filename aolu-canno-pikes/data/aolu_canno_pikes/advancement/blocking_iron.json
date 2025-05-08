@@ -4,7 +4,12 @@
       "trigger": "minecraft:using_item",
       "conditions": {
         "item": {
-          "items": "minecraft:shield"
+          "items": "minecraft:shield",
+          "components": {
+            "minecraft:custom_data": {
+              "iron_cpike": true
+            }
+          }
         }
       }
     }

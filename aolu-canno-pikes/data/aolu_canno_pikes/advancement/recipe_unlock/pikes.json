@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:fire_charge"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["aolu_canno_pikes:gold_cpike","aolu_canno_pikes:iron_cpike","aolu_canno_pikes:netherite_cpike"]
+  }
+}

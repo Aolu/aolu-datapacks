@@ -1,7 +1,8 @@
 
 execute store result storage aolu_cno stored_value float 0.1 run scoreboard players get @s aolu_cno_buff_value
 
-execute store result storage aolu_cno damage_conversion float 0.01 run scoreboard players get @s aolu_cno_buff_value
+# 6 + 2.5 damage
+execute store result storage aolu_cno damage_conversion float 0.0125 run scoreboard players get @s aolu_cno_buff_value
 execute store result storage aolu_cno attack_speed_conversion float 0.001 run scoreboard players get @s aolu_cno_buff_value
 execute store result storage aolu_cno armor_conversion float 0.025 run scoreboard players get @s aolu_cno_buff_value
 

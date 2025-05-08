@@ -12,3 +12,5 @@ execute positioned ~ ~1 ~ positioned ^ ^ ^5 run function aolu_canno_pikes:on_blo
 
 function aolu_canno_pikes:on_block/shoot_damage with storage aolu_cno
 tag @s remove aolu_cno_shoot
+damage @s 0.01 minecraft:sonic_boom at ^ ^ ^1
+scoreboard players add @s aolu_cno_buff_value 200

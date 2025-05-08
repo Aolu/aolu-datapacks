@@ -10,6 +10,8 @@ execute if score @s aolu_cno_parry_buff matches 101 run playsound entity.breeze.
 
 
 execute if score @s aolu_cno_buff_value matches 1.. run function aolu_canno_pikes:buffs/iron_set
-execute if score @s aolu_cno_buff_value matches 1 run function aolu_canno_pikes:remove_buffs
+execute if score @s aolu_cno_buff_value matches 0 run function aolu_canno_pikes:remove_buffs
 advancement revoke @s only aolu_canno_pikes:blocking
 
+execute if predicate aolu_canno_pikes:sneaking if score @s aolu_cno_block_timer matches ..5 run tag @s add aolu_cno_sneaking
+execute unless predicate aolu_canno_pikes:sneaking if score @s aolu_cno_block_timer matches ..5 run tag @s remove aolu_cno_sneaking

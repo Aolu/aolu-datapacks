@@ -1,9 +1,5 @@
+execute if score @s aolu_cno_block_timer matches 0 run scoreboard players remove @s aolu_cno_buff_value 1
 
-say --------
-$say $(blocked_damage) damage blocked
-$say $(damage_conversion) damage conversion
-$say $(attack_speed_conversion) attack speed conversion
-$say $(armor_conversion) armor conversion
 
 attribute @s attack_damage modifier remove aolu_cno_parry
 attribute @s attack_speed modifier remove aolu_cno_parry

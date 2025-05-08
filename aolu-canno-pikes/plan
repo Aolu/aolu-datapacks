@@ -12,3 +12,5 @@ netherite
     longer block time
     highest base damage
     lowest conversion multipliers and shot stats
+
+conversion buffs only apply when in mainhand and are instantly removed when not holding a canno-pike

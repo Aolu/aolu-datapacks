@@ -5,4 +5,4 @@ attribute @s entity_interaction_range modifier remove aolu_cno_parry
 attribute @s armor modifier remove aolu_cno_parry
 attribute @s armor_toughness modifier remove aolu_cno_parry
 
-playsound entity.breeze.death master @a ~ ~ ~ 2 1.5
+scoreboard players set @s aolu_cno_deaths 0

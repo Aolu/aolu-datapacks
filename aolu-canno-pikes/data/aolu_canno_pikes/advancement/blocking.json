@@ -10,6 +10,6 @@
     }
   },
   "rewards": {
-    "function": "aolu_canno_pikes:blocking/held"
+    "function": "aolu_canno_pikes:blocking/iron_held"
   }
 }

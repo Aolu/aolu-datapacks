@@ -12,8 +12,9 @@ execute positioned ~ ~1 ~ positioned ^ ^ ^.5 run function aolu_canno_pikes:on_bl
 execute positioned ~ ~1 ~ positioned ^ ^ ^1.5 run function aolu_canno_pikes:on_block/shoot_projectile
 execute positioned ~ ~1 ~ positioned ^ ^ ^2.5 run function aolu_canno_pikes:on_block/shoot_projectile
 execute positioned ~ ~1 ~ positioned ^ ^ ^3.5 run function aolu_canno_pikes:on_block/shoot_projectile
-execute if predicate aolu_canno_pikes:holding_weapon/iron_cpike positioned ~ ~1 ~ positioned ^ ^ ^4.5 run function aolu_canno_pikes:on_block/shoot_projectile
-execute if predicate aolu_canno_pikes:holding_weapon/netherite_cpike positioned ~ ~1 ~ positioned ^ ^ ^5.5 run function aolu_canno_pikes:on_block/shoot_projectile
+execute positioned ~ ~1 ~ positioned ^ ^ ^4.5 run function aolu_canno_pikes:on_block/shoot_projectile
+
+execute if predicate aolu_canno_pikes:holding_weapon/iron_cpike positioned ~ ~1 ~ positioned ^ ^ ^5.5 run function aolu_canno_pikes:on_block/shoot_projectile
 execute if predicate aolu_canno_pikes:holding_weapon/netherite_cpike positioned ~ ~1 ~ positioned ^ ^ ^6.5 run function aolu_canno_pikes:on_block/shoot_projectile
 
 function aolu_canno_pikes:on_block/shoot_damage with storage aolu_cno

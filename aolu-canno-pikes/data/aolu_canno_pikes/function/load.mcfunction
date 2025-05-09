@@ -1,7 +1,5 @@
 
 scoreboard objectives add aolu_cno_block_timer dummy
-scoreboard objectives add aolu_cno_parry_buff minecraft.custom:minecraft.time_since_death
-scoreboard objectives add aolu_cno_deaths minecraft.custom:minecraft.deaths
 
 scoreboard objectives add aolu_cno_stopped_blocking minecraft.custom:minecraft.time_since_death
 

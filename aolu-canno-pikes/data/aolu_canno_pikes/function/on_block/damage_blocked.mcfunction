@@ -24,3 +24,4 @@ execute if score @s aolu_cno_shot_storage matches 101.. run scoreboard players s
 
 scoreboard players set @s aolu_cno_blocked_damage 0
 
+playsound minecraft:entity.zombie.attack_iron_door master @a ~ ~ ~ 1 2

@@ -1,5 +1,3 @@
-execute if score @s aolu_cno_block_timer matches 0 run scoreboard players remove @s aolu_cno_buff_value 2
-execute if score @s aolu_cno_buff_value matches ..-1 run scoreboard players set @s aolu_cno_buff_value 0
 
 function aolu_canno_pikes:remove_buffs
 

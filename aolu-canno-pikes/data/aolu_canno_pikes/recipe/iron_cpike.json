@@ -21,7 +21,7 @@
         {
           "type": "minecraft:attack_damage",
           "id": "aolu_cno_wpn",
-          "amount": 3,
+          "amount": 3.5,
           "operation": "add_value",
           "slot": "mainhand"
         },

@@ -18,4 +18,6 @@ execute if score @s aolu_cno_block_timer matches 0 store result score @s aolu_cn
 execute if score @s aolu_cno_buff_value matches ..-1 run scoreboard players set @s aolu_cno_buff_value 0
 
 
+execute if score @s aolu_cno_fortify_delay matches 5.. run scoreboard players set @s aolu_cno_fortify 0
+
 function aolu_canno_pikes:holding_cpike

@@ -1,4 +1,13 @@
 #if damage was blocked
+
+execute if predicate aolu_canno_pikes:holding_weapon/gold_cpike store result storage aolu_cno parry_damage float .1 run scoreboard players get @s aolu_cno_blocked_damage
+execute if predicate aolu_canno_pikes:holding_weapon/iron_cpike store result storage aolu_cno parry_damage float .075 run scoreboard players get @s aolu_cno_blocked_damage
+execute if predicate aolu_canno_pikes:holding_weapon/netherite_cpike store result storage aolu_cno parry_damage float .05 run scoreboard players get @s aolu_cno_blocked_damage
+
+execute if predicate aolu_canno_pikes:holding_weapon/gold_cpike if score @s aolu_cno_block_timer matches ..4 run function aolu_canno_pikes:on_block/parry_success with storage aolu_cno
+execute if predicate aolu_canno_pikes:holding_weapon/iron_cpike if score @s aolu_cno_block_timer matches ..3 run function aolu_canno_pikes:on_block/parry_success with storage aolu_cno
+execute if predicate aolu_canno_pikes:holding_weapon/netherite_cpike if score @s aolu_cno_block_timer matches ..2 run function aolu_canno_pikes:on_block/parry_success with storage aolu_cno
+
 execute if score @s aolu_cno_blocked_damage matches 1.. store result score temp aolu_cno_blocked_damage run attribute @s attack_damage get 15
 
 scoreboard players operation @s[tag=aolu_cno_sneaking] aolu_cno_shield_health += @s aolu_cno_blocked_damage

@@ -25,6 +25,8 @@ scoreboard objectives add aolu_tp_xp2 dummy
 scoreboard objectives add aolu_tp_yp2 dummy
 scoreboard objectives add aolu_tp_zp2 dummy
 
-
+scoreboard objectives add aolu_tb_splash_damage dummy
+scoreboard players add #trident_buffs aolu_tb_splash_damage 0
+execute if score #trident_buffs aolu_tb_splash_damage matches 0 run scoreboard players set #trident_buffs aolu_tb_splash_damage 6
 
 tellraw @a [{"color":"blue","text":"["},{"color":"white","text":"Trident Buffs"},{"color":"blue","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]

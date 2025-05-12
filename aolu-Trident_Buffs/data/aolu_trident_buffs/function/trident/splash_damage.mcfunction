@@ -1,0 +1,1 @@
+$damage @n[tag=!aolu_tb_orb] $(splash_damage) drown by @p[tag=aolu_tb_impact]

@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:totem_of_undying"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["aolu_staffs_n_tomes:weapons/lucent_tome"]
+  }
+}

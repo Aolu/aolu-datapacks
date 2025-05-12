@@ -1,0 +1,78 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [" ga", "dsg", "sd "],
+  "key": {
+    "g": "minecraft:blackstone",
+    "a": "minecraft:magma_cream",
+    "s": "minecraft:blaze_rod",
+    "d": "nether_brick"
+  },
+  "result": {
+    "id": "minecraft:mace",
+    "components": {
+      "minecraft:consumable": {
+        "consume_seconds": 9999,
+        "animation": "spyglass"
+      },
+      "minecraft:custom_data": {
+        "blaze_staff": true
+      },
+      "minecraft:item_name": "Blaze Staff",
+      "minecraft:lore": [
+        "A Fierce, Fiery staff crafted from infernal materials",
+        "",
+        "Basic Spell¬",
+        "Fire off a Small Fireball which explodes when",
+        "hitting a target, igniting all affected",
+        "",
+        "Crouch Spell¬",
+        "up to 5 nearby targets will have a Flame Geyser",
+        "Erupt beneath them, rapidly burning and slowing them",
+        "",
+        "Sprint Spell¬",
+        "Create a Flame Shield around yourself, burning nearby enemies",
+        "Gain Fire Immunity for yourself",
+        "If on Fire: Gain 20% Attack Damage and Attack Speed, 4x Spell Cooldown Speed and Resistance I"
+      ],
+      "minecraft:attribute_modifiers": [
+        {
+          "type": "minecraft:attack_speed",
+          "id": "aolu_snt:magic_wep_spd",
+          "amount": -3,
+          "operation": "add_value",
+          "slot": "mainhand"
+        },
+        {
+          "type": "minecraft:attack_speed",
+          "id": "aolu_snt:magic_wep_spd_mult",
+          "amount": -0.25,
+          "operation": "add_multiplied_total",
+          "slot": "offhand"
+        },
+        {
+          "type": "minecraft:attack_damage",
+          "id": "aolu_snt:magic_wep_dam",
+          "amount": 9,
+          "operation": "add_value",
+          "slot": "mainhand"
+        },
+        {
+          "type": "minecraft:attack_damage",
+          "id": "aolu_snt:magic_wep_dam_mult",
+          "amount": -0.25,
+          "operation": "add_multiplied_total",
+          "slot": "offhand"
+        },
+        {
+          "type": "minecraft:entity_interaction_range",
+          "id": "aolu_snt:magic_wep_mel_range",
+          "amount": -1,
+          "operation": "add_multiplied_total",
+          "slot": "mainhand"
+        }
+      ],
+      "minecraft:item_model": "aolu_snt:blaze_staff"
+    }
+  }
+}

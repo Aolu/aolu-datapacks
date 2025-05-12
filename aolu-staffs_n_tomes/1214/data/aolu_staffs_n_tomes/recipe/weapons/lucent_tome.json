@@ -1,0 +1,80 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [" d ", "sas", "ggg"],
+  "key": {
+    "g": ["minecraft:ghast_tear"],
+    "a": ["minecraft:book"],
+    "s": ["minecraft:gold_ingot"],
+    "d": ["totem_of_undying"]
+  },
+  "result": {
+    "id": "minecraft:mace",
+    "components": {
+      "minecraft:consumable": {
+        "consume_seconds": 9999,
+        "animation": "spyglass"
+      },
+      "minecraft:custom_data": {
+        "lucent_tome": true
+      },
+      "minecraft:item_name": "\"Lucent Tome\"",
+      "minecraft:lore": [
+        "\"A Magical Tome of Light and Life\"",
+        "\"All spells applied to Players will also apply to their Pets\"",
+        "\"\"",
+        "\"Basic Spell¬\"",
+        "\"Release Spirits of light\"",
+        "\"They will seek out players and Heal them\"",
+        "\"\"",
+        "\"Crouch Spell¬\"",
+        "\"Place a Circle of Light at your location\"",
+        "\"It will stay in place and heal and grant Resistance I all Players within it\"",
+        "\"Undead will instead take damage inside the circle\"",
+        "\"\"",
+        "\"Sprint Spell¬\"",
+        "\"Cure Negative Status Effects from Yourself and nearby Players for short duration\"",
+        "\"Negative status effects that are cleansed get converted to their positive counterpart\""
+      ],
+      "minecraft:attribute_modifiers": [
+        {
+          "type": "minecraft:attack_speed",
+          "id": "aolu_snt:magic_wep_spd",
+          "amount": -3,
+          "operation": "add_value",
+          "slot": "mainhand"
+        },
+        {
+          "type": "minecraft:attack_speed",
+          "id": "aolu_snt:magic_wep_spd_mult",
+          "amount": -0.25,
+          "operation": "add_multiplied_total",
+          "slot": "offhand"
+        },
+        {
+          "type": "minecraft:attack_damage",
+          "id": "aolu_snt:magic_wep_dam",
+          "amount": 8,
+          "operation": "add_value",
+          "slot": "mainhand"
+        },
+        {
+          "type": "minecraft:attack_damage",
+          "id": "aolu_snt:magic_wep_dam_mult",
+          "amount": -0.75,
+          "operation": "add_multiplied_total",
+          "slot": "offhand"
+        },
+        {
+          "type": "minecraft:entity_interaction_range",
+          "id": "aolu_snt:magic_wep_mel_range",
+          "amount": -1,
+          "operation": "add_multiplied_total",
+          "slot": "mainhand"
+        }
+      ],
+      "minecraft:item_model": "aolu_snt:lucent_tome",
+      "minecraft:max_stack_size": 1
+    }
+  }
+}

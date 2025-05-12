@@ -1,0 +1,78 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [" ga", "dsg", "sd "],
+  "key": {
+    "g": "minecraft:gold_ingot",
+    "a": "minecraft:amethyst_shard",
+    "s": "minecraft:stick",
+    "d": "string"
+  },
+  "result": {
+    "id": "minecraft:stone_sword",
+    "components": {
+      "minecraft:consumable": {
+        "consume_seconds": 9999,
+        "animation": "spyglass",
+        "sound": "minecraft:block.amethyst_block.chime"
+      },
+      "minecraft:custom_data": {
+        "amethyst_staff": true
+      },
+      "minecraft:item_name": "Amethyst Staff",
+      "minecraft:lore": [
+        "A Simple magic staff which can cast spells",
+        "",
+        "Basic Spell¬",
+        "Fire off an Amethyst Shard which will pierce",
+        "through enemies and shatter upon hitting a block",
+        "",
+        "Crouch Spell¬",
+        "Release an Amplification Shard which will embed into the ground,",
+        "granting all players inside 25% Attack Damage and Attack Speed",
+        "",
+        "Sprint Spell¬",
+        "Raise a line Amethyst Buds from the ground in front of you,",
+        "damaging and slowing enemies as they appear"
+      ],
+      "minecraft:attribute_modifiers": [
+        {
+          "type": "minecraft:attack_speed",
+          "id": "aolu_snt:magic_wep_spd",
+          "amount": -3,
+          "operation": "add_value",
+          "slot": "mainhand"
+        },
+        {
+          "type": "minecraft:attack_speed",
+          "id": "aolu_snt:magic_wep_spd_mult",
+          "amount": -0.25,
+          "operation": "add_multiplied_total",
+          "slot": "offhand"
+        },
+        {
+          "type": "minecraft:attack_damage",
+          "id": "aolu_snt:magic_wep_dam",
+          "amount": 6,
+          "operation": "add_value",
+          "slot": "mainhand"
+        },
+        {
+          "type": "minecraft:attack_damage",
+          "id": "aolu_snt:magic_wep_dam_mult",
+          "amount": -0.25,
+          "operation": "add_multiplied_total",
+          "slot": "offhand"
+        },
+        {
+          "type": "minecraft:entity_interaction_range",
+          "id": "aolu_snt:magic_wep_mel_range",
+          "amount": -1,
+          "operation": "add_multiplied_total",
+          "slot": "mainhand"
+        }
+      ],
+      "minecraft:item_model": "aolu_snt:amethyst_staff"
+    }
+  }
+}

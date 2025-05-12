@@ -1,0 +1,15 @@
+{
+  "pack": {
+    "pack_format": 71,
+    "description": "Common Resources used in my Datapacks",
+    "supported_formats": [61, 71]
+  },
+  "overlays": {
+    "entries": [
+      {
+        "formats": 61,
+        "directory": "1214"
+      }
+    ]
+  }
+}

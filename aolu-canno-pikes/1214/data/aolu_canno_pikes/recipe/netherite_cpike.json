@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": ["ibh", " fb", "s i"],
+  "key": {
+    "s": "minecraft:stick",
+    "i": "minecraft:netherite_ingot",
+    "f": "minecraft:fire_charge",
+    "h": "minecraft:netherite_sword",
+    "b": "minecraft:blackstone_wall"
+  },
+  "result": {
+    "id": "minecraft:shield",
+    "components": {
+      "minecraft:custom_data": {
+        "netherite_cpike": true
+      },
+      "minecraft:max_damage": 3600,
+      "minecraft:item_model": "aolu_cpikes:netherite_cpike",
+      "minecraft:attribute_modifiers": [
+        {
+          "type": "minecraft:attack_damage",
+          "id": "aolu_cno_wpn",
+          "amount": 5,
+          "operation": "add_value",
+          "slot": "mainhand"
+        },
+        {
+          "type": "minecraft:attack_speed",
+          "id": "aolu_cno_wpn",
+          "amount": -2.8,
+          "operation": "add_value",
+          "slot": "mainhand"
+        }
+      ],
+      "minecraft:custom_name": "\"Netherite Canno-Pike\"",
+      "minecraft:lore": [
+        "\"Shield Duration: Long\"",
+        "\"Damage Conversion: Low\"",
+        "\"Shot Multiplier: 0.5x\"",
+        "\"Shot Range: Long\""
+      ]
+    }
+  }
+}

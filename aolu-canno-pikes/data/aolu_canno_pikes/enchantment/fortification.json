@@ -1,0 +1,27 @@
+{
+  "anvil_cost": 8,
+  "description": "Fortification",
+  "max_cost": {
+    "base": 60,
+    "per_level_above_first": 20
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 20
+  },
+  "primary_items": "minecraft:shield",
+  "slots": ["mainhand", "offhand"],
+  "supported_items": "minecraft:shield",
+  "weight": 25,
+  "effects": {
+    "minecraft:tick": [
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "aolu_canno_pikes:enchantment/fortification"
+        }
+      }
+    ]
+  }
+}

@@ -1,4 +1,5 @@
 #give xp
+execute if score @s aolu_psp_minedblock matches 1.. run scoreboard players add @s aolu_psp_miningxp 1
 
 execute if predicate aolu_plr_stat_prog:mining/silk_pickaxe run tag @s add aolu_psp_silktouch
 
@@ -34,8 +35,6 @@ scoreboard players add @s[scores={aolu_psp_mineobsidian=1..}] aolu_psp_miningxp 
 
 
 #rewards
-
-
 execute as @s[tag=!aolu_psp_silktouch,scores={aolu_psp_minecoal1=1..}] at @s run function aolu_plr_stat_prog:mining/rolls/coal
 execute as @s[tag=!aolu_psp_silktouch,scores={aolu_psp_minecoal2=1..}] at @s run function aolu_plr_stat_prog:mining/rolls/coal
 
@@ -88,10 +87,10 @@ scoreboard players remove @s[scores={aolu_psp_minengold=1..}] aolu_psp_minengold
 scoreboard players remove @s[scores={aolu_psp_minedebris=1..}] aolu_psp_minedebris 1
 scoreboard players remove @s[scores={aolu_psp_mineobsidian=1..}] aolu_psp_mineobsidian 1
 
-scoreboard players add @s[scores={aolu_psp_minepw=1..}] aolu_psp_miningxp 1
-scoreboard players add @s[scores={aolu_psp_mineps=1..}] aolu_psp_miningxp 1
-scoreboard players add @s[scores={aolu_psp_minepi=1..}] aolu_psp_miningxp 1
-scoreboard players add @s[scores={aolu_psp_minepd=1..}] aolu_psp_miningxp 1
+#scoreboard players add @s[scores={aolu_psp_minepw=1..}] aolu_psp_miningxp 1
+#scoreboard players add @s[scores={aolu_psp_mineps=1..}] aolu_psp_miningxp 1
+#scoreboard players add @s[scores={aolu_psp_minepi=1..}] aolu_psp_miningxp 1
+#scoreboard players add @s[scores={aolu_psp_minepd=1..}] aolu_psp_miningxp 1
 
 
 execute store result score #temp aolu_psp_minepg run random value 1..2

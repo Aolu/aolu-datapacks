@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "interact_l": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:mace",
+          "components": {
+            "minecraft:custom_data": {
+              "lucent_tome": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "aolu_staffs_n_tomes:using_item/lucent_tome/lucent_tome"
+  }
+}

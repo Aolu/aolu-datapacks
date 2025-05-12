@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:sculk_catalyst"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["aolu_staffs_n_tomes:weapons/shadow_tome"]
+  }
+}

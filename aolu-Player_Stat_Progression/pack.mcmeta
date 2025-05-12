@@ -1,6 +1,15 @@
 {
   "pack": {
-    "pack_format": 48,
-    "description": "RPG Player Stat Progression by Aolu"
+    "pack_format": 71,
+    "description": "RPG Player Stat Progression by Aolu",
+    "supported_formats": [61, 71]
+  },
+  "overlays": {
+    "entries": [
+      {
+        "formats": 61,
+        "directory": "1214"
+      }
+    ]
   }
 }

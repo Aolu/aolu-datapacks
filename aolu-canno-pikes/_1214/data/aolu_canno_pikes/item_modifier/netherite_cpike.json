@@ -21,9 +21,11 @@
     ],
     "minecraft:custom_name": "\"Netherite Canno-Pike\"",
     "minecraft:lore": [
-      "\"Shield Duration: Long\"",
-      "\"Damage Conversion: Low\"",
-      "\"Shot Multiplier: 0.5x\"",
+      "\"Shield Duration: 30 ticks\"",
+      "\"Attack Damage Per Charge: +0.2\"",
+      "\"Attack Speed Per Charge: +0.03\"",
+      "\"Armor Per Charge: +0.5\"",
+      "\"Shot Damage Multiplier: 1.5x\"",
       "\"Shot Range: Long\""
     ]
   }

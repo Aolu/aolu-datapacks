@@ -33,13 +33,7 @@
           "slot": "mainhand"
         }
       ],
-      "minecraft:custom_name": "\"Iron Canno-Pike\"",
-      "minecraft:lore": [
-        "\"Shield Duration: Medium\"",
-        "\"Damage Conversion: Medium\"",
-        "\"Shot Multiplier: 0.75x\"",
-        "\"Shot Range: Medium\""
-      ]
+      "minecraft:custom_name": "\"Iron Canno-Pike\""
     }
   }
 }

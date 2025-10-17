@@ -33,13 +33,7 @@
           "slot": "mainhand"
         }
       ],
-      "minecraft:custom_name": "\"Golden Canno-Pike\"",
-      "minecraft:lore": [
-        "\"Shield Duration: Short\"",
-        "\"Damage Conversion: Very High\"",
-        "\"Shot Multiplier: 1x\"",
-        "\"Shot Range: Short\""
-      ]
+      "minecraft:custom_name": "\"Golden Canno-Pike\""
     }
   }
 }

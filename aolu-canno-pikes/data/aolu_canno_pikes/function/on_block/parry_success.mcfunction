@@ -2,8 +2,6 @@ playsound minecraft:entity.breeze.deflect master @a ~ ~ ~ 1 0.5
 playsound minecraft:entity.breeze.deflect master @a ~ ~ ~ 1 1.5
 playsound minecraft:entity.breeze.deflect master @a ~ ~ ~ 1 1
 
-scoreboard players set @s aolu_cno_buff_value 200
-
 
 $execute at @s on attacker run damage @s $(parry_damage) thorns by @p
 execute positioned ~ ~1 ~ run particle electric_spark ^ ^ ^1.5 0 0 0 1 20 force

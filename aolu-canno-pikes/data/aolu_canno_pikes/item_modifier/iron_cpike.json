@@ -21,9 +21,11 @@
     ],
     "minecraft:custom_name": "Iron Canno-Pike",
     "minecraft:lore": [
-      "Shield Duration: Medium",
-      "Damage Conversion: Medium",
-      "Shot Multiplier: 0.75x",
+      "Shield Duration: 25 ticks",
+      "Attack Damage Per Charge: +0.25",
+      "Attack Speed Per Charge: +0.03",
+      "Armor Per Charge: +0.75",
+      "Shot Damage Multiplier: 2x",
       "Shot Range: Medium"
     ]
   }

@@ -48,14 +48,7 @@
           "slot": "mainhand"
         }
       ],
-      "minecraft:custom_name": "Netherite Canno-Pike",
-      "minecraft:lore": [
-        "Shield Duration: Long",
-        "Damage Conversion: Low",
-        "Shot Multiplier: 0.5x",
-        "Shot Range: Long",
-        "Attack Range: 5"
-      ]
+      "minecraft:custom_name": "Netherite Canno-Pike"
     }
   }
 }

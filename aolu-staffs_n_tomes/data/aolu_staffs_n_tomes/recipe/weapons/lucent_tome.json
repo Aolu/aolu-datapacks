@@ -73,7 +73,7 @@
           "slot": "mainhand"
         }
       ],
-      "minecraft:item_model": "aolu_snt:shadow_tome",
+      "minecraft:item_model": "aolu_snt:lucent_tome",
       "minecraft:max_stack_size": 1
     }
   }

@@ -1,4 +1,5 @@
-data merge entity @s {billboard:"center",default_background:1b,shadow:1b,see_through:1b,brightness:{sky:15,block:15}}
+execute if score #aolu_hb aolu_hb_see_through matches ..1 run data merge entity @s {billboard:"center",default_background:1b,shadow:1b,see_through:1b,brightness:{sky:15,block:15}}
+execute if score #aolu_hb aolu_hb_see_through matches 2.. run data merge entity @s {transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,.2f,0f],scale:[1f,1f,1f]},billboard:"center",default_background:1b,shadow:1b,see_through:0b,brightness:{sky:15,block:15}}
 scoreboard players set @s aolu_hb_lifetime 0
 
 

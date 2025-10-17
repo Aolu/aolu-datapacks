@@ -1,0 +1,30 @@
+{
+  "function": "minecraft:set_components",
+  "components": {
+    "minecraft:max_damage": 2500,
+    "minecraft:item_model": "aolu_cpikes:gold_cpike",
+    "minecraft:attribute_modifiers": [
+      {
+        "type": "minecraft:attack_damage",
+        "id": "aolu_cno_wpn",
+        "amount": 2,
+        "operation": "add_value",
+        "slot": "mainhand"
+      },
+      {
+        "type": "minecraft:attack_speed",
+        "id": "aolu_cno_wpn",
+        "amount": -2.8,
+        "operation": "add_value",
+        "slot": "mainhand"
+      }
+    ],
+    "minecraft:custom_name": "\"Golden Canno-Pike\"",
+    "minecraft:lore": [
+      "\"Shield Duration: Short\"",
+      "\"Damage Conversion: Very High\"",
+      "\"Shot Multiplier: 1x\"",
+      "\"Shot Range: Short\""
+    ]
+  }
+}

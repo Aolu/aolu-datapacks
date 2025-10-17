@@ -20,4 +20,8 @@ execute if score @s aolu_cno_buff_value matches ..-1 run scoreboard players set 
 
 execute if score @s aolu_cno_fortify_delay matches 5.. run scoreboard players set @s aolu_cno_fortify 0
 
+execute if predicate aolu_canno_pikes:holding_weapon/gold_cpike run item modify entity @s weapon.mainhand aolu_canno_pikes:gold_cpike
+execute if predicate aolu_canno_pikes:holding_weapon/iron_cpike run item modify entity @s weapon.mainhand aolu_canno_pikes:iron_cpike
+execute if predicate aolu_canno_pikes:holding_weapon/netherite_cpike run item modify entity @s weapon.mainhand aolu_canno_pikes:netherite_cpike
+
 function aolu_canno_pikes:holding_cpike

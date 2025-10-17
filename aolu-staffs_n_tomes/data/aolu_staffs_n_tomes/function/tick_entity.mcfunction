@@ -6,4 +6,10 @@ execute if entity @s[type=item_display,tag=aolu_snt_riding_model] unless predica
 execute if entity @s[type=block_display,tag=aolu_snt_riding_model] unless predicate aolu_staffs_n_tomes:riding run kill @s
 
 execute at @s on owner run scoreboard players add @n aolu_snt_pid 0
+execute at @s on origin run scoreboard players add @n aolu_snt_pid 0
 execute at @s if score @s aolu_snt_pid matches 0 at @s on owner run scoreboard players operation @n aolu_snt_pid = @s aolu_snt_pid
+execute at @s if score @s aolu_snt_pid matches 0 at @s on origin run scoreboard players operation @n aolu_snt_pid = @s aolu_snt_pid
+
+execute if entity @s[tag=aolu_snt_spell_explosion] on vehicle run scoreboard players operation @n[tag=aolu_snt_spell_explosion] aolu_snt_pid = @s aolu_snt_pid
+
+execute if entity @s[tag=aolu_snt_spell_explosion] unless predicate aolu_staffs_n_tomes:riding run function aolu_staffs_n_tomes:spells/spell_explosion_tick

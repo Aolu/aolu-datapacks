@@ -1,4 +1,4 @@
-execute if score @s aolu_cno_cs_timer matches 1.. run attribute @s attack_damage modifier add aolu_cno_counter_strike .4 add_multiplied_total
+execute if score @s aolu_cno_cs_timer matches 1.. run attribute @s attack_damage modifier add aolu_cno_counter_strike .5 add_multiplied_total
 execute if score @s aolu_cno_cs_timer matches 1.. run attribute @s attack_speed modifier add aolu_cno_counter_strike .5 add_multiplied_total
 
 scoreboard players remove @s aolu_cno_cs_timer 1

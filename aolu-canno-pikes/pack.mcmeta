@@ -2,7 +2,9 @@
   "pack": {
     "pack_format": 71,
     "description": "Custom Polearm/Shield hybrid weapons!",
-    "supported_formats": [61, 999]
+    "supported_formats": [61, 999],
+    "min_format": 61,
+    "max_format": 999
   },
   "overlays": {
     "entries": [

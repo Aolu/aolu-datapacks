@@ -9,7 +9,7 @@
           "source_entity": {
             "equipment": {
               "mainhand": {
-                "items": "#minecraft:enchantable/sharp_weapon"
+                "items": "#minecraft:enchantable/melee_weapon"
               }
             }
           }

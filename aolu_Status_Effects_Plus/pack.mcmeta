@@ -1,8 +1,7 @@
 {
   "pack": {
     "pack_format": 61,
-    "description": "Adds new status effects whilst also tweaking existing ones",
-    "supported_formats": [61, 999]
+    "description": "Adds new status effects whilst also tweaking existing ones"
   },
   "overlays": {
     "entries": [

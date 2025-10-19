@@ -1,7 +1,9 @@
 #if damage was blocked
 
 # convert damage blocked into charges
-execute store result storage aolu_cno block_to_charge int 0.05 run scoreboard players get @s aolu_cno_blocked_damage
+execute if predicate aolu_canno_pikes:holding_weapon/gold_cpike store result storage aolu_cno block_to_charge int 0.1 run scoreboard players get @s aolu_cno_blocked_damage
+execute if predicate aolu_canno_pikes:holding_weapon/iron_cpike store result storage aolu_cno block_to_charge int 0.075 run scoreboard players get @s aolu_cno_blocked_damage
+execute if predicate aolu_canno_pikes:holding_weapon/netherite_cpike store result storage aolu_cno block_to_charge int 0.05 run scoreboard players get @s aolu_cno_blocked_damage
 execute store result score .dummy aolu_cno_charge run data get storage aolu_cno block_to_charge
 scoreboard players operation @s aolu_cno_charge += .dummy aolu_cno_charge
 

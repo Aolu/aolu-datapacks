@@ -7,3 +7,4 @@ execute if score @s aolu_cno_cs_timer matches 0 run attribute @s attack_damage m
 execute if score @s aolu_cno_cs_timer matches 0 run attribute @s attack_speed modifier remove aolu_cno_counter_strike
 
 execute if score @s aolu_cno_cs_timer matches 0 run playsound entity.breeze.hurt player @a ~ ~ ~ 1 .5
+

@@ -1,4 +1,6 @@
 scoreboard players add @s aolu_cno_block_timer 1
+execute if score @s[tag=aolu_cno_sneaking] aolu_cno_charge matches 10.. if score @s aolu_cno_cs_timer matches 1.. run scoreboard players add @s aolu_cno_block_timer 1
+
 advancement revoke @s only aolu_canno_pikes:blocking_iron
 
 execute if score @s aolu_cno_charge matches 10.. if entity @s[tag=aolu_cno_sneaking] positioned ~ ~1 ~ run particle flame ^ ^ ^1 0 0 0 0 1

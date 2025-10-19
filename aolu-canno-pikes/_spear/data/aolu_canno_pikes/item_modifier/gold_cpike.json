@@ -5,7 +5,7 @@
     "minecraft:piercing_weapon": {
       "min_reach": 0,
       "max_reach": 3.5,
-      "hitbox_margin": 0.3,
+      "hitbox_margin": 0.4,
       "deals_knockback": true,
       "dismounts": false,
       "sound": "minecraft:item.spear.attack",
@@ -17,7 +17,7 @@
     },
     "minecraft:swing_animation": {
       "type": "stab",
-      "duration": 14
+      "duration": 12
     },
     "minecraft:minimum_attack_charge": 1,
     "minecraft:max_damage": 2500,

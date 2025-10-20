@@ -3,7 +3,7 @@
   "components": {
     "minecraft:damage_type": "spear",
     "minecraft:piercing_weapon": {
-      "min_reach": 0,
+      "min_reach": 1,
       "max_reach": 3.5,
       "hitbox_margin": 0.4,
       "deals_knockback": true,
@@ -33,7 +33,7 @@
       {
         "type": "minecraft:attack_speed",
         "id": "aolu_cno_wpn",
-        "amount": -2.8,
+        "amount": -2.9,
         "operation": "add_value",
         "slot": "mainhand"
       }

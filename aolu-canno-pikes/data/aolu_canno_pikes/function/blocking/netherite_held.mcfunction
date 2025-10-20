@@ -14,7 +14,7 @@ scoreboard players set @s aolu_cno_stopped_blocking 0
 execute if score @s aolu_cno_blocked_damage matches 1.. run function aolu_canno_pikes:on_block/damage_blocked
 
 
-execute if score @s aolu_cno_block_timer matches 30.. run function aolu_canno_pikes:on_block/parry_failed
+execute if score @s aolu_cno_block_timer matches 30.. run function aolu_canno_pikes:on_block/shield_expire
 
 function aolu_canno_pikes:title/netherite
 execute if entity @s[tag=aolu_cno_sneaking] run function aolu_canno_pikes:title/shot_storage

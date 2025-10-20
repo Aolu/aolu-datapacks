@@ -6,6 +6,7 @@ execute if predicate aolu_canno_pikes:holding_weapon/iron_cpike store result sco
 execute if predicate aolu_canno_pikes:holding_weapon/gold_cpike store result score @s aolu_cno_charge run attribute @s attack_damage get 30
 
 execute store result storage aolu_cno stored_damage float 0.1 run scoreboard players get @s aolu_cno_charge
+execute store result storage aolu_cno stored_damage_half float 0.5 run data get storage aolu_cno stored_damage
 scoreboard players set @s aolu_cno_charge 5
 
 # spawn the 'projectiles' in a line in the direction the player is facing

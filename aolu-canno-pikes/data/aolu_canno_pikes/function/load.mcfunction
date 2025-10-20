@@ -13,6 +13,7 @@ scoreboard objectives add aolu_cno_fortify_delay minecraft.custom:minecraft.time
 scoreboard objectives add aolu_cno_charge dummy
 scoreboard objectives add aolu_cno_charge_delay minecraft.custom:minecraft.time_since_death
 scoreboard objectives add aolu_cno_cs_timer dummy
+scoreboard objectives add aolu_cno_singed_timer dummy
 
 tellraw @a [{"color":"#e36b47","text":"["},{"color":"white","text":"Canno-Pikes"},{"color":"#e36b47","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
 

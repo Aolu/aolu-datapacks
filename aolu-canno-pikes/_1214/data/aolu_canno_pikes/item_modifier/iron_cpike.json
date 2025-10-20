@@ -14,7 +14,7 @@
       {
         "type": "minecraft:attack_speed",
         "id": "aolu_cno_wpn",
-        "amount": -3,
+        "amount": -3.1,
         "operation": "add_value",
         "slot": "mainhand"
       }

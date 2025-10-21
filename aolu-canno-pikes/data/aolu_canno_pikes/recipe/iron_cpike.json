@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
-  "pattern": ["ibh", " fb", "s i"],
+  "pattern": ["ifh", " bf", "s i"],
   "key": {
     "s": "minecraft:stick",
     "i": "minecraft:iron_ingot",
     "f": "minecraft:fire_charge",
     "h": "minecraft:iron_sword",
-    "b": "minecraft:blackstone_wall"
+    "b": "minecraft:shield"
   },
   "result": {
     "id": "minecraft:shield",

@@ -22,7 +22,7 @@ execute if score @s aolu_cno_blocked_damage matches 1.. store result score temp 
 scoreboard players operation @s[tag=aolu_cno_sneaking] aolu_cno_shield_health += @s aolu_cno_blocked_damage
 
 # push back the attacker when an attack is blocked
-execute at @s on attacker run damage @s[distance=..4] 0.01 wind_charge by @p
+execute at @s on attacker run damage @s[distance=..4] 0.01 sonic_boom by @p
 
 # blocking if shield health surpasses the stored damage when firing, the shot will fail
 execute if score @s aolu_cno_charge matches 10.. if entity @s[tag=aolu_cno_sneaking] if score @s aolu_cno_shield_health > temp aolu_cno_blocked_damage run function aolu_canno_pikes:on_block/shot_fail

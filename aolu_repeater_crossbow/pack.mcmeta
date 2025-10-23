@@ -1,7 +1,6 @@
 {
-  "pack": {
-    "description": "Rapid-Fire Crossbow!",
-    "min_format": 91,
-    "max_format": 91
-  }
+	"pack":{
+		"pack_format": 91,
+		"description": "aolu_repeater_crossbow Made with MC-Build!"
+	}
 }

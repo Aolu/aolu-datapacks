@@ -1,0 +1,150 @@
+function load minecraft:load{
+    scoreboard objectives add mcb.internal dummy
+
+    scoreboard objectives add aolu_rc_magazine dummy
+    scoreboard objectives add aolu_rc_power_shot_cooldown minecraft.custom:time_since_death
+    scoreboard objectives add aolu_rc_used_crossbow minecraft.used:crossbow
+
+    tellraw @a [{"color":"#e36b47","text":"["},{"color":"white","text":"Repeater Crossbow"},{"color":"#e36b47","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
+
+}
+
+function tick {
+    execute as @a at @s run function tick_player
+}
+
+function tick_player {
+    execute if predicate aolu_repeater_crossbow:holding_repeater_crossbow run function aolu_repeater_crossbow:holding_repeater
+    execute unless predicate aolu_repeater_crossbow:holding_repeater_crossbow if predicate aolu_repeater_crossbow:holding_repeater_crossbow_offhand run function aolu_repeater_crossbow:holding_repeater
+}
+
+function holding_repeater {
+    scoreboard players add @s aolu_rc_magazine 0
+
+    execute if score @s aolu_rc_magazine matches ..0
+    execute if score @s aolu_rc_used_crossbow matches 1.. run function aolu_repeater_crossbow:repeater_function/shot
+    execute if score @s aolu_rc_power_shot_cooldown matches 7 run playsound minecraft:entity.breeze.deflect master @a ~ ~ ~ 1 1
+
+    execute if score @s aolu_rc_magazine matches ..4 if score @s aolu_rc_power_shot_cooldown matches 80 run {
+        playsound minecraft:ui.button.click master @a ~ ~ ~ 1 0.8
+        playsound item.crossbow.loading_end master @a ~ ~ ~ 1 1.5
+        scoreboard players set @s aolu_rc_magazine 5
+    }
+
+
+}
+
+dir repeater_function {
+    function shot {
+        execute if score @s aolu_rc_magazine matches 5 run {
+            playsound item.armor.equip_chain master @a ~ ~ ~ 1 1
+            playsound item.crossbow.shoot master @a ~ ~ ~ 1 2
+        }
+
+        execute if score @s aolu_rc_magazine matches 4 run {
+        playsound item.armor.equip_chain master @a ~ ~ ~ 1 .9
+        playsound item.crossbow.shoot master @a ~ ~ ~ 1 1.8
+        }
+
+        execute if score @s aolu_rc_magazine matches 3 run {
+            playsound item.armor.equip_chain master @a ~ ~ ~ 1 .8
+            playsound item.crossbow.shoot master @a ~ ~ ~ 1 1.6
+        }
+        execute if score @s aolu_rc_magazine matches 2 run {
+            playsound item.armor.equip_chain master @a ~ ~ ~ 1 .7
+            playsound item.crossbow.shoot master @a ~ ~ ~ 1 1.4
+        }
+
+        execute if predicate aolu_repeater_crossbow:has_arrows if score @s aolu_rc_magazine matches 2.. run {
+            scoreboard players remove @s aolu_rc_magazine 1
+            execute if predicate aolu_repeater_crossbow:holding_repeater_crossbow run item modify entity @s weapon.mainhand aolu_repeater_crossbow:auto_reload
+            execute if predicate aolu_repeater_crossbow:holding_repeater_crossbow_offhand run item modify entity @s weapon.offhand aolu_repeater_crossbow:auto_reload
+            clear @s arrow 1
+        } else execute if score @s aolu_rc_magazine matches 1 run {
+            playsound item.armor.equip_chain master @a ~ ~ ~ 1 .6
+            playsound item.crossbow.shoot master @a ~ ~ ~ 1 1.2
+            scoreboard players set @s aolu_rc_magazine 0
+        }
+
+
+        execute unless predicate aolu_repeater_crossbow:has_arrows run scoreboard players set @s aolu_rc_magazine 0
+
+        execute if score @s aolu_rc_magazine matches 0 run scoreboard players set @s aolu_rc_magazine 5
+
+        execute if score @s aolu_rc_power_shot_cooldown matches 8.. run function aolu_repeater_crossbow:repeater_function/power_shot
+
+
+        execute as @e[type=#minecraft:arrows] run function aolu_common_resources:set_uuid_from_owner
+        function aolu_common_resources:set_uuid
+
+        execute if score @s aolu_rc_power_shot_cooldown matches ..7 as @e[type=#minecraft:arrows,tag=!aolu_rc_buffed] if score @s aolu_cr_uuid_0 = @p aolu_cr_uuid_0 if score @s aolu_cr_uuid_1 = @p aolu_cr_uuid_1 if score @s aolu_cr_uuid_2 = @p aolu_cr_uuid_2 if score @s aolu_cr_uuid_3 = @p aolu_cr_uuid_3 run function aolu_repeater_crossbow:repeater_function/modify_arrows_basic
+        execute if score @s aolu_rc_power_shot_cooldown matches 8.. as @e[type=#minecraft:arrows,tag=!aolu_rc_buffed] if score @s aolu_cr_uuid_0 = @p aolu_cr_uuid_0 if score @s aolu_cr_uuid_1 = @p aolu_cr_uuid_1 if score @s aolu_cr_uuid_2 = @p aolu_cr_uuid_2 if score @s aolu_cr_uuid_3 = @p aolu_cr_uuid_3 run function aolu_repeater_crossbow:repeater_function/modify_arrows_power
+        
+        
+        scoreboard players set @s aolu_rc_used_crossbow 0
+        scoreboard players set @s aolu_rc_power_shot_cooldown 0
+
+    }
+
+    function modify_arrows_basic{
+        REPEAT (0,2) as m {
+            execute store result entity @s Motion[<%m%>] double 0.01 run data get entity @s Motion[<%m%>] 50
+        }
+
+
+        execute store result entity @s damage double 0.01 run data get entity @s damage 80
+        tag @s add aolu_rc_buffed
+    }
+
+    function modify_arrows_power {
+        REPEAT (0,2) as m {
+            execute store result entity @s Motion[<%m%>] double 0.01 run data get entity @s Motion[<%m%>] 75
+        }
+
+        playsound minecraft:entity.breeze.shoot master @a ~ ~ ~ 1 1
+        execute store result entity @s damage double 0.01 run data get entity @s damage 110
+        tag @s add aolu_rc_buffed
+
+    }
+}
+
+predicate has_arrows {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "type": "minecraft:player",
+    "slots": { "inventory.*": { "items": "minecraft:arrow" } }
+  }
+}
+
+predicate holding_repeater_crossbow_offhand {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "equipment": {
+      "offhand": {
+        "items": "minecraft:crossbow"
+      }
+    }
+  }
+}
+
+predicate holding_repeater_crossbow {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "equipment": {
+      "mainhand": {
+        "items": "minecraft:crossbow"
+      }
+    }
+  }
+}
+
+item_modifier auto_reload {
+  "function": "minecraft:set_components",
+  "components": {
+    "minecraft:charged_projectiles": [{ "id": "minecraft:arrow" }]
+  },
+  "conditions": []
+}

@@ -7,7 +7,7 @@
       {
         "type": "minecraft:attack_damage",
         "id": "aolu_cno_wpn",
-        "amount": 2,
+        "amount": 3,
         "operation": "add_value",
         "slot": "mainhand"
       },

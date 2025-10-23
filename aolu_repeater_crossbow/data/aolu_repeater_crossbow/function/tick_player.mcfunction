@@ -1,0 +1,2 @@
+execute if predicate aolu_repeater_crossbow:holding_repeater_crossbow run function aolu_repeater_crossbow:holding_repeater
+execute unless predicate aolu_repeater_crossbow:holding_repeater_crossbow if predicate aolu_repeater_crossbow:holding_repeater_crossbow_offhand run function aolu_repeater_crossbow:holding_repeater

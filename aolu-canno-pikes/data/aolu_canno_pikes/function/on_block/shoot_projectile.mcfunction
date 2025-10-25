@@ -11,7 +11,7 @@ execute if predicate aolu_canno_pikes:holding_weapon/gold_cpike run particle exp
 execute if predicate aolu_canno_pikes:holding_weapon/gold_cpike run particle firework ~ ~ ~ 0.3 0.3 0.3 0.05 10
 execute if predicate aolu_canno_pikes:holding_weapon/gold_cpike run particle end_rod ~ ~ ~ 0.3 0.3 0.3 0.05 5
 
-execute positioned ~-.8 ~-.8 ~-.8 as @e[tag=!aolu_cno_shoot,dx=.8,dy=.8,dz=.8] run tag @s add aolu_cno_parry_target
+execute positioned ~-1.5 ~-1.5 ~-1.5 as @e[tag=!aolu_cno_shoot,dx=2,dy=2,dz=2] run tag @s add aolu_cno_parry_target
 
 execute as @e at @s on owner if entity @s[tag=aolu_cno_shoot] run tag @n[distance=..0.1] remove aolu_cno_parry_target
 

@@ -1,1 +1,1 @@
-{"condition": "minecraft:entity_properties","entity": "this","predicate":{"equipment":{"mainhand":{"items": "minecraft:crossbow"}}}}
+{"condition": "minecraft:entity_properties","entity": "this","predicate":{"equipment":{"mainhand":{"items": "minecraft:crossbow","components":{"minecraft:custom_data":{"repeater_crossbow": true}}}}}}

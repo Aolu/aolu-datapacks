@@ -1,6 +1,6 @@
 {
-	"pack":{
-		"pack_format": 91,
-		"description": "aolu_repeater_crossbow Made with MC-Build!"
-	}
+  "pack": {
+    "pack_format": 62,
+    "description": "New Ranged Weapon!"
+  }
 }

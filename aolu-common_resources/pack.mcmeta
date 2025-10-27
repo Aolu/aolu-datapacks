@@ -1,6 +1,15 @@
 {
-	"pack":{
-		"pack_format": 91,
-		"description": "Common Resources used in my Datapacks"
-	}
+  "pack": {
+    "min_format": 82,
+    "max_format": 999,
+    "description": "Common Resources used in my Datapacks"
+  },
+  "overlays": {
+    "entries": [
+      {
+        "formats": 61,
+        "directory": "1214"
+      }
+    ]
+  }
 }

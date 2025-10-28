@@ -1,1 +1,1 @@
-title @s actionbar [{"bold":true,"color":"gold","text":"["},{"color":"dark_red","score":{"name":"@s","objective":"aolu_cno_shot_storage"}},{"color":"dark_gray","text":"%"},{"color":"gold","text":"]"}]
+#title @s actionbar [{"bold":true,"color":"gold","text":"["},{"color":"dark_red","score":{"name":"@s","objective":"aolu_cno_shot_storage"}},{"color":"dark_gray","text":"%"},{"color":"gold","text":"]"}]

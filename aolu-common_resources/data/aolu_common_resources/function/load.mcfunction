@@ -1,6 +1,8 @@
-scoreboard objectives remove aolu_snt_pid
+# Generated with MC-Build
 
-scoreboard objectives add aolu_snt_pid dummy
-scoreboard players set #aolu_snt_pid aolu_snt_pid 0
-
+scoreboard objectives add mcb.internal dummy
+scoreboard objectives remove cr.uuid_sum
+scoreboard objectives remove cr.owner_uuid_sum
+scoreboard objectives add cr.uuid_sum dummy
+scoreboard objectives add cr.owner_uuid_sum dummy
 tellraw @a [{"color":"dark_purple","text":"["},{"color":"white","text":"Common Resources"},{"color":"dark_purple","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]

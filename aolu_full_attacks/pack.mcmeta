@@ -1,0 +1,7 @@
+{
+  "pack": {
+    "description": "Fully charged attacks only!",
+    "min_format": 89,
+    "max_format": 999
+  }
+}

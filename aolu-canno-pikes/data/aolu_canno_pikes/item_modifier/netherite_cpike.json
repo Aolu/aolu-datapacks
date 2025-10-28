@@ -1,0 +1,32 @@
+{
+  "function": "minecraft:set_components",
+  "components": {
+    "minecraft:max_damage": 4000,
+    "minecraft:item_model": "aolu_cpikes:netherite_cpike",
+    "minecraft:attribute_modifiers": [
+      {
+        "type": "minecraft:attack_damage",
+        "id": "aolu_cno_wpn",
+        "amount": 6,
+        "operation": "add_value",
+        "slot": "mainhand"
+      },
+      {
+        "type": "minecraft:attack_speed",
+        "id": "aolu_cno_wpn",
+        "amount": -3.3,
+        "operation": "add_value",
+        "slot": "mainhand"
+      }
+    ],
+    "minecraft:custom_name": "Netherite Canno-Pike",
+    "minecraft:lore": [
+      "Shield Duration: 30 ticks",
+      "Attack Damage Per Charge: +0.2",
+      "Attack Speed Per Charge: +0.03",
+      "Armor Per Charge: +0.5",
+      "Shot Damage Multiplier: 1.5x",
+      "Shot Range: Long"
+    ]
+  }
+}

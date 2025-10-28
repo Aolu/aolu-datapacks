@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/crossbow",
+  "textures": {
+    "layer0": "aolu_rc:item/repeater_crossbow_arrow"
+  }
+}

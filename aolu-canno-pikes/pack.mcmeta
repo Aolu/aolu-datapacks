@@ -1,14 +1,22 @@
 {
   "pack": {
     "pack_format": 71,
-    "description": "Common Resources used in my Datapacks",
-    "supported_formats": [61, 71]
+    "description": "Custom Polearm/Shield hybrid weapons!",
+    "supported_formats": [61, 999],
+    "min_format": 61,
+    "max_format": 999
   },
   "overlays": {
     "entries": [
       {
         "formats": 61,
-        "directory": "1214"
+        "directory": "_1214"
+      },
+      {
+        "min_format": 89,
+        "max_format": 999,
+        "formats": [89, 999],
+        "directory": "_spear"
       }
     ]
   }

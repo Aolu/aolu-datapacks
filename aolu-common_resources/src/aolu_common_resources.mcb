@@ -1,0 +1,67 @@
+function load minecraft:load{
+    scoreboard objectives add mcb.internal dummy
+
+    scoreboard objectives remove cr.uuid_sum
+    scoreboard objectives remove cr.owner_uuid_sum
+
+
+    scoreboard objectives add cr.uuid_sum dummy
+    scoreboard objectives add cr.owner_uuid_sum dummy
+
+    tellraw @a [{"color":"dark_purple","text":"["},{"color":"white","text":"Common Resources"},{"color":"dark_purple","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
+}
+
+function tick minecraft:tick {
+    execute as @a at @s run function aolu_common_resources:tick_player
+    execute as @e at @s run function aolu_common_resources:tick_entity
+}
+
+function tick_entity {
+    execute on owner as @n run {
+        scoreboard players add @s cr.owner_uuid_sum 0
+        execute if score @s cr.owner_uuid_sum matches 0 run function aolu_common_resources:set_uuid
+    }
+    execute if entity @s[tag=cr.matched_player] run tag @s remove cr.matched_player
+    execute if entity @s[tag=cr.matched_entity] run tag @s remove cr.matched_entity
+}
+
+function tick_player {
+    scoreboard players add @s cr.uuid_sum 0
+    execute if score @s cr.uuid_sum matches 0 run function aolu_common_resources:set_uuid
+}
+
+function match_uuid_from_owner {
+    # call this from a player's position as the entity you wish to get the owner from
+    function aolu_common_resources:set_uuid
+    execute as @p run function aolu_common_resources:set_uuid
+
+    execute if score @s cr.owner_uuid_sum = @p cr.uuid_sum run {
+    tag @p add cr.matched_player
+    tag @s add cr.matched_entity
+    }
+}
+
+function set_uuid {
+    scoreboard players set @s cr.owner_uuid_sum 0
+
+    execute store result score #temp cr.owner_uuid_sum run data get entity @s Owner[0]
+    scoreboard players operation @s cr.owner_uuid_sum += #temp cr.owner_uuid_sum
+    execute store result score #temp cr.owner_uuid_sum run data get entity @s Owner[1]
+    scoreboard players operation @s cr.owner_uuid_sum += #temp cr.owner_uuid_sum
+    execute store result score #temp cr.owner_uuid_sum run data get entity @s Owner[2]
+    scoreboard players operation @s cr.owner_uuid_sum += #temp cr.owner_uuid_sum
+    execute store result score #temp cr.owner_uuid_sum run data get entity @s Owner[3]
+    scoreboard players operation @s cr.owner_uuid_sum += #temp cr.owner_uuid_sum
+    
+    
+    scoreboard players set @s cr.uuid_sum 0
+
+    execute store result score #temp cr.uuid_sum run data get entity @s UUID[0]
+    scoreboard players operation @s cr.uuid_sum += #temp cr.uuid_sum
+    execute store result score #temp cr.uuid_sum run data get entity @s UUID[1]
+    scoreboard players operation @s cr.uuid_sum += #temp cr.uuid_sum
+    execute store result score #temp cr.uuid_sum run data get entity @s UUID[2]
+    scoreboard players operation @s cr.uuid_sum += #temp cr.uuid_sum
+    execute store result score #temp cr.uuid_sum run data get entity @s UUID[3]
+    scoreboard players operation @s cr.uuid_sum += #temp cr.uuid_sum
+}

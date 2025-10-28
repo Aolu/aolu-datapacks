@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
-  "pattern": ["ibh", " fb", "s i"],
+  "pattern": ["ifh", " bf", "s i"],
   "key": {
     "s": "minecraft:stick",
     "i": "minecraft:netherite_ingot",
     "f": "minecraft:fire_charge",
     "h": "minecraft:netherite_sword",
-    "b": "minecraft:blackstone_wall"
+    "b": "minecraft:shield"
   },
   "result": {
     "id": "minecraft:shield",
@@ -33,13 +33,7 @@
           "slot": "mainhand"
         }
       ],
-      "minecraft:custom_name": "Netherite Canno-Pike",
-      "minecraft:lore": [
-        "Shield Duration: Long",
-        "Damage Conversion: Low",
-        "Shot Multiplier: 0.5x",
-        "Shot Range: Long"
-      ]
+      "minecraft:custom_name": "Netherite Canno-Pike"
     }
   }
 }

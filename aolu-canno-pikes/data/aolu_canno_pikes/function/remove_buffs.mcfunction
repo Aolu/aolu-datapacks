@@ -1,4 +1,3 @@
-attribute @s movement_speed modifier remove aolu_cno_parry
 attribute @s attack_damage modifier remove aolu_cno_parry
 attribute @s attack_speed modifier remove aolu_cno_parry
 attribute @s entity_interaction_range modifier remove aolu_cno_parry

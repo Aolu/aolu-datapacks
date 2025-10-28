@@ -1,0 +1,15 @@
+{
+  "criteria": {
+    "did_damage": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "blocked": false
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "aolu_canno_pikes:dealt_damage"
+  }
+}

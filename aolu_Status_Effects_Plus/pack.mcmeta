@@ -1,6 +1,15 @@
 {
-       "pack": {
-           "pack_format": 61,
-           "description": "Adds new status effects whilst also tweaking existing ones"
-       }
-   }
+  "pack": {
+    "pack_format": 61,
+    "description": "Adds new status effects whilst also tweaking existing ones"
+  },
+  "overlays": {
+    "entries": [
+      {
+        "min_format": 89,
+        "max_format": 999,
+        "directory": "_spear"
+      }
+    ]
+  }
+}

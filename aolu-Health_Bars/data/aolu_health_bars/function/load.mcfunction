@@ -16,4 +16,8 @@ scoreboard objectives add aolu_hb_d dummy
 scoreboard objectives add aolu_hb_i_a dummy
 scoreboard objectives add aolu_hb_d_a dummy
 
+scoreboard objectives add aolu_hb_see_through dummy
+scoreboard players add #aolu_hb aolu_hb_see_through 0
+execute if score #aolu_hb aolu_hb_see_through matches 0 run scoreboard players set #aolu_hb aolu_hb_see_through 1
+
 tellraw @a [{"color":"red","text":"["},{"color":"white","text":"Health Bars"},{"color":"red","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]

@@ -1,0 +1,369 @@
+function load minecraft:load {
+    scoreboard objectives add mcb.internal dummy
+
+    scoreboard objectives add aolu_rc_magazine dummy
+    scoreboard objectives add aolu_rc_power_shot_cooldown minecraft.custom:time_since_death
+    scoreboard objectives add aolu_rc_used_crossbow minecraft.used:crossbow
+    scoreboard players set rc.power_shot_threshold aolu_rc_power_shot_cooldown 8
+
+    tellraw @a [{"color":"#e36b47","text":"["},{"color":"white","text":"Repeater Crossbow"},{"color":"#e36b47","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
+
+}
+
+function tick {
+    execute as @a at @s run function tick_player
+    execute as @e[type=arrow,tag=aolu_rc_burst_arrow] at @s if data entity @s {inGround:1b} run function aolu_repeater_crossbow:enchants/burst/arrow_burst
+    execute as @e[type=marker,tag=rc.mounted] at @s run function aolu_repeater_crossbow:enchants/burst/marker_tick
+    execute as @e[type=armor_stand] at @s run {
+      execute positioned ~-2 ~-2 ~-2 as @e[dx=3,dy=3,dz=3,type=!armor_stand] run playsound entity.experience_orb.pickup master @a ~ ~ ~ .1 .5
+    }
+}
+
+function give_repeater_crossbow {
+  give @s crossbow[custom_data={repeater_crossbow:true},item_model="aolu_rc:repeater_crossbow"] 1
+}
+
+
+
+function tick_player {
+  tag @s[tag=aolu_rc_holding_rc] remove aolu_rc_holding_rc
+    execute if predicate aolu_repeater_crossbow:holding_repeater_crossbow run {
+      function aolu_repeater_crossbow:holding_repeater
+    } else execute if predicate aolu_repeater_crossbow:holding_repeater_crossbow_offhand run {
+      function aolu_repeater_crossbow:holding_repeater
+    }
+    execute if score @s[tag=!aolu_rc_holding_rc] aolu_rc_used_crossbow matches 1.. run scoreboard players set @s aolu_rc_used_crossbow 0
+}
+
+function holding_repeater {
+    tag @s add aolu_rc_holding_rc
+    scoreboard players add @s aolu_rc_magazine 0
+
+    execute if score @s aolu_rc_magazine matches ..0
+    execute if score @s aolu_rc_used_crossbow matches 1.. run function aolu_repeater_crossbow:repeater_function/shot
+    execute if score @s aolu_rc_power_shot_cooldown = rc.power_shot_threshold aolu_rc_power_shot_cooldown run playsound minecraft:entity.breeze.deflect master @a ~ ~ ~ 1 1
+
+    execute if score @s aolu_rc_magazine matches ..4 if score @s aolu_rc_power_shot_cooldown matches 80.. run {
+        playsound minecraft:ui.button.click master @a ~ ~ ~ 1 0.8
+        playsound item.crossbow.loading_end master @a ~ ~ ~ 1 1.5
+        scoreboard players set @s aolu_rc_magazine 5
+    }
+
+  execute if predicate aolu_repeater_crossbow:holding_repeater_crossbow run item modify entity @s weapon.mainhand aolu_repeater_crossbow:make_into_repeater
+  execute if predicate aolu_repeater_crossbow:holding_repeater_crossbow_offhand run item modify entity @s weapon.offhand aolu_repeater_crossbow:make_into_repeater
+  function aolu_repeater_crossbow:title/magazine
+}
+
+dir repeater_function {
+    function shot {
+        execute if score @s aolu_rc_magazine matches 5 run {
+            playsound item.armor.equip_chain master @a ~ ~ ~ 1 1
+            playsound item.crossbow.shoot master @a ~ ~ ~ 1 2
+            playsound entity.breeze.jump master @a ~ ~ ~ 1 1
+        }
+
+        execute if score @s aolu_rc_magazine matches 4 run {
+          playsound item.armor.equip_chain master @a ~ ~ ~ 1 .9
+          playsound item.crossbow.shoot master @a ~ ~ ~ 1 1.8
+          playsound entity.breeze.jump master @a ~ ~ ~ 1 .9
+        }
+
+        execute if score @s aolu_rc_magazine matches 3 run {
+            playsound item.armor.equip_chain master @a ~ ~ ~ 1 .8
+            playsound item.crossbow.shoot master @a ~ ~ ~ 1 1.6
+            playsound entity.breeze.jump master @a ~ ~ ~ 1 .8
+        }
+        execute if score @s aolu_rc_magazine matches 2 run {
+            playsound item.armor.equip_chain master @a ~ ~ ~ 1 .7
+            playsound item.crossbow.shoot master @a ~ ~ ~ 1 1.4
+            playsound entity.breeze.jump master @a ~ ~ ~ 1 .65
+        }
+
+        execute if predicate aolu_repeater_crossbow:has_arrows if score @s aolu_rc_magazine matches 2.. run {
+            scoreboard players remove @s aolu_rc_magazine 1
+            execute if predicate aolu_repeater_crossbow:holding_repeater_crossbow run item modify entity @s weapon.mainhand aolu_repeater_crossbow:auto_reload
+            execute if predicate aolu_repeater_crossbow:holding_repeater_crossbow_offhand run item modify entity @s weapon.offhand aolu_repeater_crossbow:auto_reload
+            clear @s arrow 1
+
+        } else execute if score @s aolu_rc_magazine matches 1 run {
+            playsound item.armor.equip_chain master @a ~ ~ ~ 1 .5
+            playsound item.crossbow.shoot master @a ~ ~ ~ 1 1.2
+            playsound entity.breeze.jump master @a ~ ~ ~ 1 .5
+            scoreboard players set @s aolu_rc_magazine 0
+        }
+
+
+        execute unless predicate aolu_repeater_crossbow:has_arrows run scoreboard players set @s aolu_rc_magazine 0
+
+        execute if score @s aolu_rc_magazine matches 0 run scoreboard players set @s aolu_rc_magazine 5
+
+        execute if score @s aolu_rc_power_shot_cooldown >= rc.power_shot_threshold aolu_rc_power_shot_cooldown run function aolu_repeater_crossbow:repeater_function/power_shot
+
+
+        execute as @e[type=#minecraft:arrows] run function aolu_common_resources:set_uuid
+        function aolu_common_resources:set_uuid
+
+        execute if score @s aolu_rc_power_shot_cooldown < rc.power_shot_threshold aolu_rc_power_shot_cooldown as @e[type=#minecraft:arrows,tag=!aolu_rc_buffed] if score @s cr.owner_uuid_sum = @p cr.uuid_sum run function aolu_repeater_crossbow:repeater_function/modify_arrows_basic
+        execute if score @s aolu_rc_power_shot_cooldown >= rc.power_shot_threshold aolu_rc_power_shot_cooldown as @e[type=#minecraft:arrows,tag=!aolu_rc_buffed] if score @s cr.owner_uuid_sum = @p cr.uuid_sum run function aolu_repeater_crossbow:repeater_function/modify_arrows_power
+        
+        
+        scoreboard players set @s aolu_rc_used_crossbow 0
+        scoreboard players set @s aolu_rc_power_shot_cooldown 0
+
+    }
+
+    function modify_arrows_basic{
+        REPEAT (0,2) as m {
+            execute store result entity @s Motion[<%m%>] double 0.01 run data get entity @s Motion[<%m%>] 50
+        }
+
+
+        execute store result entity @s damage double 0.01 run data get entity @s damage 80
+        tag @s add aolu_rc_buffed
+    }
+
+    function modify_arrows_power {
+        REPEAT (0,2) as m {
+            execute store result entity @s Motion[<%m%>] double 0.01 run data get entity @s Motion[<%m%>] 75
+        }
+
+        playsound minecraft:entity.breeze.shoot master @a ~ ~ ~ 1 1
+        #execute store result entity @s damage double 0.01 run data get entity @s damage 110
+        tag @s add aolu_rc_buffed
+
+    }
+}
+
+dir title {
+  function magazine {
+    execute if score @s aolu_rc_power_shot_cooldown < rc.power_shot_threshold aolu_rc_power_shot_cooldown run {
+      execute if score @s aolu_rc_magazine matches 5 run title @s actionbar [{"bold":true,"color":"gold","text":"["},{"color":"yellow","text":"➹➹➹➹➹"},{"color":"gold","text":"]"}]
+      execute if score @s aolu_rc_magazine matches 4 run title @s actionbar [{"bold":true,"color":"gold","text":"["},{"color":"yellow","text":"➹➹➹➹"},{"color":"gold","text":"]"}]
+      execute if score @s aolu_rc_magazine matches 3 run title @s actionbar [{"bold":true,"color":"gold","text":"["},{"color":"yellow","text":"➹➹➹"},{"color":"gold","text":"]"}]
+      execute if score @s aolu_rc_magazine matches 2 run title @s actionbar [{"bold":true,"color":"gold","text":"["},{"color":"yellow","text":"➹➹"},{"color":"gold","text":"]"}]
+      execute if score @s aolu_rc_magazine matches 1 run title @s actionbar [{"bold":true,"color":"gold","text":"["},{"color":"yellow","text":"➹"},{"color":"gold","text":"]"}]
+    } else execute run {
+      execute if score @s aolu_rc_magazine matches 5 run title @s actionbar [{"bold":true,"color":"dark_aqua","text":"["},{"color":"aqua","text":"➹➹➹➹➹"},{"color":"dark_aqua","text":"]"}]
+      execute if score @s aolu_rc_magazine matches 4 run title @s actionbar [{"bold":true,"color":"dark_aqua","text":"["},{"color":"aqua","text":"➹➹➹➹"},{"color":"dark_aqua","text":"]"}]
+      execute if score @s aolu_rc_magazine matches 3 run title @s actionbar [{"bold":true,"color":"dark_aqua","text":"["},{"color":"aqua","text":"➹➹➹"},{"color":"dark_aqua","text":"]"}]
+      execute if score @s aolu_rc_magazine matches 2 run title @s actionbar [{"bold":true,"color":"dark_aqua","text":"["},{"color":"aqua","text":"➹➹"},{"color":"dark_aqua","text":"]"}]
+      execute if score @s aolu_rc_magazine matches 1 run title @s actionbar [{"bold":true,"color":"dark_aqua","text":"["},{"color":"aqua","text":"➹"},{"color":"dark_aqua","text":"]"}]
+      
+    }
+  }
+}
+
+dir enchants{
+  function velocity{
+    REPEAT (0,2) as m {
+        execute store result entity @s Motion[<%m%>] double 0.01 run data get entity @s Motion[<%m%>] 140
+    }
+  }
+
+  function burst {
+    tag @s add aolu_rc_burst_arrow
+    data modify entity @s pickup set value 0b
+    summon marker ~ 0 ~ {Tags:["rc.burst_marker"]}
+    ride @n[type=marker,tag=rc.burst_marker,tag=!rc.mounted] mount @s
+    execute on passengers run tag @s add rc.mounted
+  }
+
+  dir burst{
+    function arrow_burst{
+      kill @s
+    }
+    function marker_tick{
+      tag @s add rc.burst_explosion
+      particle smoke
+      execute on vehicle on passengers run {
+        tag @s remove rc.burst_explosion
+        execute store result score @s aolu_rc_magazine run data get entity @n[type=arrow,tag=aolu_rc_burst_arrow] damage 10
+      }
+      execute if entity @s[tag=rc.burst_explosion] run function aolu_repeater_crossbow:enchants/burst/marker_burst
+      
+      scoreboard players add @s[tag=rc.burst_explosion] aolu_rc_power_shot_cooldown 1
+    }
+    function marker_burst{
+      particle explosion
+      particle smoke ~ ~ ~ .2 .2 .2 .1 10
+      playsound minecraft:entity.zombie.break_wooden_door master @a ~ ~ ~ 1 2
+      
+      execute store result storage aolu:rc explosion_damage float .3 run scoreboard players get @s aolu_rc_magazine
+
+      block blast_damage{ with storage aolu:rc 
+      $execute positioned ~-1 ~-1 ~-1 as @e[dx=1,dz=1,dy=1] run damage @s $(explosion_damage) explosion by @p
+      }
+
+      
+      kill @s
+    }
+  }
+
+}
+
+predicate has_arrows {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "type": "minecraft:player",
+    "slots": { "inventory.*": { "items": "minecraft:arrow" } }
+  }
+}
+
+predicate holding_repeater_crossbow_offhand {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "equipment": {
+      "offhand": {
+        "items": "minecraft:crossbow",
+        "components": {
+          "minecraft:custom_data": {
+            "repeater_crossbow": true
+          }
+        }
+      }
+    }
+  }
+}
+
+predicate holding_repeater_crossbow {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "equipment": {
+      "mainhand": {
+        "items": "minecraft:crossbow",
+        "components": {
+          "minecraft:custom_data": {
+            "repeater_crossbow": true
+          }
+        }
+      }
+    }
+  }
+}
+
+item_modifier auto_reload {
+  "function": "minecraft:set_components",
+  "components": {
+    "minecraft:charged_projectiles": [{ "id": "minecraft:arrow" }]
+  },
+  "conditions": []
+}
+
+item_modifier make_into_repeater {
+	"function": "minecraft:set_components",
+	"components": {
+		"minecraft:max_damage": 1395,
+    "item_model":"aolu_rc:repeater_crossbow"
+	},
+	"conditions": []
+}
+
+enchantment velocity {
+	"anvil_cost": 4,
+	"description": {
+		"text": "Velocity"
+	},
+	"effects": {
+		"minecraft:projectile_spawned": [
+			{
+				"effect": {
+					"type": "minecraft:run_function",
+					"function": "aolu_repeater_crossbow:enchants/velocity"
+				}
+			}
+		]
+	},
+	"max_cost": {
+		"base": 50,
+		"per_level_above_first": 0
+	},
+	"max_level": 1,
+	"min_cost": {
+		"base": 20,
+		"per_level_above_first": 0
+	},
+	"slots": [
+		"mainhand"
+	],
+	"supported_items": "#minecraft:enchantable/crossbow",
+	"weight": 2
+}
+
+enchantment burst {
+	"anvil_cost": 4,
+	"description": {
+		"text": "Burst"
+	},
+	"effects": {
+		"minecraft:projectile_spawned": [
+			{
+				"effect": {
+					"type": "minecraft:run_function",
+					"function": "aolu_repeater_crossbow:enchants/burst"
+				}
+			}
+		]
+	},
+	"max_cost": {
+		"base": 50,
+		"per_level_above_first": 0
+	},
+	"max_level": 1,
+	"min_cost": {
+		"base": 20,
+		"per_level_above_first": 0
+	},
+	"slots": [
+		"mainhand"
+	],
+	"supported_items": "#minecraft:enchantable/crossbow",
+	"weight": 2
+}
+
+recipe repeater_crossbow {
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"pattern": [
+		"fif",
+		"hbh",
+		" s "
+	],
+	"key": {
+		"s": "minecraft:stick",
+		"i": "minecraft:iron_ingot",
+		"f": "minecraft:copper_ingot",
+		"h": "minecraft:string",
+		"b": "minecraft:repeater"
+	},
+	"result": {
+		"id": "minecraft:crossbow",
+		"components": {
+			"minecraft:custom_data": {
+				"repeater_crossbow": true
+			},
+			"minecraft:item_model": "aolu_rc:repeater_crossbow",
+			"minecraft:custom_name": "Repeater Crossbow"
+		}
+	}
+}
+
+advancement unlock_recipe {
+  "criteria": {
+    "req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:copper_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["aolu_repeater_crossbow:repeater_crossbow"]
+  }
+}

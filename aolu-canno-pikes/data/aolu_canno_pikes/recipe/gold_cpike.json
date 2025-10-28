@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
-  "pattern": ["ibh", " fb", "s i"],
+  "pattern": ["ifh", " bf", "s i"],
   "key": {
     "s": "minecraft:stick",
     "i": "minecraft:gold_ingot",
     "f": "minecraft:fire_charge",
     "h": "minecraft:golden_sword",
-    "b": "minecraft:blackstone_wall"
+    "b": "minecraft:shield"
   },
   "result": {
     "id": "minecraft:shield",
@@ -33,13 +33,7 @@
           "slot": "mainhand"
         }
       ],
-      "minecraft:custom_name": "Golden Canno-Pike",
-      "minecraft:lore": [
-        "Shield Duration: Short",
-        "Damage Conversion: Very High",
-        "Shot Multiplier: 1x",
-        "Shot Range: Short"
-      ]
+      "minecraft:custom_name": "Golden Canno-Pike"
     }
   }
 }

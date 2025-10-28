@@ -1,2 +1,5 @@
-execute at @s on owner run scoreboard players add @n aolu_snt_pid 0
-execute at @s if score @s aolu_snt_pid matches 0 at @s on owner run scoreboard players operation @n aolu_snt_pid = @s aolu_snt_pid
+# Generated with MC-Build
+
+execute on owner as @n run function aolu_common_resources:zzz/0
+execute if entity @s[tag=cr.matched_player] run tag @s remove cr.matched_player
+execute if entity @s[tag=cr.matched_entity] run tag @s remove cr.matched_entity

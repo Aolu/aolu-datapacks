@@ -1,0 +1,52 @@
+{
+  "function": "minecraft:set_components",
+  "components": {
+    "minecraft:damage_type": "spear",
+    "minecraft:piercing_weapon": {
+      "min_reach": 2,
+      "max_reach": 4.5,
+      "hitbox_margin": 0.4,
+      "deals_knockback": true,
+      "dismounts": false,
+      "sound": "minecraft:item.spear.attack",
+      "hit_sound": "minecraft:item.spear.hit"
+    },
+    "use_effects": {
+      "can_sprint": false,
+      "speed_multiplier": 0.5
+    },
+    "minecraft:swing_animation": {
+      "type": "stab",
+      "duration": 16
+    },
+    "minecraft:minimum_attack_charge": 1,
+    "minecraft:max_damage": 4000,
+    "minecraft:item_model": "aolu_cpikes:netherite_cpike",
+    "minecraft:attribute_modifiers": [
+      {
+        "type": "minecraft:attack_damage",
+        "id": "aolu_cno_wpn",
+        "amount": 6,
+        "operation": "add_value",
+        "slot": "mainhand"
+      },
+      {
+        "type": "minecraft:attack_speed",
+        "id": "aolu_cno_wpn",
+        "amount": -3.3,
+        "operation": "add_value",
+        "slot": "mainhand"
+      }
+    ],
+    "minecraft:custom_name": "Netherite Canno-Pike",
+    "minecraft:lore": [
+      "Shield Duration: 30 ticks",
+      "Attack Damage Per Charge: +0.2",
+      "Attack Speed Per Charge: +0.03",
+      "Armor Per Charge: +0.5",
+      "Shot Damage Multiplier: 1.5x",
+      "Shot Range: Long",
+      "Attack Range: 4.5"
+    ]
+  }
+}

@@ -1,0 +1,1 @@
+{"function": "minecraft:set_components","components":{"minecraft:attribute_modifiers": [{"type": "minecraft:armor","id": "gt:arm","amount": 7,"operation": "add_value","slot": "chest"},{"type": "minecraft:armor_toughness","id": "gt:art","amount": 1,"operation": "add_value","slot": "chest"}],"minecraft:max_damage": 384}}

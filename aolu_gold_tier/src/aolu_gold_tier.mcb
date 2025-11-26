@@ -1,0 +1,292 @@
+function on_load minecraft:load {
+    # you can use MC-Build without its internal scoreboard but this will limit the available features
+    scoreboard objectives add mcb.internal dummy
+    tellraw @a [{"color":"#e3bf47","text":"["},{"color":"white","text":"Gold Tier"},{"color":"#e3bf47","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
+    function aolu_gold_tier:gold_check
+    
+}   
+
+
+
+function tick minecraft:tick {
+    execute as @a run function aolu_gold_tier:player
+}
+
+clock gold_check 1s {
+    execute as @e[type=!player] run function aolu_gold_tier:player
+}
+
+function player {
+    tag @s remove holding_gold_tool
+
+    attribute @s minecraft:attack_damage modifier remove gt:atk
+
+    execute if predicate aolu_gold_tier:holding_golden_sword run { 
+        tag @s add holding_gold_tool
+        attribute @s minecraft:attack_damage modifier add gt:atk 2.5 add_value
+        item modify entity @s weapon.mainhand aolu_gold_tier:gold_durability
+    }
+    execute if predicate aolu_gold_tier:holding_golden_axe run {
+        tag @s add holding_gold_tool
+        attribute @s minecraft:attack_damage modifier add gt:atk 2 add_value
+        item modify entity @s weapon.mainhand aolu_gold_tier:gold_durability
+    }
+    execute if predicate aolu_gold_tier:holding_golden_pickaxe run {
+        tag @s add holding_gold_tool
+        attribute @s minecraft:attack_damage modifier add gt:atk 2.5 add_value
+        item modify entity @s weapon.mainhand aolu_gold_tier:gold_durability
+    }
+    execute if predicate aolu_gold_tier:holding_golden_hoe run {
+        tag @s add holding_gold_tool
+        attribute @s minecraft:attack_damage modifier add gt:atk 2.5 add_value
+        item modify entity @s weapon.mainhand aolu_gold_tier:gold_durability
+    }
+    execute if predicate aolu_gold_tier:holding_golden_shovel run {
+        tag @s add holding_gold_tool
+        attribute @s minecraft:attack_damage modifier add gt:atk 2.5 add_value
+        item modify entity @s weapon.mainhand aolu_gold_tier:gold_durability
+    }
+    execute if predicate aolu_gold_tier:holding_golden_spear run {
+        tag @s add holding_gold_tool
+        attribute @s minecraft:attack_damage modifier add gt:atk 2.5 add_value
+        item modify entity @s weapon.mainhand aolu_gold_tier:gold_durability
+    }
+
+    execute if predicate aolu_gold_tier:wearing_gold_helmet run {
+        item modify entity @s armor.head aolu_gold_tier:gold_helmet
+    }
+    execute if predicate aolu_gold_tier:wearing_gold_chestplate run {
+        item modify entity @s armor.chest aolu_gold_tier:gold_chestplate
+    }
+    execute if predicate aolu_gold_tier:wearing_gold_leggings run {
+        item modify entity @s armor.legs aolu_gold_tier:gold_leggings
+    }
+    execute if predicate aolu_gold_tier:wearing_gold_boots run {
+        item modify entity @s armor.feet aolu_gold_tier:gold_boots
+    }
+}
+
+item_modifier gold_durability {
+    "function": "minecraft:set_components",
+    "components": {
+        "minecraft:max_damage": 750
+    }
+}
+
+
+item_modifier gold_helmet {
+    "function": "minecraft:set_components",
+    "components": {
+        "minecraft:attribute_modifiers": [
+            {
+                "type": "minecraft:armor",
+                "id": "gt:arm",
+                "amount": 2.5,
+                "operation": "add_value",
+                "slot": "head"
+            },
+            {
+                "type": "minecraft:armor_toughness",
+                "id": "gt:art",
+                "amount": 1,
+                "operation": "add_value",
+                "slot": "head"
+            }
+        ],
+        "minecraft:max_damage": 264
+    }
+}
+
+
+item_modifier gold_chestplate {
+    "function": "minecraft:set_components",
+    "components": {
+        "minecraft:attribute_modifiers": [
+            {
+                "type": "minecraft:armor",
+                "id": "gt:arm",
+                "amount": 7,
+                "operation": "add_value",
+                "slot": "chest"
+            },
+            {
+                "type": "minecraft:armor_toughness",
+                "id": "gt:art",
+                "amount": 1,
+                "operation": "add_value",
+                "slot": "chest"
+            }
+        ],
+        "minecraft:max_damage": 384
+    }
+}
+
+
+item_modifier gold_leggings {
+    "function": "minecraft:set_components",
+    "components": {
+        "minecraft:attribute_modifiers": [
+            {
+                "type": "minecraft:armor",
+                "id": "gt:arm",
+                "amount": 5.5,
+                "operation": "add_value",
+                "slot": "legs"
+            },
+            {
+                "type": "minecraft:armor_toughness",
+                "id": "gt:art",
+                "amount": 1,
+                "operation": "add_value",
+                "slot": "legs"
+            }
+        ],
+        "minecraft:max_damage": 360
+    }
+}
+
+
+item_modifier gold_boots {
+    "function": "minecraft:set_components",
+    "components": {
+        "minecraft:attribute_modifiers": [
+            {
+                "type": "minecraft:armor",
+                "id": "gt:arm",
+                "amount": 2.5,
+                "operation": "add_value",
+                "slot": "feet"
+            },
+            {
+                "type": "minecraft:armor_toughness",
+                "id": "gt:art",
+                "amount": 1,
+                "operation": "add_value",
+                "slot": "feet"
+            }
+        ],
+        "minecraft:max_damage": 312
+    }
+}
+
+predicate holding_golden_sword {
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "type": "minecraft:player",
+        "equipment": {
+            "mainhand": {
+                "items": "minecraft:golden_sword"
+            }
+        }
+    }
+}
+predicate holding_golden_axe {
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "type": "minecraft:player",
+        "equipment": {
+            "mainhand": {
+                "items": "minecraft:golden_axe"
+            }
+        }
+    }
+}
+predicate holding_golden_shovel {
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "type": "minecraft:player",
+        "equipment": {
+            "mainhand": {
+                "items": "minecraft:golden_shovel"
+            }
+        }
+    }
+}
+predicate holding_golden_pickaxe {
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "type": "minecraft:player",
+        "equipment": {
+            "mainhand": {
+                "items": "minecraft:golden_pickaxe"
+            }
+        }
+    }
+}
+predicate holding_golden_hoe {
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "type": "minecraft:player",
+        "equipment": {
+            "mainhand": {
+                "items": "minecraft:golden_hoe"
+            }
+        }
+    }
+}
+predicate holding_golden_spear {
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "type": "minecraft:player",
+        "equipment": {
+            "mainhand": {
+                "items": "minecraft:golden_spear"
+            }
+        }
+    }
+}
+
+predicate wearing_gold_helmet {
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "type": "minecraft:player",
+        "equipment": {
+            "head": {
+                "items": "minecraft:golden_helmet"
+            }
+        }
+    }
+}
+predicate wearing_gold_chestplate {
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "type": "minecraft:player",
+        "equipment": {
+            "chest": {
+                "items": "minecraft:golden_chestplate"
+            }
+        }
+    }
+}
+predicate wearing_gold_leggings {
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "type": "minecraft:player",
+        "equipment": {
+            "legs": {
+                "items": "minecraft:golden_leggings"
+            }
+        }
+    }
+}
+predicate wearing_gold_boots {
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "type": "minecraft:player",
+        "equipment": {
+            "feet": {
+                "items": "minecraft:golden_boots"
+            }
+        }
+    }
+}

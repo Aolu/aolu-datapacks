@@ -3,7 +3,7 @@
   "components": {
     "minecraft:damage_type": "spear",
     "minecraft:piercing_weapon": {
-      "min_reach": 1.5,
+      "min_reach": 0,
       "max_reach": 4,
       "hitbox_margin": 0.4,
       "deals_knockback": true,

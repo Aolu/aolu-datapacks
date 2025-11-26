@@ -85,7 +85,15 @@ dir repeater_function {
             execute if predicate aolu_repeater_crossbow:holding_repeater_crossbow_offhand run item modify entity @s weapon.offhand aolu_repeater_crossbow:auto_reload
             clear @s arrow 1
 
-        } else execute if score @s aolu_rc_magazine matches 1 run {
+        }
+        else execute if predicate aolu_repeater_crossbow:has_arrows_in_hotbar if score @s aolu_rc_magazine matches 2.. run {
+            scoreboard players remove @s aolu_rc_magazine 1
+            execute if predicate aolu_repeater_crossbow:holding_repeater_crossbow run item modify entity @s weapon.mainhand aolu_repeater_crossbow:auto_reload
+            execute if predicate aolu_repeater_crossbow:holding_repeater_crossbow_offhand run item modify entity @s weapon.offhand aolu_repeater_crossbow:auto_reload
+            clear @s arrow 1
+
+        }
+        else execute if score @s aolu_rc_magazine matches 1 run {
             playsound item.armor.equip_chain master @a ~ ~ ~ 1 .5
             playsound item.crossbow.shoot master @a ~ ~ ~ 1 1.2
             playsound entity.breeze.jump master @a ~ ~ ~ 1 .5
@@ -93,7 +101,9 @@ dir repeater_function {
         }
 
 
-        execute unless predicate aolu_repeater_crossbow:has_arrows run scoreboard players set @s aolu_rc_magazine 0
+        execute unless predicate aolu_repeater_crossbow:has_arrows unless predicate aolu_repeater_crossbow:has_arrows_in_hotbar run {
+          scoreboard players set @s aolu_rc_magazine 0
+        }
 
         execute if score @s aolu_rc_magazine matches 0 run scoreboard players set @s aolu_rc_magazine 5
 
@@ -209,6 +219,16 @@ predicate has_arrows {
     "slots": { "inventory.*": { "items": "minecraft:arrow" } }
   }
 }
+
+predicate has_arrows_in_hotbar {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "type": "minecraft:player",
+    "slots": { "hotbar.*": { "items": "minecraft:arrow" } }
+  }
+}
+
 
 predicate holding_repeater_crossbow_offhand {
   "condition": "minecraft:entity_properties",

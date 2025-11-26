@@ -1,0 +1,75 @@
+function on_load minecraft:load{
+    # you can use MC-Build without its internal scoreboard but this will limit the available features
+    scoreboard objectives add mcb.internal dummy
+    scoreboard objectives add at.xp dummy
+    scoreboard objectives add at.time dummy
+    function aolu_tweaks:second
+}
+
+function tick minecraft:tick {
+    execute as @e at @s run function aolu_tweaks:entity_tick
+    execute store result score difficulty at.xp run difficulty
+    scoreboard players operation difficulty at.xp *= difficulty at.xp
+    
+   
+}
+
+function entity_tick {
+    execute if entity @s[type=experience_orb] run function aolu_tweaks:exp_orb_tick
+}
+
+function entity_second {
+    execute unless predicate aolu_tweaks:offhand_shield run {
+         attribute @s minecraft:armor modifier remove at:armor
+    }
+    execute if predicate aolu_tweaks:offhand_shield run {
+        attribute @s minecraft:armor modifier add at:armor 4 add_value
+    }
+
+    execute if entity @s[type=copper_golem] run {
+        attribute @s minecraft:movement_speed modifier add a_tw .5 add_multiplied_total 
+    }
+}
+
+clock second 1s {
+    execute as @e at @s run function aolu_tweaks:entity_second
+
+    
+    execute store result score time at.time run time query daytime
+
+    execute if score time at.time matches 1.. run difficulty easy
+    execute if score time at.time matches 12000.. run difficulty normal
+    execute if score time at.time matches 15000.. run difficulty hard
+    execute if score time at.time matches 21000.. run difficulty normal
+}
+
+function exp_orb_tick {
+    execute facing entity @p feet run tp @s ^ ^ ^.5
+    particle minecraft:enchanted_hit
+    execute if entity @s[tag=at_exp_double] run particle minecraft:totem_of_undying
+    
+    execute if entity @s[tag=!at_exp_buff] run {
+        tag @s add at_exp_buff
+        execute store result score @s at.xp run random value 0..9
+        execute if score @s at.xp <= difficulty at.xp run {
+            execute store result entity @s Value double 1 run data get entity @s Value 2
+            particle minecraft:enchanted_hit ~ ~ ~ 0 0 0 1 10
+            particle minecraft:totem_of_undying ~ ~ ~ 0 0 0 .1 10
+            playsound minecraft:entity.player.levelup master @a ~ ~ ~ 0.1 2
+            tag @s add at_exp_double
+        }  
+    }
+}
+
+predicate offhand_shield {
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "type": "minecraft:player",
+        "equipment": {
+            "offhand": {
+                "items": "minecraft:shield"
+            }
+        }
+    }
+}

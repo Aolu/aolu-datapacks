@@ -11,4 +11,4 @@ scoreboard objectives add aolu_ds_soul_timer dummy
 
 tellraw @a [{"color":"#88e1ef","text":"["},{"color":"white","text":"Death Soul"},{"color":"#88e1ef","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
 
-gamerule keepInventory true
+gamerule keep_inventory true

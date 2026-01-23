@@ -1,6 +1,15 @@
 {
-       "pack": {
-           "pack_format": 71,
-           "description": "Leave behind a soul when you die, containing your Items and XP"
-       }
-   }
+  "pack": {
+    "pack_format": 61,
+    "description": "Leave behind a soul when you die, containing your Items and XP"
+  },
+  "overlays": {
+    "entries": [
+      {
+        "min_format": 94,
+        "max_format": 999,
+        "directory": "_12111"
+      }
+    ]
+  }
+}

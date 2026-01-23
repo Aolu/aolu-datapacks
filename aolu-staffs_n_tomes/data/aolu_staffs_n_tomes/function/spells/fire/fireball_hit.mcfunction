@@ -15,6 +15,6 @@ playsound entity.blaze.hurt master @a ~ ~ ~ 1 1.5
 playsound entity.zombie_villager.cure master @a ~ ~ ~ 1 1.5
 particle lava ~ ~ ~ 0.1 0.1 0.1 1 50
 particle flame ~ ~ ~ 0 0 0 0.1 50
-particle flash
+#particle flash
 particle explosion
 kill @s

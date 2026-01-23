@@ -3,13 +3,15 @@
   "components": {
     "minecraft:damage_type": "spear",
     "minecraft:piercing_weapon": {
-      "min_reach": 0,
-      "max_reach": 4,
-      "hitbox_margin": 0.4,
       "deals_knockback": true,
       "dismounts": false,
       "sound": "minecraft:item.spear.attack",
       "hit_sound": "minecraft:item.spear.hit"
+    },
+    "minecraft:attack_range": {
+      "min_reach": 0,
+      "max_reach": 4,
+      "hitbox_margin": 0.25
     },
     "use_effects": {
       "can_sprint": false,

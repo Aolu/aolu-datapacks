@@ -80,14 +80,14 @@ item_modifier gold_helmet {
         "minecraft:attribute_modifiers": [
             {
                 "type": "minecraft:armor",
-                "id": "gt:arm",
+                "id": "gt:harm",
                 "amount": 2.5,
                 "operation": "add_value",
                 "slot": "head"
             },
             {
                 "type": "minecraft:armor_toughness",
-                "id": "gt:art",
+                "id": "gt:hart",
                 "amount": 1,
                 "operation": "add_value",
                 "slot": "head"
@@ -104,14 +104,14 @@ item_modifier gold_chestplate {
         "minecraft:attribute_modifiers": [
             {
                 "type": "minecraft:armor",
-                "id": "gt:arm",
+                "id": "gt:carm",
                 "amount": 7,
                 "operation": "add_value",
                 "slot": "chest"
             },
             {
                 "type": "minecraft:armor_toughness",
-                "id": "gt:art",
+                "id": "gt:cart",
                 "amount": 1,
                 "operation": "add_value",
                 "slot": "chest"
@@ -128,14 +128,14 @@ item_modifier gold_leggings {
         "minecraft:attribute_modifiers": [
             {
                 "type": "minecraft:armor",
-                "id": "gt:arm",
+                "id": "gt:larm",
                 "amount": 5.5,
                 "operation": "add_value",
                 "slot": "legs"
             },
             {
                 "type": "minecraft:armor_toughness",
-                "id": "gt:art",
+                "id": "gt:lart",
                 "amount": 1,
                 "operation": "add_value",
                 "slot": "legs"
@@ -152,14 +152,14 @@ item_modifier gold_boots {
         "minecraft:attribute_modifiers": [
             {
                 "type": "minecraft:armor",
-                "id": "gt:arm",
+                "id": "gt:barm",
                 "amount": 2.5,
                 "operation": "add_value",
                 "slot": "feet"
             },
             {
                 "type": "minecraft:armor_toughness",
-                "id": "gt:art",
+                "id": "gt:bart",
                 "amount": 1,
                 "operation": "add_value",
                 "slot": "feet"

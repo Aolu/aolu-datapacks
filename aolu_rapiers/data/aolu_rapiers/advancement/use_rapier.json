@@ -1,0 +1,1 @@
+{"criteria":{"hit":{"trigger": "minecraft:using_item","conditions":{"player":{"equipment":{"mainhand":{"items": "#minecraft:swords","components":{"minecraft:custom_data":{"rapier": true}}}}}}}},"rewards":{"function": "aolu_rapiers:consume_charges"}}

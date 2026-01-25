@@ -1,0 +1,1 @@
+{"criteria":{"req":{"trigger": "minecraft:inventory_changed","conditions":{"items": [{"items": "gold_ingot"}]}}},"rewards":{"recipes": ["aolu_rapiers:golden_rapier"]}}

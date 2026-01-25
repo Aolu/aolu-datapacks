@@ -1,0 +1,1 @@
+{"function": "minecraft:set_components","components":{"minecraft:kinetic_weapon":{"damage_conditions":{"max_duration_ticks": 40,"min_speed": 1,"min_relative_speed": 1},"damage_multiplier": 1,"sound": "minecraft:item.trident.throw","hit_sound": "minecraft:item.trident.hit"},"minecraft:use_effects":{"can_sprint": true,"speed_multiplier": 1,"interact_vibrations": true}}}

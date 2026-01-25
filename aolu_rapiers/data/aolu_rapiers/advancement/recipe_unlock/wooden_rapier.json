@@ -1,0 +1,1 @@
+{"criteria":{"req":{"trigger": "minecraft:inventory_changed","conditions":{"items": [{"items": "#minecraft:planks"}]}}},"rewards":{"recipes": ["aolu_rapiers:wooden_rapier"]}}

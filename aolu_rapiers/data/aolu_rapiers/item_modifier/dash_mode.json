@@ -1,0 +1,1 @@
+{"function": "minecraft:set_components","components":{"minecraft:attack_range":{"min_reach": 0,"max_reach": 1,"hitbox_margin": 1}}}

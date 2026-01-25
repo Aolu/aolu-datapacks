@@ -1,0 +1,1 @@
+{"function": "minecraft:set_components","components":{"minecraft:attribute_modifiers": [{"type": "minecraft:attack_damage","id": "aolu_rp:rapier_attack_damage","amount": 1,"operation": "add_value","slot": "mainhand"},{"type": "minecraft:attack_speed","id": "aolu_rp:rapier_attack_speed","amount": -2,"operation": "add_value","slot": "mainhand"}]}}

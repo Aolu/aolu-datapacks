@@ -1,0 +1,725 @@
+function on_load minecraft:load{
+	# you can use MC-Build without its internal scoreboard but this will limit the available features
+	scoreboard objectives add mcb.internal dummy
+
+    scoreboard objectives add aolu_rp.thrust_charges dummy
+    scoreboard objectives add aolu_rp.thrust_timer minecraft.custom:minecraft.time_since_death
+    scoreboard objectives add aolu_rp.thrust_duration minecraft.custom:minecraft.time_since_death
+
+	tellraw @a [{"color":"#dfecf4","text":"["},{"color":"white","text":"Rapiers"},{"color":"#dfecf4","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
+
+}
+
+function on_tick minecraft:tick {
+    execute as @a at @s run function aolu_rapiers:player_tick
+}
+
+function player_tick {
+    tag @s remove aolu_rp.thrust_mode
+
+    execute if score @s aolu_rp.thrust_duration matches 13.. run {
+        attribute @s minecraft:movement_speed modifier remove aolu_rp:thrust
+        attribute @s minecraft:step_height modifier remove aolu_rp:thrust
+        attribute @s minecraft:knockback_resistance modifier remove aolu_rp:thrust
+        tag @s[tag=aolu_rp.dashing] remove aolu_rp.dashing
+    } else run {
+        tag @s add aolu_rp.dashing
+        particle minecraft:small_gust ~ ~1 ~ .1 .4 .1 0 3 force
+    }
+    execute if score @s aolu_rp.thrust_timer matches 100.. if score @s aolu_rp.thrust_charges matches 1.. run {
+        scoreboard players remove @s aolu_rp.thrust_charges 1
+    }
+    # holding a rapier
+    execute if predicate aolu_rapiers:is_rapier run function aolu_rapiers:holding_rapier
+    execute if entity @s[tag=!aolu_rp.thrust_mode,tag=!aolu_rp.dashing] run {
+        attribute @s minecraft:attack_speed modifier remove aolu_rp:stats_2
+        attribute @s minecraft:attack_damage modifier remove aolu_rp:stats_2
+    }
+
+}
+
+function holding_rapier {
+    execute if predicate aolu_common_resources:pressing_crouch run tag @s add aolu_rp.thrust_mode
+    execute if predicate aolu_common_resources:pressing_sprint run tag @s add aolu_rp.thrust_mode
+    
+    # check rapier type and apply its stats
+    execute if predicate aolu_rapiers:wooden_rapier run item modify entity @s weapon.mainhand aolu_rapiers:wooden_stats
+    execute if predicate aolu_rapiers:golden_rapier run item modify entity @s weapon.mainhand aolu_rapiers:wooden_stats
+    execute if predicate aolu_rapiers:stone_rapier run item modify entity @s weapon.mainhand aolu_rapiers:stone_stats
+    execute if predicate aolu_rapiers:copper_rapier run item modify entity @s weapon.mainhand aolu_rapiers:stone_stats
+    execute if predicate aolu_rapiers:iron_rapier run item modify entity @s weapon.mainhand aolu_rapiers:iron_stats
+    execute if predicate aolu_rapiers:diamond_rapier run item modify entity @s weapon.mainhand aolu_rapiers:diamond_stats
+    execute if predicate aolu_rapiers:netherite_rapier run item modify entity @s weapon.mainhand aolu_rapiers:netherite_stats
+    
+    execute if score @s aolu_rp.thrust_charges matches 1.. run {
+        item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic
+    } else if entity @s[tag=!aolu_rp.dashing] run {
+        item modify entity @s weapon.mainhand aolu_rapiers:remove_kinetic
+    }
+
+    execute if entity @s[tag=aolu_rp.thrust_mode,tag=!aolu_rp.dashing] run {
+        # stab mode
+        item modify entity @s weapon.mainhand aolu_rapiers:thrust_mode
+        attribute @s minecraft:attack_speed modifier add aolu_rp:stats_2 -.5 add_multiplied_total
+        attribute @s minecraft:attack_damage modifier add aolu_rp:stats_2 1 add_value
+    }
+    execute if entity @s[tag=!aolu_rp.dashing] unless predicate aolu_common_resources:pressing_crouch unless predicate aolu_common_resources:pressing_sprint run item modify entity @s weapon.mainhand aolu_rapiers:swing_mode
+    function aolu_rapiers:charges_title
+}
+
+function add_charges {
+    scoreboard players set @s aolu_rp.thrust_timer 0
+    execute if score @s[tag=!aolu_rp.dashing] aolu_rp.thrust_charges matches ..4 run {
+        scoreboard players add @s aolu_rp.thrust_charges 1
+        execute if score @s aolu_rp.thrust_charges matches 6.. run scoreboard players set @s aolu_rp.thrust_charges 5
+        
+        execute if score @s aolu_rp.thrust_charges matches 5 run {
+            playsound minecraft:entity.breeze.hurt master @a ~ ~ ~ 1 2
+            playsound minecraft:entity.breeze.charge master @a ~ ~ ~ 1 1
+            playsound minecraft:entity.breeze.hurt master @a ~ ~ ~ 1 2
+            playsound minecraft:entity.breeze.charge master @a ~ ~ ~ 1 1
+        }
+    }
+    advancement revoke @s only aolu_rapiers:dealt_damage_with_rapier
+}
+
+function consume_charges {
+    advancement revoke @s only aolu_rapiers:use_rapier
+    execute if score @s[tag=!aolu_rp.dashing] aolu_rp.thrust_charges matches 1.. run {
+        # store speed from charges
+        execute store result storage aolu:rp thrust_speed float 0.35 run scoreboard players get @s aolu_rp.thrust_charges
+        function apply_thrust_speed with storage aolu:rp
+        item modify entity @s weapon.mainhand aolu_rapiers:dash_mode
+
+        execute if score @s aolu_rp.thrust_charges matches 5.. run {
+            effect give @s minecraft:speed 1 0
+            effect give @s minecraft:strength 1 0
+        }
+        
+        scoreboard players set @s aolu_rp.thrust_charges 0
+        scoreboard players set @s aolu_rp.thrust_duration 0
+    }
+    
+    
+}
+
+function apply_thrust_speed {
+    $attribute @s minecraft:movement_speed modifier add aolu_rp:thrust $(thrust_speed) add_multiplied_total
+    $playsound minecraft:entity.wind_charge.wind_burst master @a ~ ~ ~ 1 $(thrust_speed)
+    $playsound minecraft:entity.wind_charge.wind_burst master @a ~ ~ ~ 1 $(thrust_speed)
+    $playsound minecraft:entity.wind_charge.wind_burst master @a ~ ~ ~ 1 $(thrust_speed)
+    attribute @s minecraft:step_height modifier add aolu_rp:thrust .5 add_value
+    attribute @s minecraft:knockback_resistance modifier add aolu_rp:thrust 1 add_value
+    effect give @s minecraft:resistance 1 2
+    particle minecraft:gust_emitter_small
+}
+
+function charges_title {
+    execute if score @s aolu_rp.thrust_charges matches 1.. run tag @s add aolu_cno_charges_title
+
+    execute if score @s[tag=aolu_cno_charges_title] aolu_rp.thrust_charges matches 0 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"green","text":""},{"color":"dark_gray","text":"■■■■■"},{"color":"dark_green","text":"]"}]
+
+    execute if score @s aolu_rp.thrust_charges matches 1 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"green","text":"■"},{"color":"dark_gray","text":"■■■■"},{"color":"dark_green","text":"]"}]
+    execute if score @s aolu_rp.thrust_charges matches 2 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"green","text":"■■"},{"color":"dark_gray","text":"■■■"},{"color":"dark_green","text":"]"}]
+    execute if score @s aolu_rp.thrust_charges matches 3 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"green","text":"■■■"},{"color":"dark_gray","text":"■■"},{"color":"dark_green","text":"]"}]
+    execute if score @s aolu_rp.thrust_charges matches 4 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"green","text":"■■■■"},{"color":"dark_gray","text":"■"},{"color":"dark_green","text":"]"}]
+    execute if score @s aolu_rp.thrust_charges matches 5 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"dark_green","text":"■■■■■"},{"color":"dark_gray","text":""},{"color":"dark_green","text":"]"}]
+
+    execute if score @s aolu_rp.thrust_charges matches 0 run tag @s remove aolu_cno_charges_title
+}
+
+recipe wooden_rapier {
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"pattern": [
+		"  i",
+		" i ",
+		"s  "
+	],
+	"key": {
+		"s": "minecraft:stick",
+		"i": "#minecraft:planks"
+	},
+	"result": {
+		"id": "minecraft:wooden_sword",
+		"components": {
+			"minecraft:custom_data": {
+				"rapier": true
+			},
+			"minecraft:item_name": "Wooden Rapier"
+		}
+	}
+}
+
+recipe stone_rapier {
+"type": "minecraft:crafting_shaped",
+"category": "equipment",
+"pattern": [
+	"  i",
+	" i ",
+	"s  "
+],
+"key": {
+	"s": "minecraft:stick",
+	"i": "#minecraft:stone_tool_materials"
+},
+"result": {
+	"id": "minecraft:stone_sword",
+	"components": {
+	"minecraft:custom_data": {
+		"rapier": true
+	},
+	"minecraft:item_name": "Stone Rapier"
+	}
+}
+}
+
+recipe copper_rapier {
+"type": "minecraft:crafting_shaped",
+"category": "equipment",
+"pattern": [
+	"  i",
+	" i ",
+	"s  "
+],
+"key": {
+	"s": "minecraft:stick",
+	"i": "copper_ingot"
+},
+"result": {
+	"id": "minecraft:copper_sword",
+	"components": {
+	"minecraft:custom_data": {
+		"rapier": true
+	},
+	"minecraft:item_name": "Copper Rapier"
+	}
+}
+}
+
+recipe iron_rapier {
+"type": "minecraft:crafting_shaped",
+"category": "equipment",
+"pattern": [
+	"  i",
+	" i ",
+	"s  "
+],
+"key": {
+	"s": "minecraft:stick",
+	"i": "iron_ingot"
+},
+"result": {
+	"id": "minecraft:iron_sword",
+	"components": {
+	"minecraft:custom_data": {
+		"rapier": true
+	},
+	"minecraft:item_name": "Iron Rapier"
+	}
+}
+}
+
+recipe golden_rapier {
+"type": "minecraft:crafting_shaped",
+"category": "equipment",
+"pattern": [
+	"  i",
+	" i ",
+	"s  "
+],
+"key": {
+	"s": "minecraft:stick",
+	"i": "gold_ingot"
+},
+"result": {
+	"id": "minecraft:golden_sword",
+	"components": {
+	"minecraft:custom_data": {
+		"rapier": true
+	},
+	"minecraft:item_name": "Golden Rapier"
+	}
+}
+}
+
+recipe diamond_rapier {
+"type": "minecraft:crafting_shaped",
+"category": "equipment",
+"pattern": [
+	"  i",
+	" i ",
+	"s  "
+],
+"key": {
+	"s": "minecraft:stick",
+	"i": "diamond"
+},
+"result": {
+	"id": "minecraft:diamond_sword",
+	"components": {
+	"minecraft:custom_data": {
+		"rapier": true
+	},
+	"minecraft:item_name": "Diamond Rapier"
+	}
+}
+}
+
+predicate is_rapier {
+"condition": "minecraft:entity_properties",
+"entity": "this",
+"predicate": {
+	"type": "minecraft:player",
+	"equipment": {
+	"mainhand": {
+		"items": "#minecraft:swords",
+		"components": {
+		"minecraft:custom_data": {
+			"rapier": true
+		}
+		}
+	}
+	}
+}
+}
+
+predicate wooden_rapier {
+"condition": "minecraft:entity_properties",
+"entity": "this",
+"predicate": {
+	"type": "minecraft:player",
+	"equipment": {
+	"mainhand": {
+		"items": "wooden_sword"
+	}
+	}
+}
+}
+
+predicate golden_rapier {
+"condition": "minecraft:entity_properties",
+"entity": "this",
+"predicate": {
+	"type": "minecraft:player",
+	"equipment": {
+	"mainhand": {
+		"items": "golden_sword"
+	}
+	}
+}
+}
+
+predicate stone_rapier {
+"condition": "minecraft:entity_properties",
+"entity": "this",
+"predicate": {
+	"type": "minecraft:player",
+	"equipment": {
+	"mainhand": {
+		"items": "stone_sword"
+	}
+	}
+}
+}
+
+predicate copper_rapier {
+"condition": "minecraft:entity_properties",
+"entity": "this",
+"predicate": {
+	"type": "minecraft:player",
+	"equipment": {
+	"mainhand": {
+		"items": "copper_sword"
+	}
+	}
+}
+}
+
+predicate iron_rapier {
+"condition": "minecraft:entity_properties",
+"entity": "this",
+"predicate": {
+	"type": "minecraft:player",
+	"equipment": {
+	"mainhand": {
+		"items": "iron_sword"
+	}
+	}
+}
+}
+
+predicate diamond_rapier {
+"condition": "minecraft:entity_properties",
+"entity": "this",
+"predicate": {
+	"type": "minecraft:player",
+	"equipment": {
+	"mainhand": {
+		"items": "diamond_sword"
+	}
+	}
+}
+}
+
+predicate netherite_rapier {
+"condition": "minecraft:entity_properties",
+"entity": "this",
+"predicate": {
+	"type": "minecraft:player",
+	"equipment": {
+	"mainhand": {
+		"items": "netherite_sword"
+	}
+	}
+}
+}
+
+item_modifier wooden_stats {
+	"function": "minecraft:set_components",
+	"components": {
+		"minecraft:attribute_modifiers": [
+			{
+				"type": "minecraft:attack_damage",
+				"id": "aolu_rp:rapier_attack_damage",
+				"amount": 1,
+				"operation": "add_value",
+				"slot": "mainhand"
+			},
+			{
+				"type": "minecraft:attack_speed",
+				"id": "aolu_rp:rapier_attack_speed",
+				"amount": -2,
+				"operation": "add_value",
+				"slot": "mainhand"
+			}
+		]
+	}
+}
+
+item_modifier stone_stats {
+	"function": "minecraft:set_components",
+	"components": {
+		"minecraft:attribute_modifiers": [
+			{
+				"type": "minecraft:attack_damage",
+				"id": "aolu_rp:rapier_attack_damage",
+				"amount": 2,
+				"operation": "add_value",
+				"slot": "mainhand"
+			},
+			{
+				"type": "minecraft:attack_speed",
+				"id": "aolu_rp:rapier_attack_speed",
+				"amount": -2,
+				"operation": "add_value",
+				"slot": "mainhand"
+			}
+		]
+	}
+}
+
+item_modifier iron_stats {
+	"function": "minecraft:set_components",
+	"components": {
+		"minecraft:attribute_modifiers": [
+			{
+				"type": "minecraft:attack_damage",
+				"id": "aolu_rp:rapier_attack_damage",
+				"amount": 3,
+				"operation": "add_value",
+				"slot": "mainhand"
+			},
+			{
+				"type": "minecraft:attack_speed",
+				"id": "aolu_rp:rapier_attack_speed",
+				"amount": -2,
+				"operation": "add_value",
+				"slot": "mainhand"
+			}
+		]
+	}
+}
+
+item_modifier diamond_stats {
+	"function": "minecraft:set_components",
+	"components": {
+		"minecraft:attribute_modifiers": [
+			{
+				"type": "minecraft:attack_damage",
+				"id": "aolu_rp:rapier_attack_damage",
+				"amount": 4,
+				"operation": "add_value",
+				"slot": "mainhand"
+			},
+			{
+				"type": "minecraft:attack_speed",
+				"id": "aolu_rp:rapier_attack_speed",
+				"amount": -2,
+				"operation": "add_value",
+				"slot": "mainhand"
+			}
+		]
+	}
+}
+
+item_modifier netherite_stats {
+	"function": "minecraft:set_components",
+	"components": {
+		"minecraft:attribute_modifiers": [
+			{
+				"type": "minecraft:attack_damage",
+				"id": "aolu_rp:rapier_attack_damage",
+				"amount": 5,
+				"operation": "add_value",
+				"slot": "mainhand"
+			},
+			{
+				"type": "minecraft:attack_speed",
+				"id": "aolu_rp:rapier_attack_speed",
+				"amount": -2,
+				"operation": "add_value",
+				"slot": "mainhand"
+			}
+		]
+	}
+}
+
+item_modifier swing_mode {
+	"function": "minecraft:set_components",
+	"components": {
+		"minecraft:attack_range": {
+			"min_reach": 0,
+			"max_reach": 3,
+			"hitbox_margin": 0.15
+		},
+		"minecraft:swing_animation": {
+			"type": "whack",
+			"duration": 6
+		},
+		"!minecraft:piercing_weapon": {},
+        "minecraft:minimum_attack_charge": 1
+	}
+}
+
+item_modifier thrust_mode {
+	"function": "minecraft:set_components",
+	"components": {
+		"minecraft:attack_range": {
+			"min_reach": 0,
+			"max_reach": 3.5,
+			"hitbox_margin": 0.2
+		},
+		"minecraft:swing_animation": {
+			"type": "stab",
+			"duration": 12
+		},
+		"minecraft:piercing_weapon": {
+			"deals_knockback": true,
+			"dismounts": false,
+			"sound": "minecraft:entity.player.attack.sweep",
+			"hit_sound": "minecraft:entity.player.hurt_sweet_berry_bush"
+		},
+        "minecraft:minimum_attack_charge": 1
+	}
+}
+
+item_modifier dash_mode {
+	"function": "minecraft:set_components",
+	"components": {
+		"minecraft:attack_range": {
+			"min_reach": 0,
+			"max_reach": 1,
+			"hitbox_margin": 1
+		}
+	}
+}
+
+item_modifier add_kinetic {
+	"function": "minecraft:set_components",
+	"components": {
+		"minecraft:kinetic_weapon": {
+			"damage_conditions": {
+				"max_duration_ticks": 40,
+				"min_speed": 1,
+				"min_relative_speed": 1
+			},
+			"damage_multiplier": 1,
+			"sound": "minecraft:item.trident.throw",
+			"hit_sound": "minecraft:item.trident.hit"
+		},
+		"minecraft:use_effects": {
+			"can_sprint": true,
+			"speed_multiplier": 1,
+			"interact_vibrations": true
+		}
+	}
+}
+
+item_modifier remove_kinetic {
+	"function": "minecraft:set_components",
+	"components": {
+		"!minecraft:kinetic_weapon": {}
+	}
+}
+
+
+advancement dealt_damage_with_rapier {
+  "criteria": {
+    "hit": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "player": {
+          "equipment": {
+            "mainhand": {
+              "items": "#minecraft:swords",
+              "components": {
+                "minecraft:custom_data": {
+                  "rapier": true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "aolu_rapiers:add_charges"
+  }
+}
+
+advancement use_rapier {
+  "criteria": {
+    "hit": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "player": {
+          "equipment": {
+            "mainhand": {
+              "items": "#minecraft:swords",
+              "components": {
+                "minecraft:custom_data": {
+                  "rapier": true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "aolu_rapiers:consume_charges"
+  }
+}
+
+advancement recipe_unlock/wooden_rapier {
+  "criteria": {
+    "req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:planks"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["aolu_rapiers:wooden_rapier"]
+  }
+}
+
+advancement recipe_unlock/stone_rapier {
+  "criteria": {
+    "req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:stone_tool_materials"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["aolu_rapiers:stone_rapier"]
+  }
+}
+
+
+advancement recipe_unlock/copper_rapier {
+  "criteria": {
+    "req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["aolu_rapiers:copper_rapier"]
+  }
+}
+
+advancement recipe_unlock/iron_rapier {
+  "criteria": {
+    "req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "iron_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["aolu_rapiers:iron_rapier"]
+  }
+}
+
+advancement recipe_unlock/golden_rapier {
+  "criteria": {
+    "req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "gold_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["aolu_rapiers:golden_rapier"]
+  }
+}
+
+
+advancement recipe_unlock/diamond_rapier {
+  "criteria": {
+    "req": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "diamond"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["aolu_rapiers:diamond_rapier"]
+  }
+}

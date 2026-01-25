@@ -25,6 +25,9 @@ function entity_second {
     execute if predicate aolu_tweaks:offhand_shield run {
         attribute @s minecraft:armor modifier add at:armor 4 add_value
     }
+    execute if predicate aolu_tweaks:mainhand_shield run {
+        attribute @s minecraft:armor modifier add at:armor 4 add_value
+    }
 
     execute if entity @s[type=copper_golem] run {
         attribute @s minecraft:movement_speed modifier add a_tw .5 add_multiplied_total 
@@ -68,6 +71,19 @@ predicate offhand_shield {
         "type": "minecraft:player",
         "equipment": {
             "offhand": {
+                "items": "minecraft:shield"
+            }
+        }
+    }
+}
+
+predicate mainhand_shield {
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "type": "minecraft:player",
+        "equipment": {
+            "mainhand": {
                 "items": "minecraft:shield"
             }
         }

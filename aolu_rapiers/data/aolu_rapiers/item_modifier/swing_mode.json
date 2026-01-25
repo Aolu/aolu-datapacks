@@ -1,0 +1,1 @@
+{"function": "minecraft:set_components","components":{"minecraft:attack_range":{"min_reach": 0,"max_reach": 3,"hitbox_margin": 0.15},"minecraft:swing_animation":{"type": "whack","duration": 6},"!minecraft:piercing_weapon": {},"minecraft:minimum_attack_charge": 1}}

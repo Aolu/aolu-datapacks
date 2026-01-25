@@ -1,0 +1,1 @@
+{"criteria":{"req":{"trigger": "minecraft:inventory_changed","conditions":{"items": [{"items": "diamond"}]}}},"rewards":{"recipes": ["aolu_rapiers:diamond_rapier"]}}

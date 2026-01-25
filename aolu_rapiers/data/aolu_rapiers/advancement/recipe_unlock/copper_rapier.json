@@ -1,0 +1,1 @@
+{"criteria":{"req":{"trigger": "minecraft:inventory_changed","conditions":{"items": [{"items": "copper_ingot"}]}}},"rewards":{"recipes": ["aolu_rapiers:copper_rapier"]}}

@@ -66,3 +66,51 @@ function set_uuid {
     execute store result score #temp cr.uuid_sum run data get entity @s UUID[3]
     scoreboard players operation @s cr.uuid_sum += #temp cr.uuid_sum
 }
+
+predicate sprinting {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "type": "minecraft:player",
+    "flags": {
+      "is_sprinting": true
+    }
+  }
+}
+
+predicate crouching {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "type": "minecraft:player",
+    "flags": {
+      "is_sneaking": true
+    }
+  }
+}
+
+predicate pressing_crouch {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "type_specific": {
+      "type": "minecraft:player",
+      "input": {
+        "sneak": true
+      }
+    }
+  }
+}
+
+predicate pressing_sprint {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "type_specific": {
+      "type": "minecraft:player",
+      "input": {
+        "sprint": true
+      }
+    }
+  }
+}

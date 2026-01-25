@@ -16,11 +16,10 @@ function on_tick minecraft:tick {
 
 function player_tick {
     tag @s remove aolu_rp.thrust_mode
-
+	execute if score @s aolu_rp.thrust_duration matches 2.. run team leave @s
     execute if score @s aolu_rp.thrust_duration matches 13.. run {
-        attribute @s minecraft:movement_speed modifier remove aolu_rp:thrust
-        attribute @s minecraft:step_height modifier remove aolu_rp:thrust
         attribute @s minecraft:knockback_resistance modifier remove aolu_rp:thrust
+        attribute @s minecraft:gravity modifier remove aolu_rp:thrust
         tag @s[tag=aolu_rp.dashing] remove aolu_rp.dashing
     } else run {
         tag @s add aolu_rp.dashing
@@ -52,9 +51,16 @@ function holding_rapier {
     execute if predicate aolu_rapiers:netherite_rapier run item modify entity @s weapon.mainhand aolu_rapiers:netherite_stats
     
     execute if score @s aolu_rp.thrust_charges matches 1.. run {
-        item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic
+		item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic
+		execute if score @s aolu_rp.thrust_charges matches 1 run item modify entity @s weapon.mainhand aolu_rapiers:add_enchant_1
+		execute if score @s aolu_rp.thrust_charges matches 2 run item modify entity @s weapon.mainhand aolu_rapiers:add_enchant_2
+		execute if score @s aolu_rp.thrust_charges matches 3 run item modify entity @s weapon.mainhand aolu_rapiers:add_enchant_3
+		execute if score @s aolu_rp.thrust_charges matches 4 run item modify entity @s weapon.mainhand aolu_rapiers:add_enchant_4
+		execute if score @s aolu_rp.thrust_charges matches 5 run item modify entity @s weapon.mainhand aolu_rapiers:add_enchant_5
+        
     } else if entity @s[tag=!aolu_rp.dashing] run {
         item modify entity @s weapon.mainhand aolu_rapiers:remove_kinetic
+        item modify entity @s weapon.mainhand aolu_rapiers:remove_enchant
     }
 
     execute if entity @s[tag=aolu_rp.thrust_mode,tag=!aolu_rp.dashing] run {
@@ -87,13 +93,18 @@ function consume_charges {
     advancement revoke @s only aolu_rapiers:use_rapier
     execute if score @s[tag=!aolu_rp.dashing] aolu_rp.thrust_charges matches 1.. run {
         # store speed from charges
-        execute store result storage aolu:rp thrust_speed float 0.35 run scoreboard players get @s aolu_rp.thrust_charges
+		team join rapier_thrust
+        execute store result storage aolu:rp thrust_speed float 0.3 run scoreboard players get @s aolu_rp.thrust_charges
+        execute store result storage aolu:rp resistance int 0.9 run scoreboard players get @s aolu_rp.thrust_charges
         function apply_thrust_speed with storage aolu:rp
         item modify entity @s weapon.mainhand aolu_rapiers:dash_mode
-
+		tp @s ~ ~.3 ~
+		effect give @s minecraft:slow_falling 1 1
+		# attribute @s minecraft:gravity modifier add aolu_rp:thrust -0.9 add_multiplied_total
         execute if score @s aolu_rp.thrust_charges matches 5.. run {
-            effect give @s minecraft:speed 1 0
-            effect give @s minecraft:strength 1 0
+            effect give @s minecraft:speed 1 1
+            effect give @s minecraft:strength 1 1
+			effect give @s minecraft:regeneration 4 1
         }
         
         scoreboard players set @s aolu_rp.thrust_charges 0
@@ -104,13 +115,12 @@ function consume_charges {
 }
 
 function apply_thrust_speed {
-    $attribute @s minecraft:movement_speed modifier add aolu_rp:thrust $(thrust_speed) add_multiplied_total
     $playsound minecraft:entity.wind_charge.wind_burst master @a ~ ~ ~ 1 $(thrust_speed)
     $playsound minecraft:entity.wind_charge.wind_burst master @a ~ ~ ~ 1 $(thrust_speed)
     $playsound minecraft:entity.wind_charge.wind_burst master @a ~ ~ ~ 1 $(thrust_speed)
-    attribute @s minecraft:step_height modifier add aolu_rp:thrust .5 add_value
     attribute @s minecraft:knockback_resistance modifier add aolu_rp:thrust 1 add_value
-    effect give @s minecraft:resistance 1 2
+	
+    $effect give @s minecraft:resistance 1 $(resistance)
     particle minecraft:gust_emitter_small
 }
 
@@ -146,7 +156,8 @@ recipe wooden_rapier {
 			"minecraft:custom_data": {
 				"rapier": true
 			},
-			"minecraft:item_name": "Wooden Rapier"
+			"minecraft:item_name": "Wooden Rapier",
+			"minecraft:item_model": "aolu_rapiers:wooden_rapier"
 		}
 	}
 }
@@ -169,7 +180,8 @@ recipe stone_rapier {
 	"minecraft:custom_data": {
 		"rapier": true
 	},
-	"minecraft:item_name": "Stone Rapier"
+	"minecraft:item_name": "Stone Rapier",
+	"minecraft:item_model": "aolu_rapiers:stone_rapier"
 	}
 }
 }
@@ -192,7 +204,8 @@ recipe copper_rapier {
 	"minecraft:custom_data": {
 		"rapier": true
 	},
-	"minecraft:item_name": "Copper Rapier"
+	"minecraft:item_name": "Copper Rapier",
+	"minecraft:item_model": "aolu_rapiers:copper_rapier"
 	}
 }
 }
@@ -215,7 +228,8 @@ recipe iron_rapier {
 	"minecraft:custom_data": {
 		"rapier": true
 	},
-	"minecraft:item_name": "Iron Rapier"
+	"minecraft:item_name": "Iron Rapier",
+	"minecraft:item_model": "aolu_rapiers:iron_rapier"
 	}
 }
 }
@@ -238,7 +252,8 @@ recipe golden_rapier {
 	"minecraft:custom_data": {
 		"rapier": true
 	},
-	"minecraft:item_name": "Golden Rapier"
+	"minecraft:item_name": "Golden Rapier",
+	"minecraft:item_model": "aolu_rapiers:golden_rapier"
 	}
 }
 }
@@ -261,7 +276,8 @@ recipe diamond_rapier {
 	"minecraft:custom_data": {
 		"rapier": true
 	},
-	"minecraft:item_name": "Diamond Rapier"
+	"minecraft:item_name": "Diamond Rapier",
+	"minecraft:item_model": "aolu_rapiers:diamond_rapier"
 	}
 }
 }
@@ -382,7 +398,7 @@ item_modifier wooden_stats {
 			{
 				"type": "minecraft:attack_damage",
 				"id": "aolu_rp:rapier_attack_damage",
-				"amount": 1,
+				"amount": 0,
 				"operation": "add_value",
 				"slot": "mainhand"
 			},
@@ -404,7 +420,7 @@ item_modifier stone_stats {
 			{
 				"type": "minecraft:attack_damage",
 				"id": "aolu_rp:rapier_attack_damage",
-				"amount": 2,
+				"amount": 1,
 				"operation": "add_value",
 				"slot": "mainhand"
 			},
@@ -426,7 +442,7 @@ item_modifier iron_stats {
 			{
 				"type": "minecraft:attack_damage",
 				"id": "aolu_rp:rapier_attack_damage",
-				"amount": 3,
+				"amount": 2,
 				"operation": "add_value",
 				"slot": "mainhand"
 			},
@@ -448,7 +464,7 @@ item_modifier diamond_stats {
 			{
 				"type": "minecraft:attack_damage",
 				"id": "aolu_rp:rapier_attack_damage",
-				"amount": 4,
+				"amount": 3,
 				"operation": "add_value",
 				"slot": "mainhand"
 			},
@@ -470,7 +486,7 @@ item_modifier netherite_stats {
 			{
 				"type": "minecraft:attack_damage",
 				"id": "aolu_rp:rapier_attack_damage",
-				"amount": 5,
+				"amount": 4,
 				"operation": "add_value",
 				"slot": "mainhand"
 			},
@@ -481,7 +497,8 @@ item_modifier netherite_stats {
 				"operation": "add_value",
 				"slot": "mainhand"
 			}
-		]
+		],
+		"minecraft:item_model": "aolu_rapiers:netherite_rapier"
 	}
 }
 
@@ -541,12 +558,13 @@ item_modifier add_kinetic {
 		"minecraft:kinetic_weapon": {
 			"damage_conditions": {
 				"max_duration_ticks": 40,
-				"min_speed": 1,
-				"min_relative_speed": 1
+				"min_speed": 0,
+				"min_relative_speed": 0
 			},
-			"damage_multiplier": 1,
+			"damage_multiplier": 0.5,
 			"sound": "minecraft:item.trident.throw",
-			"hit_sound": "minecraft:item.trident.hit"
+			"hit_sound": "minecraft:item.trident.hit",
+			"contact_cooldown_ticks": 5
 		},
 		"minecraft:use_effects": {
 			"can_sprint": true,
@@ -563,6 +581,43 @@ item_modifier remove_kinetic {
 	}
 }
 
+item_modifier remove_enchant {
+	"function": "minecraft:set_enchantments",
+	"enchantments": {
+		"aolu_rapiers:rapier_thrust": 0
+	}
+}
+
+item_modifier add_enchant_1 {
+	"function": "minecraft:set_enchantments",
+	"enchantments": {
+		"aolu_rapiers:rapier_thrust": 1
+	}
+}
+item_modifier add_enchant_2 {
+	"function": "minecraft:set_enchantments",
+	"enchantments": {
+		"aolu_rapiers:rapier_thrust": 2
+	}
+}
+item_modifier add_enchant_3 {
+	"function": "minecraft:set_enchantments",
+	"enchantments": {
+		"aolu_rapiers:rapier_thrust": 3
+	}
+}
+item_modifier add_enchant_4 {
+	"function": "minecraft:set_enchantments",
+	"enchantments": {
+		"aolu_rapiers:rapier_thrust": 4
+	}
+}
+item_modifier add_enchant_5 {
+	"function": "minecraft:set_enchantments",
+	"enchantments": {
+		"aolu_rapiers:rapier_thrust": 5
+	}
+}
 
 advancement dealt_damage_with_rapier {
   "criteria": {
@@ -722,4 +777,87 @@ advancement recipe_unlock/diamond_rapier {
   "rewards": {
     "recipes": ["aolu_rapiers:diamond_rapier"]
   }
+}
+
+enchantment rapier_thrust {
+	"anvil_cost": 2,
+	"description": "Finesse",
+	"effects": {
+		"minecraft:tick": [
+			{
+				"requirements": {
+					"condition": "minecraft:entity_properties",
+					"entity": "this",
+					"predicate": {
+						"team": "rapier_thrust",
+						"predicates": {}
+					}
+				},
+				"effect": {
+					"type": "minecraft:apply_impulse",
+					"direction": [
+						0,
+						0.1,
+						1
+					],
+					"coordinate_scale": [
+						1,
+						1,
+						1
+					],
+					"magnitude": {
+						"type": "minecraft:linear",
+						"base": 0.8,
+						"per_level_above_first": 0.25
+					}
+				}
+			}
+		],
+		"minecraft:attributes": [
+			{
+				"attribute": "minecraft:movement_speed",
+				"id": "aolu_rp:thrust_enchant",
+				"amount": {
+					"type": "minecraft:linear",
+					"base": 0.05,
+					"per_level_above_first": 0.05
+				},
+				"operation": "add_multiplied_total"
+			},
+			{
+				"attribute": "minecraft:attack_damage",
+				"id": "aolu_rp:thrust_enchant",
+				"amount": {
+					"type": "minecraft:linear",
+					"base": 0.2,
+					"per_level_above_first": 0.2
+				},
+				"operation": "add_value"
+			},
+			{
+				"attribute": "minecraft:entity_interaction_range",
+				"id": "aolu_rp:thrust_enchant",
+				"amount": {
+					"type": "minecraft:linear",
+					"base": 0.1,
+					"per_level_above_first": 0.1
+				},
+				"operation": "add_value"
+			}
+		]
+	},
+	"max_cost": {
+		"base": 25,
+		"per_level_above_first": 8
+	},
+	"max_level": 5,
+	"min_cost": {
+		"base": 5,
+		"per_level_above_first": 8
+	},
+	"slots": [
+		"hand"
+	],
+	"supported_items": "#minecraft:enchantable/sharp_weapon",
+	"weight": 5
 }

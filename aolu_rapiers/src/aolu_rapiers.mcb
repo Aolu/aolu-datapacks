@@ -30,6 +30,7 @@ function player_tick {
     }
     # holding a rapier
     execute if predicate aolu_rapiers:is_rapier run function aolu_rapiers:holding_rapier
+	# remove stab stats
     execute if entity @s[tag=!aolu_rp.thrust_mode,tag=!aolu_rp.dashing] run {
         attribute @s minecraft:attack_speed modifier remove aolu_rp:stats_2
         attribute @s minecraft:attack_damage modifier remove aolu_rp:stats_2
@@ -66,7 +67,7 @@ function holding_rapier {
     execute if entity @s[tag=aolu_rp.thrust_mode,tag=!aolu_rp.dashing] run {
         # stab mode
         item modify entity @s weapon.mainhand aolu_rapiers:thrust_mode
-        attribute @s minecraft:attack_speed modifier add aolu_rp:stats_2 -.5 add_multiplied_total
+        attribute @s minecraft:attack_speed modifier add aolu_rp:stats_2 -.65 add_multiplied_total
         attribute @s minecraft:attack_damage modifier add aolu_rp:stats_2 1 add_value
     }
     execute if entity @s[tag=!aolu_rp.dashing] unless predicate aolu_common_resources:pressing_crouch unless predicate aolu_common_resources:pressing_sprint run item modify entity @s weapon.mainhand aolu_rapiers:swing_mode
@@ -498,7 +499,8 @@ item_modifier netherite_stats {
 				"slot": "mainhand"
 			}
 		],
-		"minecraft:item_model": "aolu_rapiers:netherite_rapier"
+		"minecraft:item_model": "aolu_rapiers:netherite_rapier",
+		"minecraft:item_name" : "Netherite Rapier"
 	}
 }
 
@@ -524,8 +526,8 @@ item_modifier thrust_mode {
 	"components": {
 		"minecraft:attack_range": {
 			"min_reach": 0,
-			"max_reach": 3.5,
-			"hitbox_margin": 0.2
+			"max_reach": 4,
+			"hitbox_margin": 0.3
 		},
 		"minecraft:swing_animation": {
 			"type": "stab",

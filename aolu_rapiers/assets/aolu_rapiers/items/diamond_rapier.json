@@ -4,11 +4,11 @@
     "property": "minecraft:using_item",
     "on_true": {
       "type": "minecraft:model",
-      "model": "aolu_rapiers:item/stone_rapier"
+      "model": "aolu_rapiers:item/diamond_rapier"
     },
     "on_false": {
       "type": "minecraft:model",
-      "model": "aolu_rapiers:item/stone_rapier"
+      "model": "aolu_rapiers:item/diamond_rapier"
     }
   }
 }

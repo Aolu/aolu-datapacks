@@ -35,6 +35,7 @@ function player {
         tag @s add holding_gold_tool
         attribute @s minecraft:attack_damage modifier add gt:atk 2.5 add_value
         item modify entity @s weapon.mainhand aolu_gold_tier:gold_durability
+        item modify entity @s weapon.mainhand aolu_gold_tier:gold_mines_iron_tier
     }
     execute if predicate aolu_gold_tier:holding_golden_hoe run {
         tag @s add holding_gold_tool
@@ -167,6 +168,25 @@ item_modifier gold_boots {
         ],
         "minecraft:max_damage": 312
     }
+}
+
+item_modifier gold_mines_iron_tier {
+	"function": "minecraft:set_components",
+	"components": {
+		"minecraft:tool": {
+			"rules": [
+				{
+					"blocks": "#minecraft:incorrect_for_iron_tool",
+					"correct_for_drops": false
+				},
+				{
+					"blocks": "#minecraft:mineable/pickaxe",
+					"correct_for_drops": true,
+					"speed": 12
+				}
+			]
+		}
+	}
 }
 
 predicate holding_golden_sword {

@@ -36,6 +36,10 @@ function player_tick {
         attribute @s minecraft:attack_damage modifier remove aolu_rp:stats_2
     }
 
+	execute if predicate aolu_rapiers:offhand_is_rapier run {
+		item modify entity @s weapon.offhand aolu_rapiers:remove_enchant
+	}
+
 }
 
 function holding_rapier {
@@ -128,13 +132,13 @@ function apply_thrust_speed {
 function charges_title {
     execute if score @s aolu_rp.thrust_charges matches 1.. run tag @s add aolu_cno_charges_title
 
-    execute if score @s[tag=aolu_cno_charges_title] aolu_rp.thrust_charges matches 0 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"green","text":""},{"color":"dark_gray","text":"■■■■■"},{"color":"dark_green","text":"]"}]
+    execute if score @s[tag=aolu_cno_charges_title] aolu_rp.thrust_charges matches 0 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"green","text":""},{"color":"dark_gray","text":">>>>X<<<<"},{"color":"dark_green","text":"]"}]
 
-    execute if score @s aolu_rp.thrust_charges matches 1 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"green","text":"■"},{"color":"dark_gray","text":"■■■■"},{"color":"dark_green","text":"]"}]
-    execute if score @s aolu_rp.thrust_charges matches 2 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"green","text":"■■"},{"color":"dark_gray","text":"■■■"},{"color":"dark_green","text":"]"}]
-    execute if score @s aolu_rp.thrust_charges matches 3 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"green","text":"■■■"},{"color":"dark_gray","text":"■■"},{"color":"dark_green","text":"]"}]
-    execute if score @s aolu_rp.thrust_charges matches 4 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"green","text":"■■■■"},{"color":"dark_gray","text":"■"},{"color":"dark_green","text":"]"}]
-    execute if score @s aolu_rp.thrust_charges matches 5 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"dark_green","text":"■■■■■"},{"color":"dark_gray","text":""},{"color":"dark_green","text":"]"}]
+    execute if score @s aolu_rp.thrust_charges matches 1 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"dark_gray","text":">>>>"},{"color":"green","text":"X"},{"color":"dark_gray","text":"<<<<"},{"color":"dark_green","text":"]"}]
+    execute if score @s aolu_rp.thrust_charges matches 2 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"dark_gray","text":">>>"},{"color":"green","text":">X<"},{"color":"dark_gray","text":"<<<"},{"color":"dark_green","text":"]"}]
+    execute if score @s aolu_rp.thrust_charges matches 3 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"dark_gray","text":">>"},{"color":"green","text":">>X<<"},{"color":"dark_gray","text":"<<"},{"color":"dark_green","text":"]"}]
+    execute if score @s aolu_rp.thrust_charges matches 4 run title @s actionbar [{"bold":true,"color":"dark_green","text":"["},{"color":"dark_gray","text":">"},{"color":"green","text":">>>X<<<"},{"color":"dark_gray","text":"<"},{"color":"dark_green","text":"]"}]
+    execute if score @s aolu_rp.thrust_charges matches 5 run title @s actionbar [{"strikethrough":true,"bold":true,"color":"aqua","text":"[ "},{"text":">>>>"},{"text":" X "},{"text":"<<<<"},{"text":" ]"}]
 
     execute if score @s aolu_rp.thrust_charges matches 0 run tag @s remove aolu_cno_charges_title
 }
@@ -301,6 +305,24 @@ predicate is_rapier {
 }
 }
 
+predicate offhand_is_rapier {
+"condition": "minecraft:entity_properties",
+"entity": "this",
+"predicate": {
+	"type": "minecraft:player",
+	"equipment": {
+	"offhand": {
+		"items": "#minecraft:swords",
+		"components": {
+		"minecraft:custom_data": {
+			"rapier": true
+		}
+		}
+	}
+	}
+}
+}
+
 predicate wooden_rapier {
 "condition": "minecraft:entity_properties",
 "entity": "this",
@@ -398,14 +420,14 @@ item_modifier wooden_stats {
 		"minecraft:attribute_modifiers": [
 			{
 				"type": "minecraft:attack_damage",
-				"id": "aolu_rp:rapier_attack_damage",
+				"id": "minecraft:base_attack_damage",
 				"amount": 0,
 				"operation": "add_value",
 				"slot": "mainhand"
 			},
 			{
 				"type": "minecraft:attack_speed",
-				"id": "aolu_rp:rapier_attack_speed",
+				"id": "minecraft:base_attack_speed",
 				"amount": -2,
 				"operation": "add_value",
 				"slot": "mainhand"
@@ -420,14 +442,14 @@ item_modifier stone_stats {
 		"minecraft:attribute_modifiers": [
 			{
 				"type": "minecraft:attack_damage",
-				"id": "aolu_rp:rapier_attack_damage",
+				"id": "minecraft:base_attack_damage",
 				"amount": 1,
 				"operation": "add_value",
 				"slot": "mainhand"
 			},
 			{
 				"type": "minecraft:attack_speed",
-				"id": "aolu_rp:rapier_attack_speed",
+				"id": "minecraft:base_attack_speed",
 				"amount": -2,
 				"operation": "add_value",
 				"slot": "mainhand"
@@ -442,14 +464,14 @@ item_modifier iron_stats {
 		"minecraft:attribute_modifiers": [
 			{
 				"type": "minecraft:attack_damage",
-				"id": "aolu_rp:rapier_attack_damage",
+				"id": "minecraft:base_attack_damage",
 				"amount": 2,
 				"operation": "add_value",
 				"slot": "mainhand"
 			},
 			{
 				"type": "minecraft:attack_speed",
-				"id": "aolu_rp:rapier_attack_speed",
+				"id": "minecraft:base_attack_speed",
 				"amount": -2,
 				"operation": "add_value",
 				"slot": "mainhand"
@@ -464,14 +486,14 @@ item_modifier diamond_stats {
 		"minecraft:attribute_modifiers": [
 			{
 				"type": "minecraft:attack_damage",
-				"id": "aolu_rp:rapier_attack_damage",
+				"id": "minecraft:base_attack_damage",
 				"amount": 3,
 				"operation": "add_value",
 				"slot": "mainhand"
 			},
 			{
 				"type": "minecraft:attack_speed",
-				"id": "aolu_rp:rapier_attack_speed",
+				"id": "minecraft:base_attack_speed",
 				"amount": -2,
 				"operation": "add_value",
 				"slot": "mainhand"
@@ -486,14 +508,14 @@ item_modifier netherite_stats {
 		"minecraft:attribute_modifiers": [
 			{
 				"type": "minecraft:attack_damage",
-				"id": "aolu_rp:rapier_attack_damage",
+				"id": "minecraft:base_attack_damage",
 				"amount": 4,
 				"operation": "add_value",
 				"slot": "mainhand"
 			},
 			{
 				"type": "minecraft:attack_speed",
-				"id": "aolu_rp:rapier_attack_speed",
+				"id": "minecraft:base_attack_speed",
 				"amount": -2,
 				"operation": "add_value",
 				"slot": "mainhand"

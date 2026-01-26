@@ -4,6 +4,16 @@ function on_load minecraft:load{
     scoreboard objectives add at.xp dummy
     scoreboard objectives add at.time dummy
     function aolu_tweaks:second
+
+   	tellraw @a [{"color":"#ffae00","text":"["},{"color":"white","text":"Tweaks"},{"color":"#ffae00","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
+   	tellraw @a [{"color":"#ffae00","text":"-="},{"color":"yellow","text":"Features"},{"color":"#ffae00","text":"=-"}]
+   	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Holding a Shield grants +4 Armor"}]
+   	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Removed Block Delay on Shields"}]
+   	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Difficulty changes based on time of day"}]
+   	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Experience orbs have a chance to double in value based on the difficulty"}]
+   	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Experience orbs track to the nearest Player"}]
+   	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Copper Golems are 50% faster"}]
+
 }
 
 function tick minecraft:tick {
@@ -24,9 +34,11 @@ function entity_second {
     }
     execute if predicate aolu_tweaks:offhand_shield run {
         attribute @s minecraft:armor modifier add at:armor 4 add_value
+        item modify entity @s weapon.offhand aolu_tweaks:instant_block
     }
     execute if predicate aolu_tweaks:mainhand_shield run {
         attribute @s minecraft:armor modifier add at:armor 4 add_value
+        item modify entity @s weapon.mainhand aolu_tweaks:instant_block
     }
 
     execute if entity @s[type=copper_golem] run {
@@ -88,4 +100,21 @@ predicate mainhand_shield {
             }
         }
     }
+}
+
+item_modifier instant_block {
+	"function": "minecraft:set_components",
+	"components": {
+		"minecraft:blocks_attacks": {
+			"block_delay_seconds": 0,
+			"block_sound": "minecraft:item.shield.block",
+			"bypassed_by": "#minecraft:bypasses_shield",
+			"disabled_sound": "minecraft:item.shield.break",
+			"item_damage": {
+				"base": 1,
+				"factor": 1,
+				"threshold": 3
+			}
+		}
+	}
 }

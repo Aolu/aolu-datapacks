@@ -10,3 +10,4 @@ execute if score @s aolu_rp.thrust_timer matches 100.. if score @s aolu_rp.thrus
 execute if predicate aolu_rapiers:is_rapier run function aolu_rapiers:holding_rapier
 # remove stab stats
 execute if entity @s[tag=!aolu_rp.thrust_mode,tag=!aolu_rp.dashing] run function aolu_rapiers:zzz/3
+execute if predicate aolu_rapiers:offhand_is_rapier run function aolu_rapiers:zzz/4

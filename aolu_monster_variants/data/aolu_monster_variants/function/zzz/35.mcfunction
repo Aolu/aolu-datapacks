@@ -1,3 +1,3 @@
 # Generated with MC-Build
 
-effect give @s invisibility 1 0
+scoreboard players remove @s amv_elite_ability_cooldown 1

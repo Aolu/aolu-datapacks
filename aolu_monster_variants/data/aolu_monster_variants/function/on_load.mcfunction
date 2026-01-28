@@ -5,6 +5,7 @@ scoreboard objectives add mcb.internal dummy
 scoreboard objectives add amv_chance dummy
 scoreboard objectives add amv_hurt_time dummy
 scoreboard objectives add amv_ability_cooldown dummy
+scoreboard objectives add amv_elite_ability_cooldown dummy
 scoreboard objectives add amv_summon_cooldown dummy
 scoreboard objectives add amv_elite_type dummy
 scoreboard objectives add amv_elite_hp_b dummy

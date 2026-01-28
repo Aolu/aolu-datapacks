@@ -1,3 +1,3 @@
 # Generated with MC-Build
 
-execute on target run function aolu_monster_variants:zzz/45
+effect give @s blindness 2 0

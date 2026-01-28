@@ -1,7 +1,6 @@
 # Generated with MC-Build
 
 tag @s remove aolu_rp.thrust_mode
-execute if score @s aolu_rp.thrust_duration matches 2.. run team leave @s
 scoreboard players set #ifelse mcb.internal 0
 execute if score @s aolu_rp.thrust_duration matches 13.. run function aolu_rapiers:zzz/0
 execute if score #ifelse mcb.internal matches 0 run function aolu_rapiers:zzz/1

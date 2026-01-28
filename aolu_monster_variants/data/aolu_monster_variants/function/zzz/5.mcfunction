@@ -1,4 +1,3 @@
 # Generated with MC-Build
 
-scoreboard players set #ifelse mcb.internal 1
-tag @s add amv_not_elite
+scoreboard players remove @s amv_summon_cooldown 1

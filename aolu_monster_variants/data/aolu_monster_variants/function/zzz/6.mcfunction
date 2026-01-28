@@ -1,3 +1,4 @@
 # Generated with MC-Build
 
-execute if score @s amv_chance matches ..5 run effect give @s minecraft:infested infinite
+scoreboard players set #ifelse mcb.internal 1
+function aolu_monster_variants:make_elite

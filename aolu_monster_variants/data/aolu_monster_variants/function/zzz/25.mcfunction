@@ -1,4 +1,4 @@
 # Generated with MC-Build
 
-team join amv_elite_mist @s
-data merge entity @s {CustomName:{"bold":true,"color":"gray","text":"Mist Elite"}}
+scoreboard players set #ifelse mcb.internal 1
+effect give @s minecraft:instant_health 10 100

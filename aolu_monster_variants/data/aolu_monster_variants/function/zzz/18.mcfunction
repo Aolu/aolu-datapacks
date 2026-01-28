@@ -1,7 +1,3 @@
 # Generated with MC-Build
 
-attribute @s minecraft:max_health modifier add amv_stats -0.95 add_multiplied_total
-attribute @s minecraft:scale modifier add amv_stats -0.4 add_multiplied_total
-attribute @s minecraft:attack_damage modifier add amv_stats -0.5 add_multiplied_total
-attribute @s minecraft:movement_speed modifier add amv_stats 0.25 add_multiplied_total
-execute on passengers run tp @s ~ -1000 ~
+execute if score @s[tag=amv_brood_mother] amv_summon_cooldown matches 0 on target as @n[tag=amv_brood_mother] run function aolu_monster_variants:zzz/19

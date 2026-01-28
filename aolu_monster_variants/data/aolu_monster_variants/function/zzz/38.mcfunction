@@ -1,3 +1,3 @@
 # Generated with MC-Build
 
-effect give @s blindness 2 0
+effect give @s resistance 1 3

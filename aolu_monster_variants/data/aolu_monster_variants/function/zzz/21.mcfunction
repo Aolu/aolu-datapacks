@@ -1,4 +1,4 @@
 # Generated with MC-Build
 
-scoreboard players set #ifelse mcb.internal 1
-effect give @s minecraft:instant_damage 1 0
+scoreboard players remove @s amv_elite_hp_d 2
+summon minecraft:experience_orb ~ ~ ~ {Value:3}

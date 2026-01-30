@@ -34,7 +34,6 @@ function on_load minecraft:load{
     team add amv_elite_dampener
     team modify amv_elite_dampener color dark_blue
 
-    tag @e remove amv_check
 	tellraw @a [{"color":"#ff1515","text":"["},{"color":"white","text":"Monster Variants"},{"color":"#ff1515","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
 }
 
@@ -170,7 +169,7 @@ function entity_tick {
 function entity_took_damage {
     execute store result score @s amv_chance run random value 0..100
     scoreboard players add @s amv_summon_cooldown 0
-    execute if entity @s[tag=amv_elite] run {
+    execute if entity @s[tag=amv_elite,type=#aolu_monster_variants:hostile] run {
         execute store result score @s amv_elite_hp_a run data get entity @s Health
         scoreboard players operation @s amv_elite_hp_b -= @s amv_elite_hp_a
         scoreboard players operation @s amv_elite_hp_d += @s amv_elite_hp_b
@@ -183,7 +182,7 @@ function spawn_xp {
     
     execute if score @s amv_elite_hp_d matches 2.. run {
         scoreboard players remove @s amv_elite_hp_d 2
-        summon minecraft:experience_orb ~ ~ ~ {Value:3}
+        summon minecraft:experience_orb ~ ~ ~ {Value:5}
     }
     execute if score @s amv_elite_hp_d matches ..-1 run scoreboard players set @s amv_elite_hp_d 0
     execute if score @s amv_elite_hp_d matches 2.. run function aolu_monster_variants:spawn_xp
@@ -294,6 +293,8 @@ function elite_tick {
         scoreboard players remove @s amv_elite_ability_cooldown 1
     }
 
+    execute on target as @n[tag=amv_elite] run effect give @s glowing 1
+
     # protector
     execute if score @s amv_elite_type matches 1 run {
         execute if entity @s[type=#aolu_monster_variants:hostile] as @e[type=#aolu_monster_variants:hostile,distance=0.1..10] run {
@@ -347,19 +348,30 @@ function elite_tick {
     # warper
     execute if score @s amv_elite_type matches 6 run {
         scoreboard players add @s amv_elite_ability_cooldown 1
-        execute if score @s amv_elite_ability_cooldown matches 1.. on target as @n[tag=amv_elite] run scoreboard players remove @s amv_elite_ability_cooldown 1
+        execute if score @s amv_elite_ability_cooldown matches 1.. on target as @n[tag=amv_elite] run {
+            scoreboard players remove @s amv_elite_ability_cooldown 1
+        }
         execute if score @s amv_elite_ability_cooldown matches 80 on target at @s run {
             playsound minecraft:block.portal.ambient master @a ~ ~ ~ 1 2
             
         }
+        execute if score @s amv_elite_ability_cooldown matches ..100 on target at @s run {
+            particle minecraft:portal ~ ~.5 ~ 0 0 0 1 15 force
+        }
+
         execute if score @s amv_elite_ability_cooldown matches 40 on target at @s run {
             playsound minecraft:block.portal.trigger master @s ~ ~ ~ 1 2
             effect give @s minecraft:nausea 5
         }
 
         execute if score @s amv_elite_ability_cooldown matches 0 on target run {
-            tp @s @n
-            playsound minecraft:entity.player.teleport master @a ~ ~ ~ 2 0.5
+            execute if predicate aolu_common_resources:pressing_crouch run {
+                execute at @s run playsound minecraft:block.respawn_anchor.deplete master @a ~ ~ ~ 1 2
+                execute at @s run playsound minecraft:block.respawn_anchor.deplete master @a ~ ~ ~ 1 2
+            } else run {
+                tp @s @n
+                playsound minecraft:entity.player.teleport master @a ~ ~ ~ 2 0.5
+            }
             scoreboard players set @n[tag=amv_elite] amv_elite_ability_cooldown 160
         }
     }

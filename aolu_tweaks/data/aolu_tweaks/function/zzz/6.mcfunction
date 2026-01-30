@@ -1,7 +1,5 @@
 # Generated with MC-Build
 
-execute store result entity @s Value double 1 run data get entity @s Value 2
-particle minecraft:enchanted_hit ~ ~ ~ 0 0 0 1 10
-particle minecraft:totem_of_undying ~ ~ ~ 0 0 0 .1 10
-playsound minecraft:entity.player.levelup master @a ~ ~ ~ 0.1 2
-tag @s add at_exp_double
+tag @s add at_exp_buff
+execute store result score @s at.xp run random value 0..9
+execute if score @s at.xp <= difficulty at.xp run function aolu_tweaks:zzz/7

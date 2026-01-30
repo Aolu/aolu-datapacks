@@ -7,3 +7,4 @@ execute if score time at.time matches 1.. run difficulty easy
 execute if score time at.time matches 12000.. run difficulty normal
 execute if score time at.time matches 15000.. run difficulty hard
 execute if score time at.time matches 21000.. run difficulty normal
+advancement revoke @a only aolu_tweaks:picked_up_enchanted_book

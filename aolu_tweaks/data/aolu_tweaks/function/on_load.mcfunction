@@ -13,3 +13,4 @@ tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Difficulty 
 tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Experience orbs have a chance to double in value based on the difficulty"}]
 tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Experience orbs track to the nearest Player"}]
 tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Copper Golems are 50% faster"}]
+tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Enchanted Books can now Stack"}]

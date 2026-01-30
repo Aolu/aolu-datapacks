@@ -1,3 +1,3 @@
 # Generated with MC-Build
 
-playsound minecraft:block.portal.ambient master @a ~ ~ ~ 1 2
+scoreboard players remove @s amv_elite_ability_cooldown 1

@@ -25,5 +25,4 @@ team add amv_elite_warper
 team modify amv_elite_warper color dark_purple
 team add amv_elite_dampener
 team modify amv_elite_dampener color dark_blue
-tag @e remove amv_check
 tellraw @a [{"color":"#ff1515","text":"["},{"color":"white","text":"Monster Variants"},{"color":"#ff1515","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]

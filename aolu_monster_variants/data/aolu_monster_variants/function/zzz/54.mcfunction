@@ -1,4 +1,5 @@
 # Generated with MC-Build
 
-playsound minecraft:block.conduit.attack.target master @s ~ ~ ~ 1 0.6
-playsound minecraft:block.conduit.attack.target master @s ~ ~ ~ 1 1.4
+scoreboard players set #ifelse mcb.internal 1
+execute at @s run playsound minecraft:block.respawn_anchor.deplete master @a ~ ~ ~ 1 2
+execute at @s run playsound minecraft:block.respawn_anchor.deplete master @a ~ ~ ~ 1 2

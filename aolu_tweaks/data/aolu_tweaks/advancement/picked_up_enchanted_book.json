@@ -1,0 +1,1 @@
+{"criteria":{"pickup":{"trigger": "minecraft:inventory_changed","conditions":{"items": [{"items": "minecraft:enchanted_book"}]}}},"rewards":{"function": "aolu_tweaks:pickup_book"}}

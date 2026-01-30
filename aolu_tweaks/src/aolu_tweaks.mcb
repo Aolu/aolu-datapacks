@@ -13,6 +13,7 @@ function on_load minecraft:load{
    	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Experience orbs have a chance to double in value based on the difficulty"}]
    	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Experience orbs track to the nearest Player"}]
    	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Copper Golems are 50% faster"}]
+   	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Enchanted Books can now Stack"}]
 
 }
 
@@ -56,6 +57,44 @@ clock second 1s {
     execute if score time at.time matches 12000.. run difficulty normal
     execute if score time at.time matches 15000.. run difficulty hard
     execute if score time at.time matches 21000.. run difficulty normal
+    
+    advancement revoke @a only aolu_tweaks:picked_up_enchanted_book
+}
+
+function pickup_book {
+    scoreboard players set #counter mcb.internal 0
+    execute store result storage aolu:tw count int 1 run scoreboard players get #counter mcb.internal
+    function aolu_tweaks:inventory_loop
+    advancement revoke @s only aolu_tweaks:picked_up_enchanted_book
+}
+
+function inventory_loop {
+
+    execute as @a run {
+        function aolu_tweaks:inventory_check with storage aolu:tw
+    }
+    
+    scoreboard players add #counter mcb.internal 1
+    execute store result storage aolu:tw count int 1 run scoreboard players get #counter mcb.internal
+    execute if score #counter mcb.internal matches ..27 run function aolu_tweaks:inventory_loop
+}
+
+function inventory_check {
+    $execute if predicate {"condition":"minecraft:entity_properties","entity":"this","predicate":{"slots":{"inventory.$(count)":{"items":"minecraft:enchanted_book"}}}} run item modify entity @s inventory.$(count) {"function": "minecraft:set_components","components": {"minecraft:max_stack_size": 64}}
+
+    execute if predicate {"condition":"minecraft:entity_properties","entity":"this","predicate":{"slots":{"hotbar.0":{"items":"minecraft:enchanted_book"}}}} run item modify entity @s hotbar.0 {"function": "minecraft:set_components","components": {"minecraft:max_stack_size": 64}}
+    execute if predicate {"condition":"minecraft:entity_properties","entity":"this","predicate":{"slots":{"hotbar.1":{"items":"minecraft:enchanted_book"}}}} run item modify entity @s hotbar.1 {"function": "minecraft:set_components","components": {"minecraft:max_stack_size": 64}}
+    execute if predicate {"condition":"minecraft:entity_properties","entity":"this","predicate":{"slots":{"hotbar.2":{"items":"minecraft:enchanted_book"}}}} run item modify entity @s hotbar.2 {"function": "minecraft:set_components","components": {"minecraft:max_stack_size": 64}}
+    execute if predicate {"condition":"minecraft:entity_properties","entity":"this","predicate":{"slots":{"hotbar.3":{"items":"minecraft:enchanted_book"}}}} run item modify entity @s hotbar.3 {"function": "minecraft:set_components","components": {"minecraft:max_stack_size": 64}}
+    execute if predicate {"condition":"minecraft:entity_properties","entity":"this","predicate":{"slots":{"hotbar.4":{"items":"minecraft:enchanted_book"}}}} run item modify entity @s hotbar.4 {"function": "minecraft:set_components","components": {"minecraft:max_stack_size": 64}}
+    execute if predicate {"condition":"minecraft:entity_properties","entity":"this","predicate":{"slots":{"hotbar.5":{"items":"minecraft:enchanted_book"}}}} run item modify entity @s hotbar.5 {"function": "minecraft:set_components","components": {"minecraft:max_stack_size": 64}}
+    execute if predicate {"condition":"minecraft:entity_properties","entity":"this","predicate":{"slots":{"hotbar.6":{"items":"minecraft:enchanted_book"}}}} run item modify entity @s hotbar.6 {"function": "minecraft:set_components","components": {"minecraft:max_stack_size": 64}}
+    execute if predicate {"condition":"minecraft:entity_properties","entity":"this","predicate":{"slots":{"hotbar.7":{"items":"minecraft:enchanted_book"}}}} run item modify entity @s hotbar.7 {"function": "minecraft:set_components","components": {"minecraft:max_stack_size": 64}}
+    execute if predicate {"condition":"minecraft:entity_properties","entity":"this","predicate":{"slots":{"hotbar.8":{"items":"minecraft:enchanted_book"}}}} run item modify entity @s hotbar.8 {"function": "minecraft:set_components","components": {"minecraft:max_stack_size": 64}}
+
+
+    execute if predicate {"condition":"minecraft:entity_properties","entity":"this","predicate":{"slots":{"weapon.offhand":{"items":"minecraft:enchanted_book"}}}} run item modify entity @s weapon.offhand {"function": "minecraft:set_components","components": {"minecraft:max_stack_size": 64}}
+    
 }
 
 function exp_orb_tick {
@@ -117,4 +156,29 @@ item_modifier instant_block {
 			}
 		}
 	}
+}
+
+item_modifier stackable_enchanted_book {
+	"function": "minecraft:set_components",
+	"components": {
+		"minecraft:max_stack_size": 64
+	}
+}
+
+advancement picked_up_enchanted_book {
+    "criteria": {
+        "pickup": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": "minecraft:enchanted_book"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "aolu_tweaks:pickup_book"
+    }
 }

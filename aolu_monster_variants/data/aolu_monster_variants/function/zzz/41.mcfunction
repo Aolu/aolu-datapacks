@@ -1,3 +1,4 @@
 # Generated with MC-Build
 
-effect give @s invisibility 1 0
+team join amv_elite_mender @s
+data merge entity @s {CustomName:{"bold":true,"color":"yellow","text":"Mender Elite"}}

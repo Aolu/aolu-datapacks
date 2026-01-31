@@ -1,3 +1,4 @@
 # Generated with MC-Build
 
-execute if score @s amv_chance matches ..10 run function aolu_monster_variants:zzz/16
+item replace entity @s weapon.mainhand with minecraft:bow
+tag @s add amv_wither_skeleton_archer

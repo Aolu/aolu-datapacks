@@ -1,4 +1,4 @@
 # Generated with MC-Build
 
-execute if entity @s[type=#aolu_monster_variants:hostile] as @e[type=#aolu_monster_variants:hostile,distance=0.1..10] run function aolu_monster_variants:zzz/37
-execute if entity @s[type=!#aolu_monster_variants:hostile] as @e[type=!#aolu_monster_variants:hostile,distance=0.1..10] run function aolu_monster_variants:zzz/38
+scoreboard players set #ifelse mcb.internal 1
+effect give @s minecraft:instant_health 1 0

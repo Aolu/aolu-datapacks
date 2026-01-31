@@ -1,3 +1,3 @@
 # Generated with MC-Build
 
-playsound minecraft:block.portal.ambient master @a ~ ~ ~ 1 2
+effect give @s invisibility 1 0

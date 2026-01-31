@@ -1,11 +1,1 @@
-{
-  "condition": "minecraft:entity_properties",
-  "entity": "this",
-  "predicate": {
-    "equipment": {
-      "mainhand": {
-        "items": "#aolu_full_attacks:weapons"
-      }
-    }
-  }
-}
+{"condition": "minecraft:entity_properties","entity": "this","predicate":{"equipment":{"mainhand":{"items": "#aolu_full_attacks:weapons"}}}}

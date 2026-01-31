@@ -33,6 +33,7 @@ function player_tick {
     execute if entity @s[tag=!aolu_rp.thrust_mode,tag=!aolu_rp.dashing] run {
         attribute @s minecraft:attack_speed modifier remove aolu_rp:stats_2
         attribute @s minecraft:attack_damage modifier remove aolu_rp:stats_2
+        attribute @s minecraft:entity_interaction_range modifier remove aolu_rp:stats_2
     }
 
 	execute if predicate aolu_rapiers:offhand_is_rapier run {
@@ -57,7 +58,8 @@ function holding_rapier {
     execute if score @s aolu_rp.thrust_charges matches 1.. run {
 
 
-
+		
+		item modify entity @s weapon.mainhand aolu_rapiers:remove_block
 		execute if predicate aolu_rapiers:wooden_rapier run item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic_wood
 		execute if predicate aolu_rapiers:golden_rapier run item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic_iron
 		execute if predicate aolu_rapiers:stone_rapier run item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic_stone
@@ -75,6 +77,7 @@ function holding_rapier {
     } else if entity @s[tag=!aolu_rp.dashing] run {
         item modify entity @s weapon.mainhand aolu_rapiers:remove_kinetic
         item modify entity @s weapon.mainhand aolu_rapiers:remove_enchant
+		item modify entity @s weapon.mainhand aolu_rapiers:add_block
     }
 
     execute if entity @s[tag=aolu_rp.thrust_mode,tag=!aolu_rp.dashing] run {
@@ -82,6 +85,7 @@ function holding_rapier {
         item modify entity @s weapon.mainhand aolu_rapiers:thrust_mode
         attribute @s minecraft:attack_speed modifier add aolu_rp:stats_2 -.65 add_multiplied_total
         attribute @s minecraft:attack_damage modifier add aolu_rp:stats_2 1 add_value
+        attribute @s minecraft:entity_interaction_range modifier add aolu_rp:stats_2 1 add_value
     }
     execute if entity @s[tag=!aolu_rp.dashing] unless predicate aolu_common_resources:pressing_crouch unless predicate aolu_common_resources:pressing_sprint run item modify entity @s weapon.mainhand aolu_rapiers:swing_mode
     function aolu_rapiers:charges_title
@@ -563,29 +567,20 @@ item_modifier netherite_stats {
 item_modifier swing_mode {
 	"function": "minecraft:set_components",
 	"components": {
-		"minecraft:attack_range": {
-			"min_reach": 0,
-			"max_reach": 3,
-			"hitbox_margin": 0.15
-		},
 		"minecraft:swing_animation": {
 			"type": "whack",
 			"duration": 6
 		},
 		"!minecraft:piercing_weapon": {},
         "minecraft:minimum_attack_charge": 1,
-		"!minecraft:damage_type": {}
+		"!minecraft:damage_type": {},
+		"!minecraft:attack_range" : {}
 	}
 }
 
 item_modifier thrust_mode {
 	"function": "minecraft:set_components",
 	"components": {
-		"minecraft:attack_range": {
-			"min_reach": 0,
-			"max_reach": 4,
-			"hitbox_margin": 0.3
-		},
 		"minecraft:swing_animation": {
 			"type": "stab",
 			"duration": 12
@@ -597,7 +592,8 @@ item_modifier thrust_mode {
 			"hit_sound": "minecraft:entity.player.hurt_sweet_berry_bush"
 		},
         "minecraft:minimum_attack_charge": 1,
-		"!minecraft:damage_type": {}
+		"!minecraft:damage_type": {},
+		"!minecraft:attack_range" : {}
 	}
 }
 
@@ -772,6 +768,48 @@ item_modifier add_enchant_5 {
 	"function": "minecraft:set_enchantments",
 	"enchantments": {
 		"aolu_rapiers:rapier_thrust": 5
+	}
+}
+
+item_modifier add_block {
+	"function": "minecraft:set_components",
+	"components": {
+		"minecraft:blocks_attacks": {
+			"block_delay_seconds": 0,
+			"block_sound": "minecraft:entity.zombie.attack_iron_door",
+			"bypassed_by": "#minecraft:bypasses_shield",
+			"disabled_sound": "minecraft:item.shield.break",
+			"damage_reductions": [
+                {
+                    "type": [
+                        "minecraft:mob_attack",
+                        "minecraft:player_attack",
+                        "minecraft:spear"
+                    ],
+                    "base": 0,
+                    "factor": 0.4,
+                    "horizontal_blocking_angle": 90
+                }
+            ],
+			"item_damage": {
+				"base": 1,
+				"factor": 1,
+				"threshold": 3
+			}
+		},
+		"minecraft:use_effects": {
+			"can_sprint": true,
+			"speed_multiplier": 0.5,
+			"interact_vibrations": true
+		}
+	}
+}
+
+item_modifier remove_block {
+	"function": "minecraft:set_components",
+	"components": {
+		"!minecraft:blocks_attacks": {
+		}
 	}
 }
 

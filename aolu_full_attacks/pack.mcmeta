@@ -1,7 +1,6 @@
 {
-  "pack": {
-    "description": "Fully charged attacks only!",
-    "min_format": 89,
-    "max_format": 999
-  }
+	"pack":{
+		"pack_format": 98,
+		"description": "aolu_full_attacks Made with MC-Build!"
+	}
 }

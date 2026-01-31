@@ -1,6 +1,7 @@
 # Generated with MC-Build
 
 scoreboard players set #ifelse mcb.internal 1
+item modify entity @s weapon.mainhand aolu_rapiers:remove_block
 execute if predicate aolu_rapiers:wooden_rapier run item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic_wood
 execute if predicate aolu_rapiers:golden_rapier run item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic_iron
 execute if predicate aolu_rapiers:stone_rapier run item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic_stone

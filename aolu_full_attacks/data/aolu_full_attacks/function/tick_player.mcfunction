@@ -1,5 +1,5 @@
+# Generated with MC-Build
 
-attribute @s attack_speed modifier remove aolu_fs_attacks
-attribute @s attack_damage modifier remove aolu_fs_attacks
-execute if predicate aolu_full_attacks:holding_weapon run function aolu_full_attacks:holding_weapon
-
+execute if score @s afs_perfect_attack_timer matches 1.. run function aolu_full_attacks:zzz/0
+execute if score @s[tag=afs_perfect] afs_perfect_attack_timer matches 0 run function aolu_full_attacks:zzz/2
+execute if score @s afs_damage_dealt matches 1.. run function aolu_full_attacks:zzz/3

@@ -73,7 +73,31 @@ function entity_check {
     tag @s add amv_check
     scoreboard players add @s amv_ability_cooldown 0
     execute store result score @s amv_chance run random value 0..100
-    execute if score @s[tag=!amv_elite,tag=!amv_not_elite] amv_chance matches ..3 run {
+
+    execute store result score #difficulty mcb.internal run difficulty
+
+    execute if entity @s[type=#aolu_monster_variants:hostile] run {
+        # base
+        attribute @s minecraft:armor modifier add amv_difficulty 0.5 add_multiplied_total
+        attribute @s[type=creeper] minecraft:max_health modifier add amv_creeper -0.5 add_multiplied_total
+
+        # normal
+        execute if score #difficulty mcb.internal matches 2.. run {
+            attribute @s minecraft:max_health modifier add amv_difficulty_normal 0.2 add_multiplied_total
+            attribute @s minecraft:armor_toughness modifier add amv_difficulty_normal 2 add_value
+            attribute @s minecraft:movement_speed modifier add amv_difficulty_normal 0.05 add_multiplied_total
+        }
+
+        # hard
+        execute if score #difficulty mcb.internal matches 3.. run {
+            attribute @s minecraft:max_health modifier add amv_difficulty_hard 0.25 add_multiplied_total
+            attribute @s minecraft:armor_toughness modifier add amv_difficulty_hard 4 add_value
+            attribute @s minecraft:movement_speed modifier add amv_difficulty_hard 0.1 add_multiplied_total
+        }
+    }
+
+    # roll elite chance
+    execute if score @s[tag=!amv_elite,tag=!amv_not_elite] amv_chance <= #difficulty mcb.internal run {
         function aolu_monster_variants:make_elite
     } else run {
         tag @s add amv_not_elite
@@ -111,7 +135,7 @@ function entity_check {
             item replace entity @s weapon.mainhand with minecraft:bow
             tag @s add amv_wither_skeleton_archer
         }
-        function aolu_monster_variants:heal
+        
     }
 
     # arthropod check
@@ -131,7 +155,6 @@ function entity_check {
             tag @s add amv_brood_mother
         }
         
-        function aolu_monster_variants:heal
     }
 
     # ghast check
@@ -145,10 +168,20 @@ function entity_check {
         }
     }
 
+    # zombie check
+    execute if entity @s[type=#minecraft:zombies] run {
+        execute if score @s amv_chance matches ..4 run {
+            data merge entity @s {CustomName:{"bold":false,"color":"white","text":"Screamer"}}
+            tag @s add amv_zombie_screamer
+        }
+    }
+
     # elite check
     execute if entity @s[tag=amv_elite] run {
         execute store result score @s amv_elite_hp_b run data get entity @s Health
     }
+    
+    function aolu_monster_variants:heal
 }
 
 function entity_tick {
@@ -169,12 +202,26 @@ function entity_tick {
 function entity_took_damage {
     execute store result score @s amv_chance run random value 0..100
     scoreboard players add @s amv_summon_cooldown 0
-    execute if entity @s[tag=amv_elite,type=#aolu_monster_variants:hostile] run {
+    execute if entity @s[type=#aolu_monster_variants:hostile] run {
         execute store result score @s amv_elite_hp_a run data get entity @s Health
         scoreboard players operation @s amv_elite_hp_b -= @s amv_elite_hp_a
         scoreboard players operation @s amv_elite_hp_d += @s amv_elite_hp_b
         execute store result score @s amv_elite_hp_b run data get entity @s Health
         function aolu_monster_variants:spawn_xp
+    }
+    
+
+    execute if entity @s[tag=amv_zombie_screamer, tag=!amv_screamed] run {
+        execute store result score @s mcb.internal run data get entity @s Health
+        execute if score @s mcb.internal matches ..10 run {
+            tag @s add amv_screamed
+            playsound minecraft:entity.enderman.scream master @a ~ ~ ~ 1 0
+            playsound minecraft:block.sculk_shrieker.shriek master @a ~ ~ ~ 1 1
+            effect give @e[distance=..5] nausea 8
+            effect give @e[distance=..5] slowness 4 1
+            effect give @s wither 4 2
+            data merge entity @s {attributes:[{id:"minecraft:spawn_reinforcements",base:1}]}
+        }
     }
 }
 
@@ -182,7 +229,13 @@ function spawn_xp {
     
     execute if score @s amv_elite_hp_d matches 2.. run {
         scoreboard players remove @s amv_elite_hp_d 2
-        summon minecraft:experience_orb ~ ~ ~ {Value:5}
+        execute if entity @s[tag=amv_elite] run {
+            summon minecraft:experience_orb ~ ~ ~ {Value:5}
+        }
+        execute if score #difficulty mcb.internal matches 3 run {
+            summon minecraft:experience_orb ~ ~ ~ {Value:1}
+        }
+        
     }
     execute if score @s amv_elite_hp_d matches ..-1 run scoreboard players set @s amv_elite_hp_d 0
     execute if score @s amv_elite_hp_d matches 2.. run function aolu_monster_variants:spawn_xp
@@ -213,9 +266,9 @@ function add_summon {
 
 function heal {
     execute if entity @s[type=#minecraft:undead] run {
-        effect give @s minecraft:instant_damage 10 100
+        effect give @s minecraft:instant_damage 30 100
     } else run {
-        effect give @s minecraft:instant_health 10 100
+        effect give @s minecraft:instant_health 30 100
     }
 }
 
@@ -232,7 +285,6 @@ function make_elite {
     tag @s add amv_elite
     attribute @s minecraft:max_health modifier add amv_elite 2 add_multiplied_total
     attribute @s minecraft:attack_damage modifier add amv_elite 0.5 add_multiplied_total
-    attribute @s minecraft:armor modifier add amv_elite 15 add_value
     function aolu_monster_variants:heal
     execute store result score @s amv_elite_type run random value 1..7
     scoreboard players set @s amv_elite_ability_cooldown 200

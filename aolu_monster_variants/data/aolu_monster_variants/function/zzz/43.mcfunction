@@ -1,3 +1,4 @@
 # Generated with MC-Build
 
-effect give @s blindness 2 0
+team join amv_elite_dampener @s
+data merge entity @s {CustomName:{"bold":true,"color":"dark_blue","text":"Dampener Elite"}}

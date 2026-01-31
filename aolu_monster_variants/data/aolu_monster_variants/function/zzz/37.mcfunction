@@ -1,3 +1,4 @@
 # Generated with MC-Build
 
-effect give @s resistance 1 3
+team join amv_elite_protector @s
+data merge entity @s {CustomName:{"bold":true,"color":"gold","text":"Protector Elite"}}

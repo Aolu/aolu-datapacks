@@ -1,4 +1,3 @@
 # Generated with MC-Build
 
-playsound minecraft:block.conduit.attack.target master @s ~ ~ ~ 1 0.6
-playsound minecraft:block.conduit.attack.target master @s ~ ~ ~ 1 1.4
+scoreboard players remove @s amv_elite_ability_cooldown 1

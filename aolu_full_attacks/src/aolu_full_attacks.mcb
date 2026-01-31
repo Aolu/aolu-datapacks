@@ -1,0 +1,101 @@
+function on_load minecraft:load{
+    # you can use MC-Build without its internal scoreboard but this will limit the available features
+    scoreboard objectives add mcb.internal dummy
+    scoreboard objectives add afs_hurt_time dummy
+    scoreboard objectives add afs_damage_dealt minecraft.custom:minecraft.damage_dealt
+    scoreboard objectives add afs_perfect_attack_timer dummy
+    schedule clear aolu_full_attacks:timer
+    schedule function aolu_full_attacks:timer 1s replace
+
+    tellraw @a [{"color":"dark_green","text":"["},{"color":"white","text":"Full Swing"},{"color":"dark_green","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
+
+}
+
+function on_tick minecraft:tick {
+    execute as @e[type=!player,tag=afs_hurt] at @s run function aolu_full_attacks:tick_entity
+    execute as @a at @s run function aolu_full_attacks:tick_player
+}
+
+function holding_weapon {
+    item modify entity @s weapon.mainhand aolu_full_attacks:full_attack
+    attribute @s attack_speed modifier add aolu_fs_attacks 0.3 add_value
+    attribute @s attack_damage modifier add aolu_fs_attacks -0.2 add_multiplied_total
+
+}
+
+function tick_player {
+    
+    execute if score @s afs_perfect_attack_timer matches 1.. run {
+        execute if score @s afs_perfect_attack_timer matches 6 run {
+            tag @s add afs_perfect
+            playsound minecraft:entity.arrow.hit_player master @s ~ ~ ~ 0.25 0.8
+            attribute @s entity_interaction_range modifier add aolu_fs_perfect_attack 1 add_value
+            attribute @s attack_damage modifier add aolu_fs_perfect_attack 1 add_value
+            attribute @s attack_speed modifier add aolu_fs_perfect_attack 0.2 add_value
+        }
+        scoreboard players remove @s afs_perfect_attack_timer 1
+    }
+    
+
+    execute if score @s[tag=afs_perfect] afs_perfect_attack_timer matches 0 run {
+        tag @s remove afs_perfect
+        attribute @s entity_interaction_range modifier remove aolu_fs_perfect_attack
+        attribute @s attack_damage modifier remove aolu_fs_perfect_attack
+        attribute @s attack_speed modifier remove aolu_fs_perfect_attack
+    }
+
+    execute if score @s afs_damage_dealt matches 1.. run {
+        execute store result score @s afs_perfect_attack_timer run attribute @s minecraft:attack_speed get 10000000
+        scoreboard players set #perfect afs_perfect_attack_timer 200000000
+        scoreboard players operation #perfect afs_perfect_attack_timer /= @s afs_perfect_attack_timer
+        scoreboard players operation @s afs_perfect_attack_timer = #perfect afs_perfect_attack_timer
+        scoreboard players add @s afs_perfect_attack_timer 5
+        execute as @e[type=!player] at @s run {
+            execute store result score @s afs_hurt_time run data get entity @s HurtTime
+            execute if score @s afs_hurt_time matches 2.. run {
+                attribute @s minecraft:attack_damage modifier add afs_hurt -1 add_multiplied_total
+                tag @s[tag=!afs_hurt] add afs_hurt
+            }
+        }
+        scoreboard players set @s afs_damage_dealt 0
+    }
+}
+
+function tick_entity {
+    execute store result score @s afs_hurt_time run data get entity @s HurtTime
+    execute if score @s afs_hurt_time matches 1 run {
+        attribute @s minecraft:attack_damage modifier remove afs_hurt
+    }
+    execute if score @s afs_hurt_time matches 0 run tag @s remove afs_hurt
+}
+
+function timer {
+
+    execute as @a run function aolu_full_attacks:timer_ended
+    schedule function aolu_full_attacks:timer 5t replace
+}
+
+function timer_ended {
+    attribute @s attack_speed modifier remove aolu_fs_attacks
+    attribute @s attack_damage modifier remove aolu_fs_attacks
+    execute if predicate aolu_full_attacks:holding_weapon run function aolu_full_attacks:holding_weapon
+}
+
+item_modifier full_attack {
+  "function": "minecraft:set_components",
+  "components": {
+    "minecraft:minimum_attack_charge": 1
+  }
+}
+
+predicate holding_weapon {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "equipment": {
+      "mainhand": {
+        "items": "#aolu_full_attacks:weapons"
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
 # Generated with MC-Build
 
-scoreboard players set #ifelse mcb.internal 1
-effect give @s minecraft:instant_damage 1 0
+execute store result score @s mcb.internal run data get entity @s Health
+execute if score @s mcb.internal matches ..10 run function aolu_monster_variants:zzz/27

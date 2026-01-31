@@ -1,5 +1,1 @@
-{
- "values": [
- "aolu_full_attacks:load"
- ]
-}
+{"values":["aolu_full_attacks:on_load"]}

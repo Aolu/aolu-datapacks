@@ -1,4 +1,3 @@
 # Generated with MC-Build
 
-item replace entity @s weapon.mainhand with minecraft:iron_sword
-tag @s add amv_skeleton_scout
+execute if score @s amv_chance matches ..5 run effect give @s minecraft:infested infinite

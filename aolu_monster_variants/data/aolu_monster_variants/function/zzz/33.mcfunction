@@ -1,4 +1,4 @@
 # Generated with MC-Build
 
-team join amv_elite_warper @s
-data merge entity @s {CustomName:{"bold":true,"color":"dark_purple","text":"Warper Elite"}}
+scoreboard players set #ifelse mcb.internal 1
+effect give @s minecraft:instant_damage 30 100

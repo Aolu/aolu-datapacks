@@ -1,8 +1,8 @@
 # Generated with MC-Build
 
-execute store result score @s amv_chance run random value 0..100
-execute if score @s amv_chance matches ..5 run effect give @s minecraft:infested infinite
-execute store result score @s amv_chance run random value 0..100
-# 1
-execute if score @s amv_chance matches ..4 run function aolu_monster_variants:zzz/14
-function aolu_monster_variants:heal
+item replace entity @s weapon.mainhand with minecraft:iron_axe
+attribute @s minecraft:max_health modifier add amv_stats 1.5 add_multiplied_total
+attribute @s minecraft:scale modifier add amv_stats 0.25 add_multiplied_total
+attribute @s minecraft:knockback_resistance modifier add amv_stats 1 add_value
+attribute @s minecraft:movement_speed modifier add amv_stats -0.15 add_multiplied_total
+tag @s add amv_skeleton_brute

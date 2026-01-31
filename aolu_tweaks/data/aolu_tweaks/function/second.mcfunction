@@ -2,6 +2,7 @@
 
 schedule function aolu_tweaks:second 1s replace
 execute as @e at @s run function aolu_tweaks:entity_second
+execute as @a at @s run function aolu_tweaks:player_second
 execute store result score time at.time run time query daytime
 execute if score time at.time matches 1.. run difficulty easy
 execute if score time at.time matches 12000.. run difficulty normal

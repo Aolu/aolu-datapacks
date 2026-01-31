@@ -1,3 +1,3 @@
 # Generated with MC-Build
 
-attribute @s minecraft:attack_damage modifier remove afs_hurt
+function aolu_full_attacks:remove_perfect

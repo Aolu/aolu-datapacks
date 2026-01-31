@@ -1,4 +1,6 @@
 # Generated with MC-Build
 
-execute store result score @s afs_hurt_time run data get entity @s HurtTime
-execute if score @s afs_hurt_time matches 2.. run function aolu_full_attacks:zzz/5
+tag @s add afs_perfect
+attribute @s entity_interaction_range modifier add aolu_fs_perfect_attack 0.5 add_value
+attribute @s attack_damage modifier add aolu_fs_perfect_attack 0.25 add_multiplied_total
+attribute @s attack_speed modifier add aolu_fs_perfect_attack 0.2 add_value

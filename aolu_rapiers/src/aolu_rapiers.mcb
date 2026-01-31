@@ -572,7 +572,7 @@ item_modifier swing_mode {
 			"duration": 6
 		},
 		"!minecraft:piercing_weapon": {},
-        "minecraft:minimum_attack_charge": 1,
+        "minecraft:minimum_attack_charge": 0,
 		"!minecraft:damage_type": {},
 		"!minecraft:attack_range" : {}
 	}
@@ -591,9 +591,14 @@ item_modifier thrust_mode {
 			"sound": "minecraft:entity.player.attack.sweep",
 			"hit_sound": "minecraft:entity.player.hurt_sweet_berry_bush"
 		},
+		
+		"minecraft:attack_range": {
+			"min_reach": 0,
+			"max_reach": 4.5,
+			"hitbox_margin": 0.1
+		},
         "minecraft:minimum_attack_charge": 1,
-		"!minecraft:damage_type": {},
-		"!minecraft:attack_range" : {}
+		"!minecraft:damage_type": {}
 	}
 }
 

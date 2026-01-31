@@ -72,14 +72,13 @@ function on_tick minecraft:tick{
 function entity_check {
     tag @s add amv_check
     scoreboard players add @s amv_ability_cooldown 0
-    execute store result score @s amv_chance run random value 0..100
-
     execute store result score #difficulty mcb.internal run difficulty
+    function aolu_monster_variants:roll_chance
 
     execute if entity @s[type=#aolu_monster_variants:hostile] run {
         # base
         attribute @s minecraft:armor modifier add amv_difficulty 0.5 add_multiplied_total
-        attribute @s[type=creeper] minecraft:max_health modifier add amv_creeper -0.5 add_multiplied_total
+        
 
         # normal
         execute if score #difficulty mcb.internal matches 2.. run {
@@ -102,14 +101,14 @@ function entity_check {
     } else run {
         tag @s add amv_not_elite
     }
-    execute store result score @s amv_chance run random value 0..100
+    function aolu_monster_variants:roll_chance
     
     # undead check
     execute if entity @s[type=#minecraft:undead] run {
         execute if score @s amv_chance matches ..5 run effect give @s minecraft:infested infinite
     }
 
-    execute store result score @s amv_chance run random value 0..100
+    function aolu_monster_variants:roll_chance
 
     # skeleton check
     execute if entity @s[type=#minecraft:skeletons] run {
@@ -140,9 +139,6 @@ function entity_check {
 
     # arthropod check
     execute if entity @s[type=#minecraft:arthropod] run {
-        execute store result score @s amv_chance run random value 0..100
-        execute if score @s amv_chance matches ..5 run effect give @s minecraft:infested infinite
-        execute store result score @s amv_chance run random value 0..100
 
         # 1
         execute if score @s amv_chance matches ..4 run {
@@ -200,7 +196,7 @@ function entity_tick {
 }
 
 function entity_took_damage {
-    execute store result score @s amv_chance run random value 0..100
+    function aolu_monster_variants:roll_chance
     scoreboard players add @s amv_summon_cooldown 0
     execute if entity @s[type=#aolu_monster_variants:hostile] run {
         execute store result score @s amv_elite_hp_a run data get entity @s Health
@@ -239,6 +235,17 @@ function spawn_xp {
     }
     execute if score @s amv_elite_hp_d matches ..-1 run scoreboard players set @s amv_elite_hp_d 0
     execute if score @s amv_elite_hp_d matches 2.. run function aolu_monster_variants:spawn_xp
+}
+
+function roll_chance {
+    execute store result score @s amv_chance run random value 0..100
+    execute store result score #difficulty mcb.internal run difficulty
+
+    scoreboard players operation #difficulty mcb.internal *= #difficulty mcb.internal
+    scoreboard players operation @s amv_chance -= #difficulty mcb.internal
+
+    execute if score @s amv_chance matches ..0 run scoreboard players set @s amv_chance 0
+    execute store result score #difficulty mcb.internal run difficulty
 }
 
 function add_summon {
@@ -349,10 +356,10 @@ function elite_tick {
 
     # protector
     execute if score @s amv_elite_type matches 1 run {
-        execute if entity @s[type=#aolu_monster_variants:hostile] as @e[type=#aolu_monster_variants:hostile,distance=0.1..10] run {
+        execute if entity @s[type=#aolu_monster_variants:hostile] as @e[tag=!amv_elite,type=#aolu_monster_variants:hostile,distance=0.1..10] run {
             effect give @s resistance 1 3
         }
-        execute if entity @s[type=!#aolu_monster_variants:hostile] as @e[type=!#aolu_monster_variants:hostile,distance=0.1..10] run {
+        execute if entity @s[type=!#aolu_monster_variants:hostile] as @e[tag=!amv_elite,type=!#aolu_monster_variants:hostile,distance=0.1..10] run {
             effect give @s resistance 1 3
         }
     }

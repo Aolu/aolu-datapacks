@@ -3,6 +3,7 @@ function on_load minecraft:load{
     scoreboard objectives add mcb.internal dummy
     scoreboard objectives add at.xp dummy
     scoreboard objectives add at.time dummy
+    scoreboard objectives add at.levels level
     function aolu_tweaks:second
 
    	tellraw @a [{"color":"#ffae00","text":"["},{"color":"white","text":"Tweaks"},{"color":"#ffae00","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
@@ -14,6 +15,8 @@ function on_load minecraft:load{
    	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Experience orbs track to the nearest Player"}]
    	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Copper Golems are 50% faster"}]
    	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Enchanted Books can now Stack"}]
+   	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Creepers have 50% less Max Health"}]
+   	tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Experience Levels provide small Stat Bonuses"}]
 
 }
 
@@ -21,12 +24,33 @@ function tick minecraft:tick {
     execute as @e at @s run function aolu_tweaks:entity_tick
     execute store result score difficulty at.xp run difficulty
     scoreboard players operation difficulty at.xp *= difficulty at.xp
-    
    
 }
 
 function entity_tick {
     execute if entity @s[type=experience_orb] run function aolu_tweaks:exp_orb_tick
+}
+
+function player_second {
+    execute store result storage aolu:tw l10 float 0.1 run scoreboard players get @s at.levels
+    execute store result storage aolu:tw l50 float 0.05 run scoreboard players get @s at.levels
+    execute store result storage aolu:tw l100 float 0.01 run scoreboard players get @s at.levels
+    function aolu_tweaks:add_stats with storage aolu:tw
+}
+
+function add_stats {
+    attribute @s minecraft:armor modifier remove at:l_stat
+    attribute @s minecraft:luck modifier remove at:l_stat
+    attribute @s minecraft:armor_toughness modifier remove at:l_stat
+    attribute @s minecraft:block_break_speed modifier remove at:l_stat
+    attribute @s minecraft:attack_damage modifier remove at:l_stat
+
+    
+    $attribute @s minecraft:armor modifier add at:l_stat $(l10) add_value
+    $attribute @s minecraft:luck modifier add at:l_stat $(l50) add_value
+    $attribute @s minecraft:armor_toughness modifier add at:l_stat $(l50) add_value
+    $attribute @s minecraft:block_break_speed modifier add at:l_stat $(l50) add_value
+    $attribute @s minecraft:attack_damage modifier add at:l_stat $(l100) add_value
 }
 
 function entity_second {
@@ -45,11 +69,12 @@ function entity_second {
     execute if entity @s[type=copper_golem] run {
         attribute @s minecraft:movement_speed modifier add a_tw .5 add_multiplied_total 
     }
+    attribute @s[type=creeper] minecraft:max_health modifier add atw_creeper -0.5 add_multiplied_total
 }
 
 clock second 1s {
     execute as @e at @s run function aolu_tweaks:entity_second
-
+    execute as @a at @s run function aolu_tweaks:player_second
     
     execute store result score time at.time run time query daytime
 

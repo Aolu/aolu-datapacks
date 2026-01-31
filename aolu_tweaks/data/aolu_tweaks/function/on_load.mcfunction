@@ -4,6 +4,7 @@
 scoreboard objectives add mcb.internal dummy
 scoreboard objectives add at.xp dummy
 scoreboard objectives add at.time dummy
+scoreboard objectives add at.levels level
 function aolu_tweaks:second
 tellraw @a [{"color":"#ffae00","text":"["},{"color":"white","text":"Tweaks"},{"color":"#ffae00","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
 tellraw @a [{"color":"#ffae00","text":"-="},{"color":"yellow","text":"Features"},{"color":"#ffae00","text":"=-"}]
@@ -14,3 +15,5 @@ tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Experience 
 tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Experience orbs track to the nearest Player"}]
 tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Copper Golems are 50% faster"}]
 tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Enchanted Books can now Stack"}]
+tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Creepers have 50% less Max Health"}]
+tellraw @a [{"color":"#ffae00","text":"- "},{"color":"white","text":"Experience Levels provide small Stat Bonuses"}]

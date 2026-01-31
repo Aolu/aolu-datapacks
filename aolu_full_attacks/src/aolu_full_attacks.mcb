@@ -4,6 +4,7 @@ function on_load minecraft:load{
     scoreboard objectives add afs_hurt_time dummy
     scoreboard objectives add afs_damage_dealt minecraft.custom:minecraft.damage_dealt
     scoreboard objectives add afs_perfect_attack_timer dummy
+    scoreboard objectives add afs_perfect_sound trigger
     schedule clear aolu_full_attacks:timer
     schedule function aolu_full_attacks:timer 1s replace
 
@@ -17,39 +18,69 @@ function on_tick minecraft:tick {
 }
 
 function holding_weapon {
-    item modify entity @s weapon.mainhand aolu_full_attacks:full_attack
+    # item modify entity @s weapon.mainhand aolu_full_attacks:full_attack
     attribute @s attack_speed modifier add aolu_fs_attacks 0.3 add_value
     attribute @s attack_damage modifier add aolu_fs_attacks -0.2 add_multiplied_total
 
 }
 
 function tick_player {
+    scoreboard players enable @s afs_perfect_sound
     
+    execute if score @s afs_perfect_sound matches 1.. run {
+        execute if entity @s[tag=afs_no_sound] run {
+            tellraw @s [{"bold":true,"color":"green","text":"Tempo Strike Sound Enabled!"}]
+            tag @s remove afs_no_sound
+        } else run {
+            tellraw @s [{"bold":true,"color":"red","text":"Tempo Strike Sound Disabled!"}]
+            tag @s add afs_no_sound
+        }
+        scoreboard players set @s afs_perfect_sound 0
+
+    }
+
     execute if score @s afs_perfect_attack_timer matches 1.. run {
         execute if score @s afs_perfect_attack_timer matches 6 run {
             tag @s add afs_perfect
-            playsound minecraft:entity.arrow.hit_player master @s ~ ~ ~ 0.25 0.8
-            attribute @s entity_interaction_range modifier add aolu_fs_perfect_attack 1 add_value
-            attribute @s attack_damage modifier add aolu_fs_perfect_attack 1 add_value
+            attribute @s entity_interaction_range modifier add aolu_fs_perfect_attack 0.5 add_value
+            attribute @s attack_damage modifier add aolu_fs_perfect_attack 0.25 add_multiplied_total
             attribute @s attack_speed modifier add aolu_fs_perfect_attack 0.2 add_value
         }
-        scoreboard players remove @s afs_perfect_attack_timer 1
+        
     }
     
-
-    execute if score @s[tag=afs_perfect] afs_perfect_attack_timer matches 0 run {
-        tag @s remove afs_perfect
-        attribute @s entity_interaction_range modifier remove aolu_fs_perfect_attack
-        attribute @s attack_damage modifier remove aolu_fs_perfect_attack
-        attribute @s attack_speed modifier remove aolu_fs_perfect_attack
+    execute if score @s afs_perfect_attack_timer matches 1 run {
+        attribute @s attack_damage modifier remove aolu_fs_missed
     }
-
+    execute if score @s[tag=afs_perfect] afs_perfect_attack_timer matches 0 run {
+        function aolu_full_attacks:remove_perfect
+    }
+    
     execute if score @s afs_damage_dealt matches 1.. run {
+        attribute @s attack_damage modifier remove aolu_fs_missed
+        # too early
+        execute if score @s afs_perfect_attack_timer matches 7.. run {
+            playsound minecraft:item.shield.block master @a[tag=!afs_no_sound] ~ ~ ~ 1 1
+            attribute @s attack_damage modifier add aolu_fs_missed -0.5 add_multiplied_total
+            function aolu_full_attacks:remove_perfect
+        }
+
+        # perfect
+        execute if entity @s[tag=afs_perfect] run {
+            playsound minecraft:item.spear_wood.hit master @a[tag=!afs_no_sound] ~ ~ ~ 1 1
+            playsound minecraft:item.spear.hit master @a[tag=!afs_no_sound] ~ ~ ~ 1 1
+            playsound minecraft:entity.player.attack.crit master @a[tag=!afs_no_sound] ~ ~ ~ 1 1
+           
+        }
+
+        # get attack delay in ticks
         execute store result score @s afs_perfect_attack_timer run attribute @s minecraft:attack_speed get 10000000
         scoreboard players set #perfect afs_perfect_attack_timer 200000000
         scoreboard players operation #perfect afs_perfect_attack_timer /= @s afs_perfect_attack_timer
         scoreboard players operation @s afs_perfect_attack_timer = #perfect afs_perfect_attack_timer
+        # add buffer
         scoreboard players add @s afs_perfect_attack_timer 5
+
         execute as @e[type=!player] at @s run {
             execute store result score @s afs_hurt_time run data get entity @s HurtTime
             execute if score @s afs_hurt_time matches 2.. run {
@@ -59,6 +90,7 @@ function tick_player {
         }
         scoreboard players set @s afs_damage_dealt 0
     }
+    execute if score @s afs_perfect_attack_timer matches 1.. run scoreboard players remove @s afs_perfect_attack_timer 1
 }
 
 function tick_entity {
@@ -67,6 +99,14 @@ function tick_entity {
         attribute @s minecraft:attack_damage modifier remove afs_hurt
     }
     execute if score @s afs_hurt_time matches 0 run tag @s remove afs_hurt
+}
+
+function remove_perfect {
+    tag @s remove afs_perfect
+    attribute @s entity_interaction_range modifier remove aolu_fs_perfect_attack
+    attribute @s attack_damage modifier remove aolu_fs_perfect_attack
+    attribute @s attack_speed modifier remove aolu_fs_perfect_attack
+
 }
 
 function timer {

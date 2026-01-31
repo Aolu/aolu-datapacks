@@ -1,4 +1,6 @@
 # Generated with MC-Build
 
-execute if score @s afs_perfect_attack_timer matches 6 run function aolu_full_attacks:zzz/1
-scoreboard players remove @s afs_perfect_attack_timer 1
+scoreboard players set #ifelse mcb.internal 0
+execute if entity @s[tag=afs_no_sound] run function aolu_full_attacks:zzz/1
+execute if score #ifelse mcb.internal matches 0 run function aolu_full_attacks:zzz/2
+scoreboard players set @s afs_perfect_sound 0

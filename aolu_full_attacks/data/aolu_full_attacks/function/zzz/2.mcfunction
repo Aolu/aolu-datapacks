@@ -1,6 +1,5 @@
 # Generated with MC-Build
 
-tag @s remove afs_perfect
-attribute @s entity_interaction_range modifier remove aolu_fs_perfect_attack
-attribute @s attack_damage modifier remove aolu_fs_perfect_attack
-attribute @s attack_speed modifier remove aolu_fs_perfect_attack
+scoreboard players set #ifelse mcb.internal 1
+tellraw @s [{"bold":true,"color":"red","text":"Tempo Strike Sound Disabled!"}]
+tag @s add afs_no_sound

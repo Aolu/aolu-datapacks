@@ -18,7 +18,7 @@ function on_tick minecraft:tick {
 }
 
 function holding_weapon {
-    # item modify entity @s weapon.mainhand aolu_full_attacks:full_attack
+    execute unless predicate {"condition":"minecraft:entity_properties","entity":"this","predicate":{"equipment":{"mainhand":{"predicates":{"minecraft:minimum_attack_charge":{}}}}}} run item modify entity @s weapon.mainhand aolu_full_attacks:full_attack
     attribute @s attack_speed modifier add aolu_fs_attacks 0.3 add_value
     attribute @s attack_damage modifier add aolu_fs_attacks -0.2 add_multiplied_total
 
@@ -44,7 +44,7 @@ function tick_player {
             tag @s add afs_perfect
             attribute @s entity_interaction_range modifier add aolu_fs_perfect_attack 0.5 add_value
             attribute @s attack_damage modifier add aolu_fs_perfect_attack 0.25 add_multiplied_total
-            attribute @s attack_speed modifier add aolu_fs_perfect_attack 0.2 add_value
+            attribute @s attack_speed modifier add aolu_fs_perfect_attack 0.25 add_value
         }
         
     }
@@ -70,6 +70,7 @@ function tick_player {
             playsound minecraft:item.spear_wood.hit master @a[tag=!afs_no_sound] ~ ~ ~ 1 1
             playsound minecraft:item.spear.hit master @a[tag=!afs_no_sound] ~ ~ ~ 1 1
             playsound minecraft:entity.player.attack.crit master @a[tag=!afs_no_sound] ~ ~ ~ 1 1
+            playsound minecraft:entity.breeze.shoot master @a[tag=!afs_no_sound] ~ ~ ~ 0.5 1
            
         }
 
@@ -124,7 +125,7 @@ function timer_ended {
 item_modifier full_attack {
   "function": "minecraft:set_components",
   "components": {
-    "minecraft:minimum_attack_charge": 1
+    "minecraft:minimum_attack_charge": 0.25
   }
 }
 

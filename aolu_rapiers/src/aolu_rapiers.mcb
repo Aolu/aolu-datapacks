@@ -5,6 +5,7 @@ function on_load minecraft:load{
     scoreboard objectives add aolu_rp.thrust_charges dummy
     scoreboard objectives add aolu_rp.thrust_timer minecraft.custom:minecraft.time_since_death
     scoreboard objectives add aolu_rp.thrust_duration minecraft.custom:minecraft.time_since_death
+    scoreboard objectives add aolu_rp.stab_bonus minecraft.custom:minecraft.time_since_death
 
 	tellraw @a [{"color":"#dfecf4","text":"["},{"color":"white","text":"Rapiers"},{"color":"#dfecf4","text":"]"},{"color":"white","text":": "},{"color":"white","text":"Loaded!"}]
 
@@ -82,16 +83,30 @@ function holding_rapier {
 
     execute if entity @s[tag=aolu_rp.thrust_mode,tag=!aolu_rp.dashing] run {
         # stab mode
+		tag @s[tag=!arp_thrust_mode] add arp_thrust_mode
         item modify entity @s weapon.mainhand aolu_rapiers:thrust_mode
-        attribute @s minecraft:attack_speed modifier add aolu_rp:stats_2 -.65 add_multiplied_total
+        execute if score @s aolu_rp.stab_bonus matches 15.. run attribute @s minecraft:attack_speed modifier add aolu_rp:stats_2 -.65 add_multiplied_total
         attribute @s minecraft:attack_damage modifier add aolu_rp:stats_2 1 add_value
-        attribute @s minecraft:entity_interaction_range modifier add aolu_rp:stats_2 1 add_value
-    }
+        attribute @s minecraft:entity_interaction_range modifier add aolu_rp:stats_2 0.65 add_value
+		execute store result storage aolu_rp range float 0.001 run attribute @s minecraft:entity_interaction_range get 1000
+		function aolu_rapiers:attack_range_macro with storage aolu_rp
+    } else run {
+		tag @s[tag=arp_thrust_mode] remove arp_thrust_mode
+	}
     execute if entity @s[tag=!aolu_rp.dashing] unless predicate aolu_common_resources:pressing_crouch unless predicate aolu_common_resources:pressing_sprint run item modify entity @s weapon.mainhand aolu_rapiers:swing_mode
     function aolu_rapiers:charges_title
 }
 
+function attack_range_macro {
+	$item modify entity @s weapon.mainhand {"function": "minecraft:set_components","components": {"minecraft:attack_range": {"min_reach": 0,"max_reach": $(range),"hitbox_margin": 0.05}}}
+}
+
 function add_charges {
+	execute if entity @s[tag=!arp_thrust_mode] run {
+		scoreboard players set @s aolu_rp.stab_bonus 0
+	} else run {
+		scoreboard players set @s aolu_rp.stab_bonus 999
+	}
     scoreboard players set @s aolu_rp.thrust_timer 0
     scoreboard players add @s aolu_rp.thrust_charges 0
     execute if score @s[tag=!aolu_rp.dashing] aolu_rp.thrust_charges matches ..4 run {
@@ -601,6 +616,7 @@ item_modifier thrust_mode {
 		"!minecraft:damage_type": {}
 	}
 }
+
 
 item_modifier dash_mode {
 	"function": "minecraft:set_components",

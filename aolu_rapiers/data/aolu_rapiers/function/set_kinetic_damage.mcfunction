@@ -1,0 +1,3 @@
+# Generated with MC-Build
+
+$item modify entity @s weapon.mainhand {"function": "minecraft:set_components","components": {"minecraft:kinetic_weapon": {"damage_conditions": {"max_duration_ticks": 40,"min_speed": 2,"min_relative_speed": 2},"damage_multiplier": $(kinetic_damage),"sound": "minecraft:item.trident.throw","hit_sound": "minecraft:item.trident.hit","contact_cooldown_ticks": 10},"minecraft:use_effects": {"can_sprint": true,"speed_multiplier": 1,"interact_vibrations": true}}}

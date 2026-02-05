@@ -24,7 +24,7 @@ function tick minecraft:tick {
     execute as @e at @s run function aolu_tweaks:entity_tick
     execute store result score difficulty at.xp run difficulty
     scoreboard players operation difficulty at.xp *= difficulty at.xp
-   
+    execute as @a at @s run function aolu_tweaks:player_tick
 }
 
 function entity_tick {
@@ -35,7 +35,21 @@ function player_second {
     execute store result storage aolu:tw l10 float 0.1 run scoreboard players get @s at.levels
     execute store result storage aolu:tw l50 float 0.05 run scoreboard players get @s at.levels
     execute store result storage aolu:tw l100 float 0.01 run scoreboard players get @s at.levels
+    execute store result storage aolu:tw l133 float 0.0075 run scoreboard players get @s at.levels
     function aolu_tweaks:add_stats with storage aolu:tw
+}
+
+function player_tick {
+    execute if entity @s[tag=!atw_on_path] if block ~ ~ ~ minecraft:dirt_path run {
+        tag @s add atw_on_path
+        attribute @s minecraft:step_height modifier add at:path 0.5 add_value
+        attribute @s minecraft:movement_speed modifier add at:path 0.25 add_multiplied_total
+    }
+    execute if entity @s[tag=atw_on_path] unless block ~ ~ ~ minecraft:dirt_path run {
+        tag @s remove atw_on_path
+        attribute @s minecraft:step_height modifier remove at:path
+        attribute @s minecraft:movement_speed modifier remove at:path
+    }
 }
 
 function add_stats {
@@ -49,7 +63,7 @@ function add_stats {
     $attribute @s minecraft:armor modifier add at:l_stat $(l10) add_value
     $attribute @s minecraft:luck modifier add at:l_stat $(l50) add_value
     $attribute @s minecraft:armor_toughness modifier add at:l_stat $(l50) add_value
-    $attribute @s minecraft:block_break_speed modifier add at:l_stat $(l50) add_value
+    $attribute @s minecraft:block_break_speed modifier add at:l_stat $(l133) add_multiplied_total
     $attribute @s minecraft:attack_damage modifier add at:l_stat $(l100) add_value
 }
 

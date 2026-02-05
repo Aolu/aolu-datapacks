@@ -3,6 +3,7 @@ function on_load minecraft:load{
 	scoreboard objectives add mcb.internal dummy
 
     scoreboard objectives add aolu_rp.thrust_charges dummy
+    scoreboard objectives add aolu_rp.kinetic_damage dummy
     scoreboard objectives add aolu_rp.thrust_timer minecraft.custom:minecraft.time_since_death
     scoreboard objectives add aolu_rp.thrust_duration minecraft.custom:minecraft.time_since_death
     scoreboard objectives add aolu_rp.stab_bonus minecraft.custom:minecraft.time_since_death
@@ -17,17 +18,30 @@ function on_tick minecraft:tick {
 
 function player_tick {
     tag @s remove aolu_rp.thrust_mode
+	# not dashing
     execute if score @s aolu_rp.thrust_duration matches 13.. run {
+		attribute @s minecraft:movement_speed modifier remove aolu_rp:thrust
         attribute @s minecraft:knockback_resistance modifier remove aolu_rp:thrust
-        attribute @s minecraft:gravity modifier remove aolu_rp:thrust
         tag @s[tag=aolu_rp.dashing] remove aolu_rp.dashing
     } else run {
+		# dashing
+		
+		item modify entity @s weapon.mainhand aolu_rapiers:remove_block
+		
         tag @s add aolu_rp.dashing
         particle minecraft:small_gust ~ ~1 ~ .1 .4 .1 0 3 force
     }
     execute if score @s aolu_rp.thrust_timer matches 100.. if score @s aolu_rp.thrust_charges matches 1.. run {
         scoreboard players remove @s aolu_rp.thrust_charges 1
     }
+
+	# power thrust
+	execute if score @s aolu_rp.stab_bonus matches ..15 run {
+		tag @s[tag=!arp_power_thrust] add arp_power_thrust
+	} else run {
+		tag @s[tag=arp_power_thrust] remove arp_power_thrust
+	}
+
     # holding a rapier
     execute if predicate aolu_rapiers:is_rapier run function aolu_rapiers:holding_rapier
 	# remove stab stats
@@ -35,6 +49,7 @@ function player_tick {
         attribute @s minecraft:attack_speed modifier remove aolu_rp:stats_2
         attribute @s minecraft:attack_damage modifier remove aolu_rp:stats_2
         attribute @s minecraft:entity_interaction_range modifier remove aolu_rp:stats_2
+		attribute @s minecraft:attack_knockback modifier remove aolu_rp:stats_2
     }
 
 	execute if predicate aolu_rapiers:offhand_is_rapier run {
@@ -58,16 +73,7 @@ function holding_rapier {
     
     execute if score @s aolu_rp.thrust_charges matches 1.. run {
 
-
 		
-		item modify entity @s weapon.mainhand aolu_rapiers:remove_block
-		execute if predicate aolu_rapiers:wooden_rapier run item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic_wood
-		execute if predicate aolu_rapiers:golden_rapier run item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic_iron
-		execute if predicate aolu_rapiers:stone_rapier run item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic_stone
-		execute if predicate aolu_rapiers:copper_rapier run item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic_stone
-		execute if predicate aolu_rapiers:iron_rapier run item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic_iron
-		execute if predicate aolu_rapiers:diamond_rapier run item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic_diamond
-		execute if predicate aolu_rapiers:netherite_rapier run item modify entity @s weapon.mainhand aolu_rapiers:add_kinetic_netherite
 
 		execute if score @s aolu_rp.thrust_charges matches 1 run item modify entity @s weapon.mainhand aolu_rapiers:add_enchant_1
 		execute if score @s aolu_rp.thrust_charges matches 2 run item modify entity @s weapon.mainhand aolu_rapiers:add_enchant_2
@@ -85,7 +91,14 @@ function holding_rapier {
         # stab mode
 		tag @s[tag=!arp_thrust_mode] add arp_thrust_mode
         item modify entity @s weapon.mainhand aolu_rapiers:thrust_mode
-        execute if score @s aolu_rp.stab_bonus matches 15.. run attribute @s minecraft:attack_speed modifier add aolu_rp:stats_2 -.65 add_multiplied_total
+		
+		attribute @s minecraft:attack_knockback modifier remove aolu_rp:stats_2
+		attribute @s minecraft:attack_damage modifier remove aolu_rp:stats_2
+        execute if entity @s[tag=arp_power_thrust] run {
+			attribute @s minecraft:attack_knockback modifier add aolu_rp:stats_2 0.4 add_value
+			attribute @s minecraft:attack_damage modifier add aolu_rp:stats_2 2 add_value
+		}
+        execute if entity @s[tag=!arp_power_thrust] run attribute @s minecraft:attack_speed modifier add aolu_rp:stats_2 -.65 add_multiplied_total
         attribute @s minecraft:attack_damage modifier add aolu_rp:stats_2 1 add_value
         attribute @s minecraft:entity_interaction_range modifier add aolu_rp:stats_2 0.65 add_value
 		execute store result storage aolu_rp range float 0.001 run attribute @s minecraft:entity_interaction_range get 1000
@@ -101,10 +114,28 @@ function attack_range_macro {
 	$item modify entity @s weapon.mainhand {"function": "minecraft:set_components","components": {"minecraft:attack_range": {"min_reach": 0,"max_reach": $(range),"hitbox_margin": 0.05}}}
 }
 
+function get_kinetic_damage {
+	scoreboard players set @s aolu_rp.kinetic_damage 0
+	execute store result score #kinetic_damage aolu_rp.kinetic_damage run attribute @s minecraft:attack_damage get 300
+	scoreboard players operation @s aolu_rp.kinetic_damage += #kinetic_damage aolu_rp.kinetic_damage
+	execute store result score #kinetic_damage aolu_rp.kinetic_damage run attribute @s minecraft:movement_speed get 800
+	scoreboard players operation @s aolu_rp.kinetic_damage *= #kinetic_damage aolu_rp.kinetic_damage
+	execute store result storage aolu:rp kinetic_damage float 0.000001 run scoreboard players get @s aolu_rp.kinetic_damage
+	function aolu_rapiers:set_kinetic_damage with storage aolu:rp
+}
+
+function set_kinetic_damage {
+	$item modify entity @s weapon.mainhand {"function": "minecraft:set_components","components": {"minecraft:kinetic_weapon": {"damage_conditions": {"max_duration_ticks": 40,"min_speed": 2,"min_relative_speed": 2},"damage_multiplier": $(kinetic_damage),"sound": "minecraft:item.trident.throw","hit_sound": "minecraft:item.trident.hit","contact_cooldown_ticks": 10},"minecraft:use_effects": {"can_sprint": true,"speed_multiplier": 1,"interact_vibrations": true}}}
+}
+
 function add_charges {
 	execute if entity @s[tag=!arp_thrust_mode] run {
 		scoreboard players set @s aolu_rp.stab_bonus 0
 	} else run {
+		execute if entity @s[tag=arp_power_thrust] run {
+			playsound minecraft:item.trident.throw master @a ~ ~ ~ 1 1
+			playsound minecraft:item.trident.throw master @a ~ ~ ~ 1 1
+		}
 		scoreboard players set @s aolu_rp.stab_bonus 999
 	}
     scoreboard players set @s aolu_rp.thrust_timer 0
@@ -156,13 +187,13 @@ function consume_charges {
 		tp @s ~ ~.3 ~
 		effect give @s minecraft:slow_falling 1 1
 		effect give @s minecraft:wind_charged 1 1
-		# attribute @s minecraft:gravity modifier add aolu_rp:thrust -0.9 add_multiplied_total
         execute if score @s aolu_rp.thrust_charges matches 5.. run {
-            effect give @s minecraft:speed 1 1
+			# bonuses at max stacks
+			attribute @s minecraft:movement_speed modifier add aolu_rp:thrust 0.4 add_multiplied_total
 			effect give @s minecraft:regeneration 4 1
 			item modify entity @s weapon.mainhand aolu_rapiers:true_damage
         }
-        
+        function aolu_rapiers:get_kinetic_damage
         scoreboard players set @s aolu_rp.thrust_charges 0
         scoreboard players set @s aolu_rp.thrust_duration 0
     }
@@ -632,7 +663,7 @@ item_modifier dash_mode {
 item_modifier true_damage {
 	"function": "minecraft:set_components",
 	"components": {
-		"minecraft:damage_type": "minecraft:out_of_world"
+		"minecraft:damage_type": "minecraft:generic_kill"
 	}
 
 }

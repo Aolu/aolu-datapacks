@@ -1,3 +1,4 @@
 # Generated with MC-Build
 
-item modify entity @s weapon.offhand aolu_rapiers:remove_enchant
+scoreboard players set #ifelse mcb.internal 1
+tag @s[tag=arp_power_thrust] remove arp_power_thrust

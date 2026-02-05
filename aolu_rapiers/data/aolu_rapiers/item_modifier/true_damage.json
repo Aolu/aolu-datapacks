@@ -1,1 +1,1 @@
-{"function": "minecraft:set_components","components":{"minecraft:damage_type": "minecraft:out_of_world"}}
+{"function": "minecraft:set_components","components":{"minecraft:damage_type": "minecraft:generic_kill"}}

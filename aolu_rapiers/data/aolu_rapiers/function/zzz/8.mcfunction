@@ -1,4 +1,6 @@
 # Generated with MC-Build
 
 scoreboard players set #ifelse mcb.internal 1
-tag @s[tag=arp_thrust_mode] remove arp_thrust_mode
+item modify entity @s weapon.mainhand aolu_rapiers:remove_kinetic
+item modify entity @s weapon.mainhand aolu_rapiers:remove_enchant
+item modify entity @s weapon.mainhand aolu_rapiers:add_block

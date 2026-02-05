@@ -1,4 +1,4 @@
 # Generated with MC-Build
 
-scoreboard players set #ifelse mcb.internal 1
-scoreboard players set @s aolu_rp.stab_bonus 999
+attribute @s minecraft:attack_knockback modifier add aolu_rp:stats_2 0.4 add_value
+attribute @s minecraft:attack_damage modifier add aolu_rp:stats_2 2 add_value

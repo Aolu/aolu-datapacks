@@ -1,4 +1,5 @@
 # Generated with MC-Build
 
-attribute @s minecraft:armor modifier add at:armor 4 add_value
-item modify entity @s weapon.offhand aolu_tweaks:instant_block
+tag @s remove atw_on_path
+attribute @s minecraft:step_height modifier remove at:path
+attribute @s minecraft:movement_speed modifier remove at:path

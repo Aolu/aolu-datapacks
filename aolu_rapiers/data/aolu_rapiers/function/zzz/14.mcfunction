@@ -1,6 +1,4 @@
 # Generated with MC-Build
 
-playsound minecraft:entity.breeze.land master @a ~ ~ ~ 1 1.6
-playsound minecraft:entity.breeze.land master @a ~ ~ ~ 1 1.6
-playsound minecraft:entity.breeze.land master @a ~ ~ ~ 1 1.6
-playsound minecraft:entity.breeze.land master @a ~ ~ ~ 1 1.6
+playsound minecraft:item.trident.throw master @a ~ ~ ~ 1 1
+playsound minecraft:item.trident.throw master @a ~ ~ ~ 1 1

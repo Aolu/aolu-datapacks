@@ -1,6 +1,5 @@
 # Generated with MC-Build
 
-playsound minecraft:entity.breeze.land master @a ~ ~ ~ 1 1.3
-playsound minecraft:entity.breeze.land master @a ~ ~ ~ 1 1.3
-playsound minecraft:entity.breeze.land master @a ~ ~ ~ 1 1.3
-playsound minecraft:entity.breeze.land master @a ~ ~ ~ 1 1.3
+scoreboard players set #ifelse mcb.internal 1
+execute if entity @s[tag=arp_power_thrust] run function aolu_rapiers:zzz/14
+scoreboard players set @s aolu_rp.stab_bonus 999

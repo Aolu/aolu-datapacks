@@ -1,11 +1,8 @@
 # Generated with MC-Build
 
 scoreboard players set #ifelse mcb.internal 1
-# stab mode
-tag @s[tag=!arp_thrust_mode] add arp_thrust_mode
-item modify entity @s weapon.mainhand aolu_rapiers:thrust_mode
-execute if score @s aolu_rp.stab_bonus matches 15.. run attribute @s minecraft:attack_speed modifier add aolu_rp:stats_2 -.65 add_multiplied_total
-attribute @s minecraft:attack_damage modifier add aolu_rp:stats_2 1 add_value
-attribute @s minecraft:entity_interaction_range modifier add aolu_rp:stats_2 0.65 add_value
-execute store result storage aolu_rp range float 0.001 run attribute @s minecraft:entity_interaction_range get 1000
-function aolu_rapiers:attack_range_macro with storage aolu_rp
+execute if score @s aolu_rp.thrust_charges matches 1 run item modify entity @s weapon.mainhand aolu_rapiers:add_enchant_1
+execute if score @s aolu_rp.thrust_charges matches 2 run item modify entity @s weapon.mainhand aolu_rapiers:add_enchant_2
+execute if score @s aolu_rp.thrust_charges matches 3 run item modify entity @s weapon.mainhand aolu_rapiers:add_enchant_3
+execute if score @s aolu_rp.thrust_charges matches 4 run item modify entity @s weapon.mainhand aolu_rapiers:add_enchant_4
+execute if score @s aolu_rp.thrust_charges matches 5 run item modify entity @s weapon.mainhand aolu_rapiers:add_enchant_5

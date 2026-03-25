@@ -1,0 +1,13 @@
+{
+  "trim_material.minecraft.amethyst": "Amethyst Material: +0.5 Luck",
+  "trim_material.minecraft.copper": "Copper Material: +0.75 Block Interaction Range",
+  "trim_material.minecraft.diamond": "Diamond Material: +1.5 Armor, +0.5 Armor Toughness",
+  "trim_material.minecraft.emerald": "Emerald Material: +1 Hero of the Village Effect Level",
+  "trim_material.minecraft.gold": "Gold Material: +10% Mining Speed",
+  "trim_material.minecraft.iron": "Iron Material: +5% Attack Damage, +7.5% Attack Speed",
+  "trim_material.minecraft.lapis": "Lapis Material: +25% Experience from Orbs",
+  "trim_material.minecraft.netherite": "Netherite Material: -10% Time on Fire",
+  "trim_material.minecraft.quartz": "Quartz Material: +1 Safe Fall Distance, -15% Fall Damage",
+  "trim_material.minecraft.redstone": "Redstone Material: +5% Movement Speed, +15% Sneak Speed",
+  "trim_material.minecraft.resin": "Resin Material: +15% Knockback Resistance"
+}

@@ -1,0 +1,13 @@
+{
+  "trim_material.minecraft.amethyst": "Аметист: +0.5 к удаче",
+  "trim_material.minecraft.copper": "Медь: +0.75 к дальности взаимодействия",
+  "trim_material.minecraft.diamond": "Алмаз: +1.5 брони, +0.5 прочности",
+  "trim_material.minecraft.emerald": "Изумруд: +1 уровень героя деревни",
+  "trim_material.minecraft.gold": "Золото: +10% к скорости добычи",
+  "trim_material.minecraft.iron": "Железо: +5% урона, +7.5% скорости атаки",
+  "trim_material.minecraft.lapis": "Лазурит: +25% опыта со сфер",
+  "trim_material.minecraft.netherite": "Незерит: -10% времени горения",
+  "trim_material.minecraft.quartz": "Кварц: +1 безопасная высота, -15% урона от падения",
+  "trim_material.minecraft.redstone": "Редстоун: +5% скорости бега, +15% крадущегося",
+  "trim_material.minecraft.resin": "Смола: +15% сопротивления отбрасыванию"
+}

@@ -4,11 +4,15 @@ tag @s add amv_check
 scoreboard players add @s amv_ability_cooldown 0
 execute store result score #difficulty mcb.internal run difficulty
 function aolu_monster_variants:roll_chance
+# difficulty Stat buffs
 execute if entity @s[type=#aolu_monster_variants:hostile] run function aolu_monster_variants:zzz/6
 # roll elite chance
+function aolu_monster_variants:roll_chance
+scoreboard players remove #difficulty mcb.internal 1
 scoreboard players set #ifelse mcb.internal 0
-execute if score @s[tag=!amv_elite,tag=!amv_not_elite] amv_chance <= #difficulty mcb.internal run function aolu_monster_variants:zzz/9
+execute if score @s[tag=!amv_elite,tag=!amv_not_elite,type=#aolu_monster_variants:hostile] amv_chance <= #difficulty mcb.internal run function aolu_monster_variants:zzz/9
 execute if score #ifelse mcb.internal matches 0 run function aolu_monster_variants:zzz/10
+scoreboard players add #difficulty mcb.internal 1
 function aolu_monster_variants:roll_chance
 # undead check
 execute if entity @s[type=#minecraft:undead] run function aolu_monster_variants:zzz/11
